@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aufex | Premium IT Dropshipping</title>
+    <style>
+        /* CSS Reset and Variables */
+        :root {
+            --primary: #7c3aed; /* Purple from logo */
+            --primary-hover: #6d28d9;
+            --bg-dark: #121212;
+            --bg-card: #1e1e24;
+            --bg-header: rgba(18, 18, 18, 0.95);
+            --text-light: #f8fafc;
+            --text-gray: #a1a1aa;
+        }
+        
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+        }
+        
+        body { 
+            background-color: var(--bg-dark); 
+            color: var(--text-light); 
+            line-height: 1.6; 
+        }
+
+        /* Header Navigation */
+        header { 
+            background: var(--bg-header); 
+            padding: 1rem 5%; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            box-shadow: 0 2px 10px rgba(0,0,0,0.5); 
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(5px);
+        }
+        .logo-container { display: flex; flex-direction: column; align-items: flex-start; line-height: 1; text-decoration: none; }
+        .logo { font-size: 2rem; font-weight: 800; color: #e2e8f0; letter-spacing: 2px; display: flex; align-items: center; }
+        .logo span { color: var(--primary); }
+        .logo-sub { font-size: 0.7rem; font-weight: 600; letter-spacing: 6px; color: var(--text-gray); margin-top: 4px; padding-left: 2px; }
+        
+        nav a { margin-left: 1.5rem; text-decoration: none; color: var(--text-light); font-weight: 500; transition: color 0.2s; }
+        nav a:hover { color: var(--primary); }
+
+        /* Hero Section */
+        .hero { 
+            background: linear-gradient(to bottom, #1a1a2e, var(--bg-dark)); 
+            color: #fff; 
+            padding: 6rem 5%; 
+            text-align: center; 
+        }
+        .hero h1 { font-size: 3.5rem; margin-bottom: 1rem; font-weight: 800; letter-spacing: -1px; }
+        .hero p { color: var(--text-gray); margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto; font-size: 1.2rem; }
+        .btn { 
+            background: var(--primary); 
+            color: #fff; 
+            padding: 0.75rem 1.75rem; 
+            text-decoration: none; 
+            border-radius: 4px; 
+            font-weight: bold; 
+            display: inline-block;
+            transition: all 0.2s ease;
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+        .btn:hover { background: var(--primary-hover); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(124, 58, 237, 0.4); }
+
+        /* IT Products Grid */
+        .products { padding: 5rem 5%; }
+        .section-title { text-align: center; margin-bottom: 3.5rem; font-size: 2.5rem; font-weight: 700; color: var(--text-light); }
+        .grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            gap: 2.5rem; 
+        }
+        .card { 
+            background: var(--bg-card); 
+            padding: 1.5rem; 
+            border-radius: 12px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5); 
+            text-align: center; 
+            transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s; 
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .card:hover { transform: translateY(-10px); box-shadow: 0 15px 40px rgba(0,0,0,0.7); border-color: rgba(124, 58, 237, 0.3); }
+        .card img { 
+            width: 100%; 
+            height: 200px; 
+            object-fit: cover; 
+            background: #2a2a35; 
+            margin-bottom: 1.5rem; 
+            border-radius: 8px; 
+        }
+        .card h3 { color: var(--text-light); font-size: 1.2rem; margin-bottom: 0.5rem; }
+        .price { font-size: 1.4rem; font-weight: 800; color: var(--primary); margin: 1rem 0 1.5rem; }
+        .card .btn { width: 100%; }
+
+        /* Footer & Partnership Info */
+        footer { 
+            background: #0a0a0a; 
+            color: #fff; 
+            text-align: center; 
+            padding: 4rem 5%; 
+            margin-top: 3rem; 
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+        footer h3 { margin-bottom: 1.5rem; font-size: 1.5rem; color: var(--text-light); }
+        footer p { color: var(--text-gray); max-width: 600px; margin: 0 auto; line-height: 1.8; }
+        .copyright { margin-top: 3rem; font-size: 0.9rem; color: #555; text-transform: uppercase; letter-spacing: 1px; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#home" class="logo-container">
+            <div class="logo"><span>A</span>UFEX</div>
+            <div class="logo-sub">PRODUCTS</div>
+        </a>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#shop">IT Hardware</a>
+            <a href="#about">Our Partnership</a>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <h1>Next-Gen IT Gear, Delivered.</h1>
+        <p>Aufex brings you top-tier tech hardware and professional accessories directly from global suppliers. Upgrade your workspace today.</p>
+        <a href="#shop" class="btn">Browse Hardware</a>
+    </section>
+
+    <section class="products" id="shop">
+        <h2 class="section-title">Trending IT Products</h2>
+        <div class="grid">
+            <div class="card">
+                <!-- Replace src with your actual dropshipping product images -->
+                <img src="https://via.placeholder.com/300x200?text=Pro+Developer+Laptop" alt="Laptop">
+                <h3>Pro Developer Laptop 16"</h3>
+                <div class="price">$1,299.00</div>
+                <button class="btn">Add to Cart</button>
+            </div>
+            <div class="card">
+                <img src="https://via.placeholder.com/300x200?text=Mechanical+Keyboard" alt="Keyboard">
+                <h3>Tactile Mechanical Keyboard</h3>
+                <div class="price">$89.00</div>
+                <button class="btn">Add to Cart</button>
+            </div>
+            <div class="card">
+                <img src="https://via.placeholder.com/300x200?text=Ultrawide+Monitor" alt="Monitor">
+                <h3>Ultrawide 4K Display</h3>
+                <div class="price">$349.00</div>
+                <button class="btn">Add to Cart</button>
+            </div>
+            <div class="card">
+                <img src="https://via.placeholder.com/300x200?text=Ergonomic+Mouse" alt="Mouse">
+                <h3>Ergonomic Wireless Mouse</h3>
+                <div class="price">$45.00</div>
+                <button class="btn">Add to Cart</button>
+            </div>
+        </div>
+    </section>
+
+    <footer id="about">
+        <h3>About Aufex</h3>
+        <p>Aufex is a strategic partnership dedicated to sourcing high-performance IT equipment. By leveraging a streamlined dropshipping model, we cut out the middleman to deliver premium tech directly to professionals and enthusiasts worldwide.</p>
+        <div class="copyright">&copy; 2026 Aufex IT Partnership. All rights reserved.</div>
+    </footer>
+
+</body>
+</html>
