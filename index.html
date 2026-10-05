@@ -3,121 +3,480 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aufex | Premium IT Dropshipping</title>
+    <title>Aufex | Premium IT Hardware & Dropshipping</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         /* CSS Reset and Variables */
         :root {
-            --primary: #7c3aed; /* Purple from logo */
+            --primary: #7c3aed;
             --primary-hover: #6d28d9;
-            --bg-dark: #121212;
-            --bg-card: #1e1e24;
-            --bg-header: rgba(18, 18, 18, 0.95);
+            --primary-light: #a78bfa;
+            --primary-glow: rgba(124, 58, 237, 0.35);
+            --bg-dark: #0f0f13;
+            --bg-card: #1c1c22;
+            --bg-card-hover: #22222a;
+            --bg-header: rgba(15, 15, 19, 0.92);
             --text-light: #f8fafc;
-            --text-gray: #a1a1aa;
+            --text-gray: #94a3b8;
+            --border-subtle: rgba(255, 255, 255, 0.08);
+            --border-glow: rgba(139, 92, 246, 0.45);
         }
         
         * { 
             margin: 0; 
             padding: 0; 
             box-sizing: border-box; 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
         }
         
         body { 
             background-color: var(--bg-dark); 
             color: var(--text-light); 
             line-height: 1.6; 
+            overflow-x: hidden;
         }
 
         /* Header Navigation */
         header { 
             background: var(--bg-header); 
-            padding: 1rem 5%; 
+            padding: 1.1rem 5%; 
             display: flex; 
             justify-content: space-between; 
             align-items: center; 
-            box-shadow: 0 2px 10px rgba(0,0,0,0.5); 
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4); 
             position: sticky;
             top: 0;
             z-index: 100;
-            backdrop-filter: blur(5px);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
-        .logo-container { display: flex; flex-direction: column; align-items: flex-start; line-height: 1; text-decoration: none; }
-        .logo { font-size: 2rem; font-weight: 800; color: #e2e8f0; letter-spacing: 2px; display: flex; align-items: center; }
-        .logo span { color: var(--primary); }
-        .logo-sub { font-size: 0.7rem; font-weight: 600; letter-spacing: 6px; color: var(--text-gray); margin-top: 4px; padding-left: 2px; }
+        .logo-container { 
+            display: flex; 
+            flex-direction: column; 
+            align-items: flex-start; 
+            line-height: 1; 
+            text-decoration: none; 
+        }
+        .logo { 
+            font-size: 2rem; 
+            font-weight: 800; 
+            color: #f8fafc; 
+            letter-spacing: 2px; 
+            display: flex; 
+            align-items: center; 
+        }
+        .logo span { color: var(--primary-light); }
+        .logo-sub { 
+            font-size: 0.68rem; 
+            font-weight: 700; 
+            letter-spacing: 5px; 
+            color: var(--text-gray); 
+            margin-top: 4px; 
+            padding-left: 2px; 
+        }
         
-        nav a { margin-left: 1.5rem; text-decoration: none; color: var(--text-light); font-weight: 500; transition: color 0.2s; }
-        nav a:hover { color: var(--primary); }
+        nav {
+            display: flex;
+            align-items: center;
+        }
+        nav a { 
+            margin-left: 1.75rem; 
+            text-decoration: none; 
+            color: var(--text-light); 
+            font-weight: 500; 
+            font-size: 0.95rem;
+            transition: color 0.2s ease; 
+        }
+        nav a:hover { color: var(--primary-light); }
+
+        .nav-cart {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 1.75rem;
+            color: var(--text-light);
+            text-decoration: none;
+            padding: 0.45rem;
+            border-radius: 8px;
+            transition: color 0.2s ease, transform 0.2s ease;
+        }
+        .nav-cart:hover {
+            color: var(--primary-light);
+            transform: scale(1.05);
+        }
+        .cart-badge {
+            position: absolute;
+            top: -5px;
+            right: -8px;
+            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+            color: #ffffff;
+            font-size: 0.68rem;
+            font-weight: 800;
+            min-width: 18px;
+            height: 18px;
+            border-radius: 9999px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 4px;
+            border: 2px solid var(--bg-dark);
+            transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .cart-badge.bounce {
+            transform: scale(1.4);
+        }
 
         /* Hero Section */
         .hero { 
-            background: linear-gradient(to bottom, #1a1a2e, var(--bg-dark)); 
+            background: radial-gradient(circle at 50% 20%, rgba(124, 58, 237, 0.15) 0%, transparent 60%),
+                        linear-gradient(to bottom, #161622, var(--bg-dark)); 
             color: #fff; 
-            padding: 6rem 5%; 
+            padding: 6.5rem 5% 5rem; 
             text-align: center; 
         }
-        .hero h1 { font-size: 3.5rem; margin-bottom: 1rem; font-weight: 800; letter-spacing: -1px; }
-        .hero p { color: var(--text-gray); margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto; font-size: 1.2rem; }
-        .btn { 
-            background: var(--primary); 
-            color: #fff; 
-            padding: 0.75rem 1.75rem; 
-            text-decoration: none; 
-            border-radius: 4px; 
-            font-weight: bold; 
-            display: inline-block;
-            transition: all 0.2s ease;
-            border: none;
-            cursor: pointer;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 0.9rem;
+        .hero h1 { 
+            font-size: 3.5rem; 
+            margin-bottom: 1.25rem; 
+            font-weight: 800; 
+            letter-spacing: -1.5px; 
+            line-height: 1.15;
+            background: linear-gradient(180deg, #ffffff 40%, #cbd5e1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-        .btn:hover { background: var(--primary-hover); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(124, 58, 237, 0.4); }
+        .hero p { 
+            color: var(--text-gray); 
+            margin-bottom: 2.25rem; 
+            max-width: 620px; 
+            margin-left: auto; 
+            margin-right: auto; 
+            font-size: 1.15rem; 
+            line-height: 1.7;
+        }
+        .btn-hero { 
+            background: linear-gradient(135deg, #7c3aed, #6d28d9); 
+            color: #fff; 
+            padding: 0.85rem 2.2rem; 
+            text-decoration: none; 
+            border-radius: 10px; 
+            font-weight: 700; 
+            display: inline-block;
+            transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            cursor: pointer;
+            letter-spacing: 0.5px;
+            font-size: 0.95rem;
+            box-shadow: 0 4px 18px rgba(124, 58, 237, 0.4);
+        }
+        .btn-hero:hover { 
+            background: linear-gradient(135deg, #8b5cf6, #7c3aed); 
+            transform: translateY(-2px); 
+            box-shadow: 0 8px 25px rgba(124, 58, 237, 0.55); 
+        }
 
-        /* IT Products Grid */
-        .products { padding: 5rem 5%; }
-        .section-title { text-align: center; margin-bottom: 3.5rem; font-size: 2.5rem; font-weight: 700; color: var(--text-light); }
+        /* Products Section */
+        .products { 
+            padding: 5.5rem 5% 6rem; 
+            max-width: 1360px;
+            margin: 0 auto;
+        }
+        .section-header {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+        .section-tag {
+            display: inline-block;
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--primary-light);
+            background: rgba(124, 58, 237, 0.12);
+            padding: 0.35rem 0.95rem;
+            border-radius: 9999px;
+            border: 1px solid rgba(124, 58, 237, 0.3);
+            margin-bottom: 0.85rem;
+        }
+        .section-title { 
+            font-size: 2.5rem; 
+            font-weight: 800; 
+            color: #ffffff; 
+            letter-spacing: -0.02em;
+            margin-bottom: 0.75rem;
+        }
+        .section-subtitle {
+            color: var(--text-gray);
+            font-size: 1.05rem;
+            max-width: 560px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Responsive Grid */
         .grid { 
             display: grid; 
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
-            gap: 2.5rem; 
+            gap: 2rem; 
         }
+
+        /* Stylish Product Card with Solid Dark Grey Background & Purple Hover Glow */
         .card { 
-            background: var(--bg-card); 
-            padding: 1.5rem; 
-            border-radius: 12px; 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5); 
-            text-align: center; 
-            transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s; 
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            background: var(--bg-card); /* Solid dark grey */
+            border-radius: 16px; 
+            border: 1px solid var(--border-subtle);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.45); 
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            position: relative;
+            transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), 
+                        box-shadow 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), 
+                        border-color 0.3s ease;
         }
-        .card:hover { transform: translateY(-10px); box-shadow: 0 15px 40px rgba(0,0,0,0.7); border-color: rgba(124, 58, 237, 0.3); }
-        .card img { 
+        .card:hover { 
+            transform: translateY(-8px); 
+            border-color: var(--border-glow); 
+            /* Subtle purple glow effect */
+            box-shadow: 0 20px 35px -8px rgba(0, 0, 0, 0.7), 
+                        0 0 28px var(--primary-glow); 
+        }
+
+        /* Card Image Container */
+        .card-img-wrap {
+            position: relative;
+            width: 100%;
+            height: 215px;
+            overflow: hidden;
+            background: #141419;
+        }
+        .card-img-wrap img { 
             width: 100%; 
-            height: 200px; 
+            height: 100%; 
             object-fit: cover; 
-            background: #2a2a35; 
-            margin-bottom: 1.5rem; 
-            border-radius: 8px; 
+            display: block;
+            transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1); 
         }
-        .card h3 { color: var(--text-light); font-size: 1.2rem; margin-bottom: 0.5rem; }
-        .price { font-size: 1.4rem; font-weight: 800; color: var(--primary); margin: 1rem 0 1.5rem; }
-        .card .btn { width: 100%; }
+        .card:hover .card-img-wrap img { 
+            transform: scale(1.06); 
+        }
+        .card-badge {
+            position: absolute;
+            top: 14px;
+            left: 14px;
+            background: rgba(18, 18, 24, 0.85);
+            backdrop-filter: blur(8px);
+            color: #c4b5fd;
+            border: 1px solid rgba(139, 92, 246, 0.35);
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 0.28rem 0.75rem;
+            border-radius: 9999px;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            z-index: 2;
+        }
+
+        /* Card Body & Typography */
+        .card-body {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        .card-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.6rem;
+        }
+        .card-category {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            color: var(--primary-light);
+        }
+        .rating {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+        .stars {
+            color: #fbbf24;
+            font-size: 0.82rem;
+            letter-spacing: 1px;
+        }
+        .rating-val {
+            color: var(--text-gray);
+            font-weight: 600;
+            font-size: 0.8rem;
+        }
+
+        .product-title { 
+            color: #ffffff; 
+            font-size: 1.25rem; 
+            font-weight: 700; 
+            line-height: 1.35;
+            margin-bottom: 0.45rem; 
+            letter-spacing: -0.01em;
+        }
+        .product-specs {
+            color: var(--text-gray);
+            font-size: 0.86rem;
+            line-height: 1.45;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        /* Card Action Row: Price & Add to Cart Button */
+        .card-action {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 1.25rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            margin-top: auto;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+        .price-box {
+            display: flex;
+            flex-direction: column;
+        }
+        .price-label {
+            font-size: 0.68rem;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: #71717a;
+            font-weight: 600;
+            margin-bottom: 1px;
+        }
+        .price { 
+            font-size: 1.55rem; 
+            font-weight: 800; 
+            color: #c4b5fd; 
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+        }
+
+        /* Fixed Purple "Add to Cart" Button: Sized properly, nicely padded, rounded edges */
+        .btn-cart { 
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            width: auto; /* Not stretched across the screen */
+            padding: 0.68rem 1.25rem; 
+            background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
+            color: #ffffff; 
+            border-radius: 10px; 
+            font-weight: 600; 
+            font-size: 0.88rem;
+            border: 1px solid rgba(255, 255, 255, 0.15); 
+            cursor: pointer;
+            text-decoration: none;
+            white-space: nowrap;
+            letter-spacing: 0.3px;
+            transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+            box-shadow: 0 4px 14px rgba(124, 58, 237, 0.35);
+        }
+        .btn-cart:hover { 
+            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%); 
+            transform: translateY(-2px); 
+            box-shadow: 0 6px 20px rgba(124, 58, 237, 0.55); 
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+        .btn-cart:active { 
+            transform: translateY(0); 
+            box-shadow: 0 2px 8px rgba(124, 58, 237, 0.35); 
+        }
+        .btn-cart svg {
+            transition: transform 0.2s ease;
+        }
+        .btn-cart:hover svg {
+            transform: scale(1.12);
+        }
+        .btn-cart.btn-added {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%) !important;
+            box-shadow: 0 4px 14px rgba(16, 185, 129, 0.4) !important;
+            border-color: rgba(16, 185, 129, 0.4) !important;
+        }
+
+        /* Floating Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: #1c1c24;
+            color: #f8fafc;
+            padding: 0.9rem 1.4rem;
+            border-radius: 12px;
+            border: 1px solid rgba(139, 92, 246, 0.4);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.55), 0 0 20px rgba(124, 58, 237, 0.25);
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.65rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: 1000;
+            pointer-events: none;
+        }
+        .toast.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .toast-icon {
+            color: #10b981;
+            display: flex;
+            align-items: center;
+        }
 
         /* Footer & Partnership Info */
         footer { 
-            background: #0a0a0a; 
+            background: #09090c; 
             color: #fff; 
             text-align: center; 
-            padding: 4rem 5%; 
+            padding: 4.5rem 5% 3.5rem; 
             margin-top: 3rem; 
-            border-top: 1px solid rgba(255,255,255,0.05);
+            border-top: 1px solid rgba(255, 255, 255, 0.06); 
         }
-        footer h3 { margin-bottom: 1.5rem; font-size: 1.5rem; color: var(--text-light); }
-        footer p { color: var(--text-gray); max-width: 600px; margin: 0 auto; line-height: 1.8; }
-        .copyright { margin-top: 3rem; font-size: 0.9rem; color: #555; text-transform: uppercase; letter-spacing: 1px; }
+        footer h3 { 
+            margin-bottom: 1.2rem; 
+            font-size: 1.6rem; 
+            font-weight: 800;
+            color: var(--text-light); 
+        }
+        footer p { 
+            color: var(--text-gray); 
+            max-width: 620px; 
+            margin: 0 auto; 
+            line-height: 1.8; 
+            font-size: 0.95rem;
+        }
+        .copyright { 
+            margin-top: 3rem; 
+            font-size: 0.85rem; 
+            color: #52525b; 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .hero p { font-size: 1rem; }
+            .section-title { font-size: 2rem; }
+            .grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
+            .products { padding: 4rem 5%; }
+            nav a { margin-left: 1rem; }
+            .toast { right: 1rem; bottom: 1rem; left: 1rem; justify-content: center; }
+        }
     </style>
 </head>
 <body>
@@ -129,44 +488,164 @@
         </a>
         <nav>
             <a href="#home">Home</a>
-            <a href="#shop">IT Hardware</a>
+            <a href="#shop">Our Products</a>
             <a href="#about">Our Partnership</a>
+            <a href="#shop" class="nav-cart" id="navCart" title="Cart">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="9" cy="21" r="1"></circle>
+                    <circle cx="20" cy="21" r="1"></circle>
+                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                </svg>
+                <span class="cart-badge" id="cartCount">0</span>
+            </a>
         </nav>
     </header>
 
     <section class="hero" id="home">
         <h1>Next-Gen IT Gear, Delivered.</h1>
         <p>Aufex brings you top-tier tech hardware and professional accessories directly from global suppliers. Upgrade your workspace today.</p>
-        <a href="#shop" class="btn">Browse Hardware</a>
+        <a href="#shop" class="btn-hero">Browse Products</a>
     </section>
 
+    <!-- Products Section -->
     <section class="products" id="shop">
-        <h2 class="section-title">Trending IT Products</h2>
+        <div class="section-header">
+            <span class="section-tag">Curated Collection</span>
+            <h2 class="section-title">Our Products</h2>
+            <p class="section-subtitle">Discover our handpicked collection of trending tech, viral gadgets, and everyday essentials delivered straight to your door.</p>
+        </div>
+        
         <div class="grid">
+            <!-- Product 1 -->
             <div class="card">
-                <!-- Replace src with your actual dropshipping product images -->
-                <img src="https://via.placeholder.com/300x200?text=Pro+Developer+Laptop" alt="Laptop">
-                <h3>Pro Developer Laptop 16"</h3>
-                <div class="price">$1,299.00</div>
-                <button class="btn">Add to Cart</button>
+                <div class="card-img-wrap">
+                    <span class="card-badge">Bestseller</span>
+                    <img src="smoke-bubble-gun.jpg" alt="Smoke Bubble Gun" loading="lazy">
+                </div>
+                <div class="card-body">
+                    <div class="card-meta">
+                        <span class="card-category">Gadgets</span>
+                        <div class="rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-val">4.9</span>
+                        </div>
+                    </div>
+                    <h3 class="product-title">Smoke Bubble Gun</h3>
+                    <p class="product-specs">Magic Smoke Bubble Maker Machine Toy | Rechargeable Automatic Electric Bubble Fog Wand with Colorful Lights & Music</p>
+                    <div class="card-action">
+                        <div class="price-box">
+                            <span class="price-label">Price</span>
+                            <div class="price">800 Rs 🔥🔥</div>
+                        </div>
+                        <button class="btn-cart" onclick="handleAddToCart(this, 'Smoke Bubble Gun')">
+                            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="9" cy="21" r="1"></circle>
+                                <circle cx="20" cy="21" r="1"></circle>
+                                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                            </svg>
+                            <span>Add to Cart</span>
+                        </button>
+                    </div>
+                </div>
             </div>
+
+            <!-- Product 2 -->
             <div class="card">
-                <img src="https://via.placeholder.com/300x200?text=Mechanical+Keyboard" alt="Keyboard">
-                <h3>Tactile Mechanical Keyboard</h3>
-                <div class="price">$89.00</div>
-                <button class="btn">Add to Cart</button>
+                <div class="card-img-wrap">
+                    <span class="card-badge">Top Rated</span>
+                    <img src="https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=600&q=80" alt="Tactile Mechanical Keyboard" loading="lazy">
+                </div>
+                <div class="card-body">
+                    <div class="card-meta">
+                        <span class="card-category">Peripherals</span>
+                        <div class="rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-val">4.8</span>
+                        </div>
+                    </div>
+                    <h3 class="product-title">Tactile Mechanical Keyboard</h3>
+                    <p class="product-specs">Hot-swappable switches • Per-key RGB • Aluminum chassis</p>
+                    <div class="card-action">
+                        <div class="price-box">
+                            <span class="price-label">Price</span>
+                            <div class="price">$89.00</div>
+                        </div>
+                        <button class="btn-cart" onclick="handleAddToCart(this, 'Tactile Mechanical Keyboard')">
+                            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="9" cy="21" r="1"></circle>
+                                <circle cx="20" cy="21" r="1"></circle>
+                                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                            </svg>
+                            <span>Add to Cart</span>
+                        </button>
+                    </div>
+                </div>
             </div>
+
+            <!-- Product 3 -->
             <div class="card">
-                <img src="https://via.placeholder.com/300x200?text=Ultrawide+Monitor" alt="Monitor">
-                <h3>Ultrawide 4K Display</h3>
-                <div class="price">$349.00</div>
-                <button class="btn">Add to Cart</button>
+                <div class="card-img-wrap">
+                    <span class="card-badge">Featured</span>
+                    <img src="https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=600&q=80" alt="Ultrawide 4K Display" loading="lazy">
+                </div>
+                <div class="card-body">
+                    <div class="card-meta">
+                        <span class="card-category">Displays</span>
+                        <div class="rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-val">5.0</span>
+                        </div>
+                    </div>
+                    <h3 class="product-title">Ultrawide 4K Display</h3>
+                    <p class="product-specs">34" Curved IPS • 144Hz • HDR400 • 90W USB-C Power Delivery</p>
+                    <div class="card-action">
+                        <div class="price-box">
+                            <span class="price-label">Price</span>
+                            <div class="price">$349.00</div>
+                        </div>
+                        <button class="btn-cart" onclick="handleAddToCart(this, 'Ultrawide 4K Display')">
+                            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="9" cy="21" r="1"></circle>
+                                <circle cx="20" cy="21" r="1"></circle>
+                                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                            </svg>
+                            <span>Add to Cart</span>
+                        </button>
+                    </div>
+                </div>
             </div>
+
+            <!-- Product 4 -->
             <div class="card">
-                <img src="https://via.placeholder.com/300x200?text=Ergonomic+Mouse" alt="Mouse">
-                <h3>Ergonomic Wireless Mouse</h3>
-                <div class="price">$45.00</div>
-                <button class="btn">Add to Cart</button>
+                <div class="card-img-wrap">
+                    <span class="card-badge">Popular</span>
+                    <img src="https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?auto=format&fit=crop&w=600&q=80" alt="Ergonomic Wireless Mouse" loading="lazy">
+                </div>
+                <div class="card-body">
+                    <div class="card-meta">
+                        <span class="card-category">Ergonomics</span>
+                        <div class="rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-val">4.7</span>
+                        </div>
+                    </div>
+                    <h3 class="product-title">Ergonomic Wireless Mouse</h3>
+                    <p class="product-specs">Natural hand posture • Multi-device Bluetooth • 70-day battery</p>
+                    <div class="card-action">
+                        <div class="price-box">
+                            <span class="price-label">Price</span>
+                            <div class="price">$45.00</div>
+                        </div>
+                        <button class="btn-cart" onclick="handleAddToCart(this, 'Ergonomic Wireless Mouse')">
+                            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="9" cy="21" r="1"></circle>
+                                <circle cx="20" cy="21" r="1"></circle>
+                                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                            </svg>
+                            <span>Add to Cart</span>
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -176,6 +655,60 @@
         <p>Aufex is a strategic partnership dedicated to sourcing high-performance IT equipment. By leveraging a streamlined dropshipping model, we cut out the middleman to deliver premium tech directly to professionals and enthusiasts worldwide.</p>
         <div class="copyright">&copy; 2026 Aufex IT Partnership. All rights reserved.</div>
     </footer>
+
+    <!-- Interactive Cart Toast Script -->
+    <script>
+        let cartCount = 0;
+        const cartBadge = document.getElementById('cartCount');
+
+        function handleAddToCart(btn, productName) {
+            cartCount++;
+            cartBadge.textContent = cartCount;
+            cartBadge.classList.add('bounce');
+            setTimeout(() => cartBadge.classList.remove('bounce'), 300);
+
+            const originalHTML = btn.innerHTML;
+            btn.innerHTML = `
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>Added!</span>
+            `;
+            btn.classList.add('btn-added');
+
+            showToast(productName + ' added to cart');
+
+            setTimeout(() => {
+                btn.innerHTML = originalHTML;
+                btn.classList.remove('btn-added');
+            }, 1600);
+        }
+
+        function showToast(message) {
+            let toast = document.getElementById('toast');
+            if (!toast) {
+                toast = document.createElement('div');
+                toast.id = 'toast';
+                toast.className = 'toast';
+                toast.innerHTML = `
+                    <span class="toast-icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                    </span>
+                    <span class="toast-text"></span>
+                `;
+                document.body.appendChild(toast);
+            }
+            toast.querySelector('.toast-text').textContent = message;
+            toast.classList.add('show');
+            
+            clearTimeout(toast.timeoutId);
+            toast.timeoutId = setTimeout(() => {
+                toast.classList.remove('show');
+            }, 2500);
+        }
+    </script>
 
 </body>
 </html>
