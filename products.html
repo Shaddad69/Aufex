@@ -1,0 +1,1516 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aufex Products | Trending Gadgets &amp; Hardware Catalog</title>
+    <meta name="description"
+        content="Explore Aufex's exclusive product line - Trending gadgets, smart lights, creative toys, home novelties, and premium hardware.">
+
+    <!-- Google Fonts: Plus Jakarta Sans & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-navy: #090e1a;
+            --secondary-navy: #0f172a;
+            --surface-card: #15203b;
+            --surface-card-hover: #1c2a4d;
+            --surface-card-border: rgba(148, 163, 184, 0.14);
+            --surface-card-border-hover: rgba(56, 189, 248, 0.45);
+
+            --accent-blue: #2563eb;
+            --accent-cyan: #38bdf8;
+            --accent-gradient: linear-gradient(135deg, #2563eb 0%, #0284c7 50%, #38bdf8 100%);
+            --accent-glow: rgba(37, 99, 235, 0.35);
+
+            --price-accent: #38bdf8;
+            --badge-bg: rgba(37, 99, 235, 0.25);
+            --badge-border: rgba(56, 189, 248, 0.35);
+
+            --text-heading: #f8fafc;
+            --text-body: #cbd5e1;
+            --text-muted: #94a3b8;
+            --text-white: #ffffff;
+
+            --nav-bg: rgba(9, 14, 26, 0.92);
+            --transition-smooth: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--primary-navy);
+            color: var(--text-body);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .ambient-glow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            background:
+                radial-gradient(circle at 10% 20%, rgba(37, 99, 235, 0.12) 0%, transparent 40%),
+                radial-gradient(circle at 90% 40%, rgba(56, 189, 248, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 50% 90%, rgba(30, 41, 59, 0.35) 0%, transparent 60%);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Navbar */
+        header.navbar {
+            position: sticky;
+            top: 0;
+            width: 100%;
+            background: var(--nav-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            z-index: 100;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo-wrap {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+        }
+
+        .logo-symbol {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: var(--accent-gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 14px var(--accent-glow);
+        }
+
+        .logo-symbol svg {
+            color: #ffffff;
+        }
+
+        .logo-title {
+            font-size: 1.35rem;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            color: var(--text-heading);
+            line-height: 1.1;
+        }
+
+        .logo-title span {
+            color: var(--accent-cyan);
+        }
+
+        .logo-badge {
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: var(--transition-smooth);
+            position: relative;
+            padding: 0.35rem 0;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--text-heading);
+        }
+
+        .nav-link.active::after,
+        .nav-link:hover::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--accent-cyan);
+            border-radius: 2px;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .cart-trigger {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.65rem 1.1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 10px;
+            color: var(--text-heading);
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .cart-trigger:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--accent-cyan);
+            color: #ffffff;
+        }
+
+        .cart-count {
+            background: var(--accent-gradient);
+            color: #ffffff;
+            font-size: 0.75rem;
+            font-weight: 800;
+            border-radius: 9999px;
+            padding: 0.15rem 0.55rem;
+            min-width: 20px;
+            text-align: center;
+        }
+
+        /* Hero Header */
+        .page-header {
+            padding: 4.5rem 0 3rem;
+            text-align: center;
+        }
+
+        .header-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.4rem 1.1rem;
+            background: rgba(37, 99, 235, 0.12);
+            border: 1px solid rgba(56, 189, 248, 0.25);
+            border-radius: 9999px;
+            color: var(--accent-cyan);
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            margin-bottom: 1.25rem;
+        }
+
+        .page-title {
+            font-size: clamp(2.2rem, 4vw, 3.4rem);
+            font-weight: 800;
+            color: var(--text-heading);
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+        }
+
+        .page-title span {
+            background: linear-gradient(135deg, #ffffff 30%, #93c5fd 75%, #38bdf8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .page-desc {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 680px;
+            margin: 0 auto 2.5rem;
+        }
+
+        /* Filter & Search Bar */
+        .controls-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1.25rem;
+            margin-bottom: 3rem;
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 1rem 1.5rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .filter-group {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-muted);
+            padding: 0.5rem 1.1rem;
+            border-radius: 9999px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--accent-gradient);
+            color: #ffffff;
+            border-color: transparent;
+            box-shadow: 0 4px 14px var(--accent-glow);
+        }
+
+        .search-box {
+            position: relative;
+            flex: 1 1 240px;
+            max-width: 320px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 0.55rem 1rem 0.55rem 2.4rem;
+            background: rgba(9, 14, 26, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 9999px;
+            color: #ffffff;
+            font-size: 0.88rem;
+            outline: none;
+            transition: var(--transition-smooth);
+        }
+
+        .search-box input:focus {
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 12px rgba(56, 189, 248, 0.3);
+        }
+
+        .search-box svg {
+            position: absolute;
+            left: 0.85rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            pointer-events: none;
+        }
+
+        /* Product Grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+            gap: 2rem;
+            margin-bottom: 6rem;
+        }
+
+        /* Product Card */
+        .product-card {
+            background: var(--surface-card);
+            border: 1px solid var(--surface-card-border);
+            border-radius: 18px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: var(--transition-smooth);
+            position: relative;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            background: var(--surface-card-hover);
+            border-color: var(--surface-card-border-hover);
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.7), 0 0 25px rgba(37, 99, 235, 0.25);
+        }
+
+        .card-img-wrap {
+            position: relative;
+            width: 100%;
+            height: 250px;
+            background: #0b1120;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .product-card:hover .card-img-wrap img {
+            transform: scale(1.08);
+        }
+
+        .card-badge {
+            position: absolute;
+            top: 14px;
+            left: 14px;
+            padding: 0.3rem 0.8rem;
+            background: rgba(9, 14, 26, 0.85);
+            backdrop-filter: blur(8px);
+            border: 1px solid var(--accent-cyan);
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--accent-cyan);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            z-index: 2;
+        }
+
+        .card-body {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .card-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.6rem;
+        }
+
+        .card-category {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--accent-cyan);
+        }
+
+        .card-rating {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            font-size: 0.82rem;
+            color: #fbbf24;
+            font-weight: 700;
+        }
+
+        .product-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-heading);
+            margin-bottom: 0.6rem;
+            line-height: 1.35;
+        }
+
+        .product-specs {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            line-height: 1.55;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .card-action {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.75rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding-top: 1.1rem;
+            margin-top: auto;
+        }
+
+        .price-box {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .price-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        .price-val {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--accent-cyan);
+            letter-spacing: -0.01em;
+        }
+
+        .btn-order {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            padding: 0.65rem 1.1rem;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #ffffff;
+            background: var(--accent-gradient);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 9px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: var(--transition-smooth);
+            box-shadow: 0 4px 14px var(--accent-glow);
+        }
+
+        .btn-order:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.55);
+        }
+
+        /* Cart Drawer */
+        .cart-drawer-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(4px);
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .cart-drawer-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .cart-drawer {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100%;
+            max-width: 420px;
+            height: 100%;
+            background: #0d1527;
+            border-left: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: -10px 0 40px rgba(0, 0, 0, 0.7);
+            z-index: 1001;
+            display: flex;
+            flex-direction: column;
+            transform: translateX(100%);
+            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .cart-drawer.active {
+            transform: translateX(0);
+        }
+
+        .cart-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cart-header h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-heading);
+        }
+
+        .btn-close-cart {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            font-size: 1.5rem;
+            line-height: 1;
+            padding: 0.25rem;
+            transition: color 0.2s;
+        }
+
+        .btn-close-cart:hover {
+            color: #ffffff;
+        }
+
+        .cart-items {
+            flex-grow: 1;
+            overflow-y: auto;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .cart-empty {
+            text-align: center;
+            padding: 3rem 1rem;
+            color: var(--text-muted);
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            padding: 0.85rem;
+            border-radius: 12px;
+        }
+
+        .cart-item-img {
+            width: 55px;
+            height: 55px;
+            border-radius: 8px;
+            object-fit: cover;
+            background: #090e1a;
+        }
+
+        .cart-item-info {
+            flex-grow: 1;
+        }
+
+        .cart-item-title {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--text-heading);
+            margin-bottom: 0.2rem;
+        }
+
+        .cart-item-price {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--accent-cyan);
+        }
+
+        .cart-item-remove {
+            background: transparent;
+            border: none;
+            color: #ef4444;
+            cursor: pointer;
+            padding: 0.4rem;
+        }
+
+        .cart-footer {
+            padding: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            background: #090e1a;
+        }
+
+        .cart-total-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.25rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-heading);
+        }
+
+        .btn-checkout-whatsapp {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.65rem;
+            width: 100%;
+            padding: 1rem;
+            background: #25d366;
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 1rem;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: var(--transition-smooth);
+            box-shadow: 0 4px 18px rgba(37, 211, 102, 0.35);
+        }
+
+        .btn-checkout-whatsapp:hover {
+            background: #1eb956;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(37, 211, 102, 0.5);
+        }
+
+        /* Toast */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: #111c35;
+            color: #f8fafc;
+            padding: 0.9rem 1.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--accent-cyan);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(56, 189, 248, 0.25);
+            font-size: 0.92rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: 2000;
+            pointer-events: none;
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Footer */
+        footer.footer {
+            background: #060911;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            padding: 4.5rem 0 2.5rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3.5rem;
+        }
+
+        .footer-brand p {
+            margin-top: 1rem;
+            max-width: 320px;
+            line-height: 1.7;
+        }
+
+        .footer-heading {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--text-heading);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1.25rem;
+        }
+
+        .footer-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: var(--transition-smooth);
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-cyan);
+        }
+
+        .footer-bottom {
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            color: #64748b;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        @media (max-width: 1024px) {
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .controls-bar {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .search-box {
+                max-width: 100%;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="ambient-glow"></div>
+
+    <!-- Navigation Bar -->
+    <header class="navbar">
+        <div class="container nav-content">
+            <a href="index.html" class="logo-wrap">
+                <div class="logo-symbol">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                        <polyline points="2 17 12 22 22 17"></polyline>
+                        <polyline points="2 12 12 17 22 12"></polyline>
+                    </svg>
+                </div>
+                <div class="logo-text-group">
+                    <div class="logo-title">AUFEX <span>ENTERPRISE</span></div>
+                    <div class="logo-badge">Products &amp; Sourcing</div>
+                </div>
+            </a>
+
+            <nav class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="index.html#solutions" class="nav-link">Solutions</a>
+                <a href="products.html" class="nav-link active">Our Products</a>
+                <a href="index.html#about" class="nav-link">About</a>
+                <a href="index.html#contact" class="nav-link">Contact</a>
+            </nav>
+
+            <div class="nav-actions">
+                <button class="cart-trigger" onclick="toggleCartDrawer(true)" id="btnCart">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                    </svg>
+                    <span>Cart</span>
+                    <span class="cart-count" id="cartCount">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Header Section -->
+    <section class="page-header">
+        <div class="container">
+            <div class="header-pill">
+                <span>Direct Sourcing &bull; Verified Inventory</span>
+            </div>
+            <h1 class="page-title">
+                Aufex <span>Product Showcase</span>
+            </h1>
+            <p class="page-desc">
+                Browse our complete collection of verified trending gadgets, novelty electronics, smart home lights,
+                and innovative toys available for wholesale direct sourcing and retail delivery.
+            </p>
+
+            <!-- Search & Filters -->
+            <div class="controls-bar">
+                <div class="filter-group" id="filterGroup">
+                    <button class="filter-btn active" data-category="all" onclick="filterCategory('all', this)">All
+                        Products</button>
+                    <button class="filter-btn" data-category="gadgets"
+                        onclick="filterCategory('gadgets', this)">Gadgets</button>
+                    <button class="filter-btn" data-category="toys" onclick="filterCategory('toys', this)">Kids &amp;
+                        Toys</button>
+                    <button class="filter-btn" data-category="lights" onclick="filterCategory('lights', this)">Smart
+                        Lights</button>
+                    <button class="filter-btn" data-category="home" onclick="filterCategory('home', this)">Home &amp;
+                        Kitchen</button>
+                    <button class="filter-btn" data-category="tech" onclick="filterCategory('tech', this)">Tech
+                        Hardware</button>
+                </div>
+
+                <div class="search-box">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    <input type="text" id="searchInput" placeholder="Search products..." oninput="handleSearch(this.value)">
+                </div>
+            </div>
+
+            <!-- Product Grid -->
+            <div class="products-grid" id="productsGrid">
+
+                <!-- 1. Smoke Bubble Gun -->
+                <div class="product-card" data-category="gadgets toys" data-title="smoke bubble gun">
+                    <div class="card-img-wrap">
+                        <span class="card-badge">Bestseller</span>
+                        <img src="smoke-bubble-gun.jpg" alt="Smoke Bubble Gun" loading="lazy">
+                    </div>
+                    <div class="card-body">
+                        <div class="card-meta">
+                            <span class="card-category">Gadgets</span>
+                            <div class="card-rating"><span>★</span> 4.9</div>
+                        </div>
+                        <h3 class="product-title">Smoke Bubble Gun</h3>
+                        <p class="product-specs">Magic Smoke Bubble Maker Machine Toy | Rechargeable Automatic Electric
+                            Bubble Fog Wand with Colorful Lights &amp; Music</p>
+                        <div class="card-action">
+                            <div class="price-box">
+                                <span class="price-label">Price</span>
+                                <div class="price-val">800 Rs 🔥🔥</div>
+                            </div>
+                            <button class="btn-order"
+                                onclick="addToCart('Smoke Bubble Gun', '800 Rs', 'smoke-bubble-gun.jpg')">
+                                <span>Add to Cart</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Remote Watch Car -->
+                <div class="product-card" data-category="toys gadgets" data-title="remote watch car mini racing toy">
+                    <div class="card-img-wrap">
+                        <span class="card-badge">USB Rechargeable</span>
+                        <img src="remote-watch-car.jpg" alt="Remote Watch Car" loading="lazy">
+                    </div>
+                    <div class="card-body">
+                        <div class="card-meta">
+                            <span class="card-category">Kids Toys</span>
+                            <div class="card-rating"><span>★</span> 4.9</div>
+                        </div>
+                        <h3 class="product-title">Remote Watch Car</h3>
+                        <p class="product-specs">2.4 GHz Cartoon Mini Watch Car | Mini Watch Car Toy for Kids | USB
+                            Rechargeable Remote Control Wrist Racing Car Watch | Rapid Watch Remote Control Car Toy |
+                            Wrist Cars Toy with LED Light</p>
+                        <div class="card-action">
+                            <div class="price-box">
+                                <span class="price-label">Price</span>
+                                <div class="price-val">399 Rs 🔥🔥</div>
+                            </div>
+                            <button class="btn-order"
+                                onclick="addToCart('Remote Watch Car', '399 Rs', 'remote-watch-car.jpg')">
+                                <span>Add to Cart</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. Baby Finger Projector -->
+                <div class="product-card" data-category="toys" data-title="baby finger projector led flashlight">
+                    <div class="card-img-wrap">
+                        <span class="card-badge">Pack Of 5</span>
+                        <img src="baby-finger-projector.jpg" alt="Baby Finger Projector" loading="lazy">
+                    </div>
+                    <div class="card-body">
+                        <div class="card-meta">
+                            <span class="card-category">Kids Toys</span>
+                            <div class="card-rating"><span>★</span> 4.9</div>
+                        </div>
+                        <h3 class="product-title">Baby Finger Projector</h3>
+                        <p class="product-specs">LED Finger Lights for Kids (Pack of 5) | Multicolor Light Up Finger
+                            Projector Toys | Cute Animal Projector Light | Mini Projector Light Toy with 1 Slide |
+                            Night Light Cartoon Slide Torch | Kids Learning Toy</p>
+                        <div class="card-action">
+                            <div class="price-box">
+                                <span class="price-label">Price</span>
+                                <div class="price-val">200 Rs 🔥🔥</div>
+                            </div>
+                            <button class="btn-order"
+                                onclick="addToCart('Baby Finger Projector (Pack of 5)', '200 Rs', 'baby-finger-projector.jpg')">
+                                <span>Add to Cart</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. Inkless Foot Print -->
+                <div class="product-card" data-category="home toys" data-title="inkless foot print baby handprint keepsake">
+                    <div class="card-img-wrap">
+                        <span class="card-badge">100% Non-Toxic</span>
+                        <img src="inkless-baby-footprint.jpg" alt="Inkless Foot Print" loading="lazy">
+                    </div>
+                    <div class="card-body">
+                        <div class="card-meta">
+                            <span class="card-category">Keepsakes</span>
+                            <div class="card-rating"><span>★</span> 5.0</div>
+                        </div>
+                        <h3 class="product-title">Inkless Foot Print</h3>
+                        <p class="product-specs">Baby Hand and Footprint | Inkless Baby Handprint And Baby Footprint |
+                            Ink Pad With Imprint Cards 100% Non-Toxic &amp; Mess Free Safe For Newborn Baby | Infant
+                            Foot and Handprint Keepsake</p>
+                        <div class="card-action">
+                            <div class="price-box">
+                                <span class="price-label">Price</span>
+                                <div class="price-val">189 Rs 🔥🔥</div>
+                            </div>
+                            <button class="btn-order"
+                                onclick="addToCart('Inkless Foot Print', '189 Rs', 'inkless-baby-footprint.jpg')">
+                                <span>Add to Cart</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5. Bubble Cigarette -->
+                <div class="product-card" data-category="gadgets toys" data-title="bubble cigarette fun party toy">
+                    <div class="card-img-wrap">
+                        <span class="card-badge">Party &amp; Cosplay</span>
+                        <img src="bubble-cigarette.jpg" alt="Bubble Cigarette" loading="lazy">
+                    </div>
+                    <div class="card-body">
+                        <div class="card-meta">
+                            <span class="card-category">Gadgets</span>
+                            <div class="card-rating"><span>★</span> 4.9</div>
+                        </div>
+                        <h3 class="product-title">Bubble Cigarette</h3>
+                        <p class="product-specs">Marlboro Themed Bubble Cigarette Toy Kit | Fake Bubble Puff Cigarettes
+                            for Party &amp; Cosplay &amp; Gift, Smoke Soap Bubbles | Cigarettes Bubble Machines | Funny
+                            Mini Bubble Blower Stick Toy | Fun Party Gift Toy</p>
+                        <div class="card-action">
+                            <div class="price-box">
+                                <span class="price-label">Price</span>
+                                <div class="price-val">250 Rs 🔥🔥</div>
+                            </div>
+                            <button class="btn-order"
+                                onclick="addToCart('Bubble Cigarette Kit', '250 Rs', 'bubble-cigarette.jpg')">
+                                <span>Add to Cart</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6. Banana Piano Toy -->
+                <div class="product-card" data-category="toys gadgets" data-title="banana piano toy interactive plush">
+                    <div class="card-img-wrap">
+                        <span class="card-badge">Touch Sensor</span>
+                        <img src="banana-piano-toy.jpg" alt="Banana Piano Toy" loading="lazy">
+                    </div>
+                    <div class="card-body">
+                        <div class="card-meta">
+                            <span class="card-category">Musical Toys</span>
+                            <div class="card-rating"><span>★</span> 4.9</div>
+                        </div>
+                        <h3 class="product-title">Banana Piano Toy</h3>
+                        <p class="product-specs">Funny Talking Banana Plush Toy | Metal Disc Hands Interactive Fruit
+                            Stuffed Toy | Hand Play Music Beat Stuffed Toy | Touch Sensor Funny Talking Banana Plush Toy
+                            | Musical Banana Toy for Kids</p>
+                        <div class="card-action">
+                            <div class="price-box">
+                                <span class="price-label">Price</span>
+                                <div class="price-val">470 Rs 🔥🔥</div>
+                            </div>
+                            <button class="btn-order"
+                                onclick="addToCart('Banana Piano Toy', '470 Rs', 'banana-piano-toy.jpg')">
+                                <span>Add to Cart</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 7. USB Projector Night Light -->
+                <div class="product-card" data-category="lights gadgets" data-title="usb projector night light car roof star lamp">
+                    <div class="card-img-wrap">
+                        <span class="card-badge">Trending</span>
+                        <img src="usb-projector-night-light.jpg" alt="USB Projector Night Light" loading="lazy">
+                    </div>
+                    <div class="card-body">
+                        <div class="card-meta">
+                            <span class="card-category">Smart Lights</span>
+                            <div class="card-rating"><span>★</span> 4.8</div>
+                        </div>
+                        <h3 class="product-title">USB Projector Night Light</h3>
+                        <p class="product-specs">Romantic LED Car Roof Star Night Light | Adjustable Flexible USB Galaxy
+                            Star Projector Lamp | Atmosphere Ambient Ceiling Lamp for Car, Bedroom, and Party</p>
+                        <div class="card-action">
+                            <div class="price-box">
+                                <span class="price-label">Price</span>
+                                <div class="price-val">199 Rs 🔥🔥</div>
+                            </div>
+                            <button class="btn-order"
+                                onclick="addToCart('USB Projector Night Light', '199 Rs', 'usb-projector-night-light.jpg')">
+                                <span>Add to Cart</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 8. Cordless Table Lamp -->
+                <div class="product-card" data-category="lights home" data-title="cordless table lamp led desk lamp rechargeable">
+                    <div class="card-img-wrap">
+                        <span class="card-badge">Touch Control</span>
+                        <img src="cordless-table-lamp.jpg" alt="Cordless Table Lamp" loading="lazy">
+                    </div>
+                    <div class="card-body">
+                        <div class="card-meta">
+                            <span class="card-category">Smart Lights</span>
+                            <div class="card-rating"><span>★</span> 4.9</div>
+                        </div>
+                        <h3 class="product-title">Cordless Table Lamp</h3>
+                        <p class="product-specs">LED Desk Lamp | Waterproof Rechargeable Battery Desk Lamp | 3 Color
+                            Stepless Dimming Up, Battery Operated Lamp | Wireless Bottle Lamp | 3 Colors Dimmable Wine
+                            Bottle Light | Touch Control LED Desk Lamp</p>
+                        <div class="card-action">
+                            <div class="price-box">
+                                <span class="price-label">Price</span>
+                                <div class="price-val">450 Rs 🔥🔥</div>
+                            </div>
+                            <button class="btn-order"
+                                onclick="addToCart('Cordless Table Lamp', '450 Rs', 'cordless-table-lamp.jpg')">
+                                <span>Add to Cart</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 9. Corner Floor Lamp -->
+                <div class="product-card" data-category="lights home" data-title="corner floor lamp smart rgb led app remote">
+                    <div class="card-img-wrap">
+                        <span class="card-badge">Smart App &amp; Remote</span>
+                        <img src="corner-floor-lamp.jpg" alt="Corner Floor Lamp" loading="lazy">
+                    </div>
+                    <div class="card-body">
+                        <div class="card-meta">
+                            <span class="card-category">Smart Lights</span>
+                            <div class="card-rating"><span>★</span> 4.9</div>
+                        </div>
+                        <h3 class="product-title">Corner Floor Lamp</h3>
+                        <p class="product-specs">Smart RGB LED Corner Lamp with App and Remote Control | Rapid LED
+                            Corner RGB Floor Lamp | Color Changing Floor Lamp with Remote | 16 Million Colors &amp; 68+
+                            Scene, Music Sync, Timer Setting</p>
+                        <div class="card-action">
+                            <div class="price-box">
+                                <span class="price-label">Price</span>
+                                <div class="price-val">999 Rs 🔥🔥</div>
+                            </div>
+                            <button class="btn-order"
+                                onclick="addToCart('Corner Floor Lamp RGB', '999 Rs', 'corner-floor-lamp.jpg')">
+                                <span>Add to Cart</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 10. Devils Eyes LED Car Light -->
+                <div class="product-card" data-category="gadgets lights" data-title="devils eyes led car light solar windshield">
+                    <div class="card-img-wrap">
+                        <span class="card-badge">Solar Powered</span>
+                        <img src="devils-eyes-car-light.jpg" alt="Devils Eyes LED Car Light" loading="lazy">
+                    </div>
+                    <div class="card-body">
+                        <div class="card-meta">
+                            <span class="card-category">Auto Gadgets</span>
+                            <div class="card-rating"><span>★</span> 4.9</div>
+                        </div>
+                        <h3 class="product-title">Devils Eyes LED Car Light</h3>
+                        <p class="product-specs">LED Eyes for Cars | Devil Eyes Light | Windshield Ambient Lamp |
+                            Wireless Triangle Window Light Energy Efficient Solar Devil Eye Light | Romantic Car Light |
+                            Car &amp; Bike LED Interior Lights</p>
+                        <div class="card-action">
+                            <div class="price-box">
+                                <span class="price-label">Price</span>
+                                <div class="price-val">350 Rs 🔥🔥</div>
+                            </div>
+                            <button class="btn-order"
+                                onclick="addToCart('Devils Eyes LED Car Light', '350 Rs', 'devils-eyes-car-light.jpg')">
+                                <span>Add to Cart</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 11. High Voltage Violent Blower -->
+                <div class="product-card" data-category="gadgets home" data-title="high voltage blower violent turbo jet fan cordless">
+                    <div class="card-img-wrap">
+                        <span class="card-badge">48Vf High Power</span>
+                        <img src="high-voltage-violent-blower.jpg" alt="High Voltage Blower" loading="lazy">
+                    </div>
+                    <div class="card-body">
+                        <div class="card-meta">
+                            <span class="card-category">Power Tools</span>
+                            <div class="card-rating"><span>★</span> 4.9</div>
+                        </div>
+                        <h3 class="product-title">High Voltage Blower</h3>
+                        <p class="product-specs">Violent Fan Turbo Jet Blower | 48Vf High Power Cordless Air Duster |
+                            35000PA Powerful Suction &amp; Blower | Rechargeable Handheld Jet Fan for Car, Electronics,
+                            Workshop &amp; Yard Cleaning</p>
+                        <div class="card-action">
+                            <div class="price-box">
+                                <span class="price-label">Price</span>
+                                <div class="price-val">850 Rs 🔥🔥</div>
+                            </div>
+                            <button class="btn-order"
+                                onclick="addToCart('High Voltage Blower', '850 Rs', 'high-voltage-violent-blower.jpg')">
+                                <span>Add to Cart</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 12. Electric Pasta Maker -->
+                <div class="product-card" data-category="home" data-title="electric pasta maker cordless rechargeable noodle machine">
+                    <div class="card-img-wrap">
+                        <span class="card-badge">Aufex Exclusive</span>
+                        <img src="electric-pasta-maker.jpg" alt="Electric Pasta Maker" loading="lazy">
+                    </div>
+                    <div class="card-body">
+                        <div class="card-meta">
+                            <span class="card-category">Kitchen</span>
+                            <div class="card-rating"><span>★</span> 5.0</div>
+                        </div>
+                        <h3 class="product-title">Electric Pasta Maker</h3>
+                        <p class="product-specs">Make Fresh Pasta &amp; Noodles Easily at Home | Cordless &amp;
+                            Convenient Rechargeable Battery | 40W High Performance Motor | 6 Interchangeable Moulds
+                            (Spaghetti, Penne, Noodles, Fusilli) | Food-Grade Stainless Steel &amp; ABS</p>
+                        <div class="card-action">
+                            <div class="price-box">
+                                <span class="price-label">Price</span>
+                                <div class="price-val">1,499 Rs 🔥🔥</div>
+                            </div>
+                            <button class="btn-order"
+                                onclick="addToCart('Electric Pasta Maker', '1,499 Rs', 'electric-pasta-maker.jpg')">
+                                <span>Add to Cart</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 13. Tactile Mechanical Keyboard -->
+                <div class="product-card" data-category="tech" data-title="tactile mechanical keyboard rgb aluminum chassis">
+                    <div class="card-img-wrap">
+                        <span class="card-badge">Top Rated</span>
+                        <img src="https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=600&q=80"
+                            alt="Tactile Mechanical Keyboard" loading="lazy">
+                    </div>
+                    <div class="card-body">
+                        <div class="card-meta">
+                            <span class="card-category">Tech Hardware</span>
+                            <div class="card-rating"><span>★</span> 4.8</div>
+                        </div>
+                        <h3 class="product-title">Tactile Mechanical Keyboard</h3>
+                        <p class="product-specs">Hot-swappable tactile switches • Per-key programmable RGB • CNC
+                            anodized aluminum chassis • Type-C braided cable detachable.</p>
+                        <div class="card-action">
+                            <div class="price-box">
+                                <span class="price-label">Price</span>
+                                <div class="price-val">2,899 Rs 🔥🔥</div>
+                            </div>
+                            <button class="btn-order"
+                                onclick="addToCart('Tactile Mechanical Keyboard', '2,899 Rs', 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=600&q=80')">
+                                <span>Add to Cart</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 14. Ultrawide 4K Display -->
+                <div class="product-card" data-category="tech" data-title="ultrawide 4k display curved ips monitor">
+                    <div class="card-img-wrap">
+                        <span class="card-badge">Enterprise Grade</span>
+                        <img src="https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=600&q=80"
+                            alt="Ultrawide 4K Display" loading="lazy">
+                    </div>
+                    <div class="card-body">
+                        <div class="card-meta">
+                            <span class="card-category">Displays</span>
+                            <div class="card-rating"><span>★</span> 5.0</div>
+                        </div>
+                        <h3 class="product-title">Ultrawide 4K Display</h3>
+                        <p class="product-specs">34" Curved IPS panel • 144Hz refresh rate • HDR400 certified • 90W
+                            USB-C Power Delivery and built-in KVM switch.</p>
+                        <div class="card-action">
+                            <div class="price-box">
+                                <span class="price-label">Price</span>
+                                <div class="price-val">28,500 Rs 🔥🔥</div>
+                            </div>
+                            <button class="btn-order"
+                                onclick="addToCart('Ultrawide 4K Display', '28,500 Rs', 'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=600&q=80')">
+                                <span>Add to Cart</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 15. Ergonomic Wireless Mouse -->
+                <div class="product-card" data-category="tech" data-title="ergonomic wireless mouse bluetooth multi device">
+                    <div class="card-img-wrap">
+                        <span class="card-badge">Popular</span>
+                        <img src="https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?auto=format&fit=crop&w=600&q=80"
+                            alt="Ergonomic Wireless Mouse" loading="lazy">
+                    </div>
+                    <div class="card-body">
+                        <div class="card-meta">
+                            <span class="card-category">Peripherals</span>
+                            <div class="card-rating"><span>★</span> 4.7</div>
+                        </div>
+                        <h3 class="product-title">Ergonomic Wireless Mouse</h3>
+                        <p class="product-specs">Natural hand posture design • Multi-device Bluetooth &amp; 2.4G •
+                            70-day rechargeable battery • Silent click switches.</p>
+                        <div class="card-action">
+                            <div class="price-box">
+                                <span class="price-label">Price</span>
+                                <div class="price-val">1,250 Rs 🔥🔥</div>
+                            </div>
+                            <button class="btn-order"
+                                onclick="addToCart('Ergonomic Wireless Mouse', '1,250 Rs', 'https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?auto=format&fit=crop&w=600&q=80')">
+                                <span>Add to Cart</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide-out Cart Drawer -->
+    <div class="cart-drawer-overlay" id="cartOverlay" onclick="toggleCartDrawer(false)"></div>
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-header">
+            <h3>Your Order Cart</h3>
+            <button class="btn-close-cart" onclick="toggleCartDrawer(false)">&times;</button>
+        </div>
+        <div class="cart-items" id="cartItemsList">
+            <div class="cart-empty" id="cartEmptyMsg">Your cart is currently empty.</div>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total-row">
+                <span>Items Selected:</span>
+                <span id="cartTotalItems">0</span>
+            </div>
+            <a href="javascript:void(0)" class="btn-checkout-whatsapp" id="btnCheckoutWhatsApp"
+                onclick="checkoutViaWhatsApp()">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" />
+                </svg>
+                <span>Order Selected via WhatsApp</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div id="toast" class="toast">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2.5"
+            stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+        <span id="toastText"></span>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo-wrap">
+                        <div class="logo-symbol">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                                <polyline points="2 17 12 22 22 17"></polyline>
+                                <polyline points="2 12 12 17 22 12"></polyline>
+                            </svg>
+                        </div>
+                        <div class="logo-title">AUFEX <span>ENTERPRISE</span></div>
+                    </div>
+                    <p>
+                        Empowering mid-market and enterprise organizations with direct product procurement,
+                        verified inventory, and retail fulfillment.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="footer-heading">Navigation</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Enterprise Home</a></li>
+                        <li><a href="index.html#solutions">Corporate Solutions</a></li>
+                        <li><a href="products.html">All Products Catalog</a></li>
+                        <li><a href="index.html#about">About Firm</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="footer-heading">Product Lines</h4>
+                    <ul class="footer-links">
+                        <li><a href="javascript:void(0)" onclick="filterCategory('gadgets')">Trending Gadgets</a></li>
+                        <li><a href="javascript:void(0)" onclick="filterCategory('toys')">Kids &amp; Novelty Toys</a></li>
+                        <li><a href="javascript:void(0)" onclick="filterCategory('lights')">Smart Ambient Lights</a></li>
+                        <li><a href="javascript:void(0)" onclick="filterCategory('home')">Home &amp; Kitchen</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="footer-heading">Direct Connect</h4>
+                    <ul class="footer-links">
+                        <li><a href="https://wa.me/917034815356" target="_blank">WhatsApp: +91 70348 15356</a></li>
+                        <li><a href="mailto:contact@aufex.com">contact@aufex.com</a></li>
+                        <li><a href="index.html#contact">Request Consultation</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div>&copy; 2026 Aufex Enterprise Partnership. All rights reserved.</div>
+                <div>Terms of Service &bull; Privacy Governance &bull; Enterprise Compliance</div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Script -->
+    <script>
+        let cart = [];
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastText = document.getElementById('toastText');
+            toastText.textContent = message;
+            toast.classList.add('show');
+            clearTimeout(toast.timeoutId);
+            toast.timeoutId = setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        function filterCategory(category, btnElement) {
+            if (btnElement) {
+                document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+                btnElement.classList.add('active');
+            }
+
+            const cards = document.querySelectorAll('.product-card');
+            cards.forEach(card => {
+                const cats = card.getAttribute('data-category') || '';
+                if (category === 'all' || cats.includes(category)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        function handleSearch(query) {
+            const q = query.toLowerCase().trim();
+            const cards = document.querySelectorAll('.product-card');
+            cards.forEach(card => {
+                const title = card.getAttribute('data-title') || '';
+                const text = card.innerText.toLowerCase();
+                if (!q || title.includes(q) || text.includes(q)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        function toggleCartDrawer(open) {
+            const drawer = document.getElementById('cartDrawer');
+            const overlay = document.getElementById('cartOverlay');
+            if (open) {
+                drawer.classList.add('active');
+                overlay.classList.add('active');
+            } else {
+                drawer.classList.remove('active');
+                overlay.classList.remove('active');
+            }
+        }
+
+        function addToCart(title, price, image) {
+            cart.push({ title, price, image });
+            updateCartUI();
+            showToast(`Added "${title}" to cart!`);
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const cartCount = document.getElementById('cartCount');
+            const cartTotalItems = document.getElementById('cartTotalItems');
+            const cartItemsList = document.getElementById('cartItemsList');
+
+            cartCount.textContent = cart.length;
+            cartTotalItems.textContent = cart.length;
+
+            if (cart.length === 0) {
+                cartItemsList.innerHTML = '<div class="cart-empty">Your cart is currently empty.</div>';
+                return;
+            }
+
+            let html = '';
+            cart.forEach((item, idx) => {
+                html += `
+                    <div class="cart-item">
+                        <img src="${item.image}" alt="${item.title}" class="cart-item-img">
+                        <div class="cart-item-info">
+                            <div class="cart-item-title">${item.title}</div>
+                            <div class="cart-item-price">${item.price}</div>
+                        </div>
+                        <button class="cart-item-remove" onclick="removeFromCart(${idx})" title="Remove">✕</button>
+                    </div>
+                `;
+            });
+            cartItemsList.innerHTML = html;
+        }
+
+        function checkoutViaWhatsApp() {
+            if (cart.length === 0) {
+                showToast("Please add items to your cart first!");
+                return;
+            }
+
+            let message = "Hi Aufex, I would like to place an order for the following items:\n\n";
+            cart.forEach((item, index) => {
+                message += `${index + 1}. ${item.title} (${item.price})\n`;
+            });
+            message += `\nTotal Items: ${cart.length}\nPlease confirm availability and payment details.`;
+
+            const encoded = encodeURIComponent(message);
+            const waUrl = `https://wa.me/917034815356?text=${encoded}`;
+            window.open(waUrl, '_blank');
+        }
+    </script>
+
+</body>
+
+</html>

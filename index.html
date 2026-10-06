@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aufex Enterprise | Elevate Your Operations</title>
+    <title>Aufex Enterprise | Welcome to Aufex World</title>
     <meta name="description"
         content="Aufex Enterprise delivers global sourcing, retail kiosk operations, and strategic consulting to scale modern enterprises.">
 
@@ -152,7 +152,7 @@
         .nav-menu {
             display: flex;
             align-items: center;
-            gap: 1.75rem;
+            gap: 2.25rem;
         }
 
         .nav-link {
@@ -163,9 +163,6 @@
             transition: var(--transition-smooth);
             position: relative;
             padding: 0.35rem 0;
-            cursor: pointer;
-            background: none;
-            border: none;
         }
 
         .nav-link:hover {
@@ -184,91 +181,14 @@
             border-radius: 2px;
         }
 
-        .nav-link:hover::after,
-        .nav-link.active::after {
+        .nav-link:hover::after {
             width: 100%;
-        }
-
-        .nav-link.active {
-            color: var(--accent-cyan);
-        }
-
-        /* "Our Products" Switch Link in Nav */
-        .nav-link-products {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.45rem;
-            padding: 0.35rem 0.85rem;
-            background: rgba(56, 189, 248, 0.1);
-            border: 1px solid rgba(56, 189, 248, 0.25);
-            border-radius: 9999px;
-            color: var(--accent-cyan) !important;
-            font-weight: 700;
-        }
-
-        .nav-link-products:hover {
-            background: rgba(56, 189, 248, 0.2);
-            border-color: var(--accent-cyan);
-        }
-
-        .nav-product-count {
-            background: var(--accent-blue);
-            color: #ffffff;
-            font-size: 0.7rem;
-            padding: 1px 6px;
-            border-radius: 9999px;
-            font-weight: 800;
         }
 
         .nav-actions {
             display: flex;
             align-items: center;
-            gap: 1.25rem;
-        }
-
-        /* Cart Icon with Live Counter */
-        .nav-cart-btn {
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-heading);
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 0.55rem;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: var(--transition-smooth);
-            text-decoration: none;
-        }
-
-        .nav-cart-btn:hover {
-            color: var(--accent-cyan);
-            border-color: var(--accent-cyan);
-            transform: scale(1.05);
-        }
-
-        .cart-badge {
-            position: absolute;
-            top: -6px;
-            right: -8px;
-            background: linear-gradient(135deg, #0284c7, #2563eb);
-            color: #ffffff;
-            font-size: 0.68rem;
-            font-weight: 800;
-            min-width: 18px;
-            height: 18px;
-            border-radius: 9999px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0 4px;
-            border: 2px solid var(--primary-navy);
-            transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-
-        .cart-badge.bounce {
-            transform: scale(1.4);
+            gap: 1rem;
         }
 
         .btn-nav {
@@ -294,7 +214,7 @@
 
         /* Hero Section */
         .hero {
-            padding: 6.5rem 0 5rem;
+            padding: 7rem 0 5.5rem;
             position: relative;
             text-align: center;
         }
@@ -331,12 +251,12 @@
         }
 
         .hero-title {
-            font-size: clamp(2.6rem, 5.5vw, 4.2rem);
+            font-size: clamp(2.6rem, 5.5vw, 4.4rem);
             font-weight: 800;
             color: var(--text-heading);
             line-height: 1.12;
             letter-spacing: -0.03em;
-            max-width: 900px;
+            max-width: 920px;
             margin: 0 auto 1.5rem;
         }
 
@@ -354,22 +274,21 @@
             line-height: 1.7;
         }
 
-        /* Action Buttons */
         .hero-cta-group {
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 1.25rem;
             flex-wrap: wrap;
-            margin-bottom: 3.5rem;
+            margin-bottom: 4rem;
         }
 
         .btn-primary {
             display: inline-flex;
             align-items: center;
             gap: 0.65rem;
-            padding: 0.95rem 2rem;
-            font-size: 1rem;
+            padding: 1rem 2.25rem;
+            font-size: 1.02rem;
             font-weight: 700;
             color: #ffffff;
             background: var(--accent-gradient);
@@ -386,61 +305,26 @@
             box-shadow: 0 12px 32px rgba(37, 99, 235, 0.6);
         }
 
-        /* "Our Products" Interactive Switch Button */
-        .btn-switch-products {
+        .btn-secondary {
             display: inline-flex;
             align-items: center;
-            gap: 0.75rem;
-            padding: 0.85rem 1.85rem;
-            font-size: 1rem;
+            gap: 0.65rem;
+            padding: 1rem 2.25rem;
+            font-size: 1.02rem;
             font-weight: 700;
-            color: var(--accent-cyan);
-            background: rgba(15, 23, 42, 0.85);
-            border: 1.5px solid rgba(56, 189, 248, 0.4);
+            color: var(--text-heading);
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.12);
             border-radius: 10px;
             cursor: pointer;
+            text-decoration: none;
             transition: var(--transition-smooth);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
         }
 
-        .btn-switch-products:hover {
-            background: rgba(56, 189, 248, 0.12);
-            border-color: var(--accent-cyan);
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.25);
             transform: translateY(-2px);
-            box-shadow: 0 6px 25px rgba(56, 189, 248, 0.35);
-        }
-
-        /* Toggle Slider Graphic Inside Switch Button */
-        .toggle-switch-ui {
-            width: 38px;
-            height: 22px;
-            background: rgba(255, 255, 255, 0.12);
-            border-radius: 9999px;
-            position: relative;
-            transition: background 0.3s ease;
-            display: inline-block;
-        }
-
-        .toggle-switch-ui::before {
-            content: '';
-            position: absolute;
-            top: 3px;
-            left: 3px;
-            width: 16px;
-            height: 16px;
-            background: #ffffff;
-            border-radius: 50%;
-            transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
-        }
-
-        .btn-switch-products.active-switch .toggle-switch-ui {
-            background: var(--accent-cyan);
-        }
-
-        .btn-switch-products.active-switch .toggle-switch-ui::before {
-            transform: translateX(16px);
-            background: #090e1a;
         }
 
         /* Stats Bar */
@@ -495,8 +379,8 @@
         /* Section Headers */
         .section-header {
             text-align: center;
-            max-width: 720px;
-            margin: 0 auto 3.5rem;
+            max-width: 680px;
+            margin: 0 auto 3.75rem;
         }
 
         .section-tag {
@@ -529,7 +413,7 @@
 
         /* Core Solutions Section */
         .solutions-section {
-            padding: 5.5rem 0 6.5rem;
+            padding: 6.5rem 0 7rem;
             position: relative;
         }
 
@@ -661,245 +545,10 @@
             transform: translateX(4px);
         }
 
-        /* ========================================================
-           "OUR PRODUCTS" SECTION (Full Catalog Toggle & Display)
-           ======================================================== */
-        .products-section {
-            padding: 6rem 0 7rem;
-            background: rgba(15, 23, 42, 0.45);
-            border-top: 1px solid rgba(255, 255, 255, 0.06);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-            position: relative;
-        }
-
-        /* Floating Switch Controller Bar */
-        .catalog-switch-bar {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
-            margin-bottom: 3.5rem;
-            flex-wrap: wrap;
-        }
-
-        .switch-toggle-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.75rem;
-            padding: 0.75rem 1.6rem;
-            border-radius: 9999px;
-            font-size: 0.95rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: var(--transition-smooth);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            background: rgba(21, 32, 59, 0.8);
-            color: var(--text-muted);
-        }
-
-        .switch-toggle-btn:hover {
-            color: #ffffff;
-            border-color: rgba(56, 189, 248, 0.4);
-        }
-
-        .switch-toggle-btn.active {
-            background: var(--accent-gradient);
-            color: #ffffff;
-            border-color: transparent;
-            box-shadow: 0 4px 18px var(--accent-glow);
-        }
-
-        /* Product Grid */
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(285px, 1fr));
-            gap: 2rem;
-            transition: var(--transition-smooth);
-        }
-
-        /* Product Card */
-        .product-card {
-            background: var(--surface-card);
-            border-radius: 16px;
-            border: 1px solid var(--surface-card-border);
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.45);
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-            position: relative;
-            transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
-                        box-shadow 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
-                        border-color 0.3s ease;
-        }
-
-        .product-card:hover {
-            transform: translateY(-8px);
-            border-color: var(--surface-card-border-hover);
-            box-shadow: 0 20px 35px -8px rgba(0, 0, 0, 0.7),
-                        0 0 24px rgba(37, 99, 235, 0.3);
-        }
-
-        .product-card-img-wrap {
-            position: relative;
-            width: 100%;
-            height: 220px;
-            overflow: hidden;
-            background: #0f172a;
-        }
-
-        .product-card-img-wrap img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
-        }
-
-        .product-card:hover .product-card-img-wrap img {
-            transform: scale(1.08);
-        }
-
-        .product-badge {
-            position: absolute;
-            top: 14px;
-            left: 14px;
-            background: rgba(9, 14, 26, 0.88);
-            backdrop-filter: blur(8px);
-            color: var(--accent-cyan);
-            border: 1px solid rgba(56, 189, 248, 0.35);
-            font-size: 0.72rem;
-            font-weight: 700;
-            padding: 0.28rem 0.75rem;
-            border-radius: 9999px;
-            text-transform: uppercase;
-            letter-spacing: 0.8px;
-            z-index: 2;
-        }
-
-        .product-card-body {
-            padding: 1.5rem;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-        }
-
-        .product-meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 0.6rem;
-        }
-
-        .product-category {
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1.2px;
-            color: var(--accent-cyan);
-        }
-
-        .product-rating {
-            display: flex;
-            align-items: center;
-            gap: 0.3rem;
-        }
-
-        .product-stars {
-            color: #fbbf24;
-            font-size: 0.82rem;
-            letter-spacing: 1px;
-        }
-
-        .product-rating-val {
-            color: var(--text-muted);
-            font-weight: 600;
-            font-size: 0.8rem;
-        }
-
-        .product-card-title {
-            color: #ffffff;
-            font-size: 1.25rem;
-            font-weight: 700;
-            line-height: 1.35;
-            margin-bottom: 0.45rem;
-            letter-spacing: -0.01em;
-        }
-
-        .product-specs {
-            color: var(--text-muted);
-            font-size: 0.86rem;
-            line-height: 1.45;
-            margin-bottom: 1.5rem;
-            flex-grow: 1;
-        }
-
-        .product-action-row {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding-top: 1.25rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
-            margin-top: auto;
-            gap: 0.75rem;
-            flex-wrap: wrap;
-        }
-
-        .price-box {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .price-label {
-            font-size: 0.68rem;
-            text-transform: uppercase;
-            letter-spacing: 0.8px;
-            color: #71717a;
-            font-weight: 600;
-            margin-bottom: 1px;
-        }
-
-        .price-text {
-            font-size: 1.45rem;
-            font-weight: 800;
-            color: #93c5fd;
-            line-height: 1.1;
-            letter-spacing: -0.02em;
-        }
-
-        .btn-add-cart {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            padding: 0.65rem 1.2rem;
-            background: var(--accent-gradient);
-            color: #ffffff;
-            border-radius: 9px;
-            font-weight: 600;
-            font-size: 0.86rem;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            cursor: pointer;
-            text-decoration: none;
-            white-space: nowrap;
-            letter-spacing: 0.3px;
-            transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
-            box-shadow: 0 4px 14px var(--accent-glow);
-        }
-
-        .btn-add-cart:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.55);
-            border-color: rgba(255, 255, 255, 0.3);
-        }
-
-        .btn-add-cart.btn-added {
-            background: linear-gradient(135deg, #10b981 0%, #059669 100%) !important;
-            box-shadow: 0 4px 14px rgba(16, 185, 129, 0.4) !important;
-        }
-
         /* Why Partner Section (Enterprise Overview) */
         .about-section {
             padding: 6.5rem 0;
+            background: rgba(15, 23, 42, 0.45);
             border-top: 1px solid rgba(255, 255, 255, 0.05);
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
@@ -959,7 +608,7 @@
             line-height: 1.5;
         }
 
-        /* Contact & CTA Section */
+        /* Contact & Consultation Section */
         .contact-section {
             padding: 7rem 0 8rem;
             text-align: center;
@@ -1152,10 +801,6 @@
                 grid-template-columns: 1fr;
             }
 
-            .product-grid {
-                grid-template-columns: 1fr;
-            }
-
             .pillar-grid {
                 grid-template-columns: 1fr;
             }
@@ -1197,27 +842,12 @@
             <nav class="nav-menu" id="navMenu">
                 <a href="#home" class="nav-link">Home</a>
                 <a href="#solutions" class="nav-link">Solutions</a>
-                <!-- "Our Products" Switch Link in Nav -->
-                <button type="button" class="nav-link nav-link-products" id="navProductsBtn" onclick="toggleProductsView(true)">
-                    <span>Our Products</span>
-                    <span class="nav-product-count">12</span>
-                </button>
+                <a href="products.html" class="nav-link">Our Products</a>
                 <a href="#about" class="nav-link">About</a>
                 <a href="#contact" class="nav-link">Contact</a>
             </nav>
 
             <div class="nav-actions">
-                <!-- Cart Button with live counter -->
-                <a href="#products" class="nav-cart-btn" id="navCart" title="Cart" onclick="toggleProductsView(true)">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="9" cy="21" r="1"></circle>
-                        <circle cx="20" cy="21" r="1"></circle>
-                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-                    </svg>
-                    <span class="cart-badge" id="cartCount">0</span>
-                </a>
-
                 <a href="#contact" class="btn-nav" id="btnNavCta">
                     <span>Contact Us</span>
                     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -1238,8 +868,9 @@
                 <span>Next-Gen Enterprise Partnership &amp; Sourcing</span>
             </div>
 
+            <!-- Requested Heading -->
             <h1 class="hero-title">
-                Elevate Your <span class="gradient-text">Enterprise Operations</span>
+                Welcome to <span class="gradient-text">Aufex World</span>
             </h1>
 
             <p class="hero-subtitle">
@@ -1248,8 +879,9 @@
             </p>
 
             <div class="hero-cta-group">
-                <a href="#contact" class="btn-primary" id="btnHeroGetStarted">
-                    <span>Get Started Today</span>
+                <!-- Requested Consultation Button -->
+                <a href="#contact" class="btn-primary" id="btnHeroConsultation">
+                    <span>Request Consultation</span>
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                         stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                         <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -1257,15 +889,9 @@
                     </svg>
                 </a>
 
-                <!-- "Our Products" Interactive Switch Button Requested by User -->
-                <button type="button" class="btn-switch-products" id="btnOurProductsSwitch" onclick="toggleProductsView()">
-                    <span class="toggle-switch-ui" id="switchGraphic"></span>
+                <a href="products.html" class="btn-secondary" id="btnHeroProducts">
                     <span>Our Products</span>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                        <polyline points="6 9 12 15 18 9"></polyline>
-                    </svg>
-                </button>
+                </a>
             </div>
 
             <!-- Stats Bar -->
@@ -1452,432 +1078,6 @@
         </div>
     </section>
 
-    <!-- ========================================================
-         OUR PRODUCTS SECTION (Full 12-Product Catalog)
-         ======================================================== -->
-    <section class="products-section" id="products">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">Direct Catalog</span>
-                <h2 class="section-title">Our Products</h2>
-                <p class="section-desc">
-                    Browse our full live inventory of viral tech gadgets, trending novelties, and lifestyle accessories
-                    sourced directly through our enterprise supply chain.
-                </p>
-            </div>
-
-            <div class="catalog-switch-bar">
-                <button type="button" class="switch-toggle-btn active" id="btnAllProducts" onclick="filterCategory('all')">
-                    All Products (12)
-                </button>
-                <button type="button" class="switch-toggle-btn" id="btnGadgets" onclick="filterCategory('gadgets')">
-                    Gadgets &amp; Lights
-                </button>
-                <button type="button" class="switch-toggle-btn" id="btnToys" onclick="filterCategory('toys')">
-                    Toys &amp; Novelties
-                </button>
-            </div>
-
-            <div class="product-grid" id="productGrid">
-                <!-- Product 1 -->
-                <div class="product-card" data-cat="gadgets">
-                    <div class="product-card-img-wrap">
-                        <span class="product-badge">Bestseller</span>
-                        <img src="smoke-bubble-gun.jpg" alt="Smoke Bubble Gun" loading="lazy">
-                    </div>
-                    <div class="product-card-body">
-                        <div class="product-meta">
-                            <span class="product-category">Gadgets</span>
-                            <div class="product-rating">
-                                <span class="product-stars">★★★★★</span>
-                                <span class="product-rating-val">4.9</span>
-                            </div>
-                        </div>
-                        <h3 class="product-card-title">Smoke Bubble Gun</h3>
-                        <p class="product-specs">Magic Smoke Bubble Maker Machine Toy | Rechargeable Automatic Electric Bubble Fog Wand with Colorful Lights &amp; Music</p>
-                        <div class="product-action-row">
-                            <div class="price-box">
-                                <span class="price-label">Price</span>
-                                <div class="price-text">800 Rs 🔥🔥</div>
-                            </div>
-                            <button class="btn-add-cart" onclick="handleAddToCart(this, 'Smoke Bubble Gun')">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <circle cx="9" cy="21" r="1"></circle>
-                                    <circle cx="20" cy="21" r="1"></circle>
-                                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-                                </svg>
-                                <span>Add to Cart</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 2 -->
-                <div class="product-card" data-cat="gadgets">
-                    <div class="product-card-img-wrap">
-                        <span class="product-badge">12 Slides Included</span>
-                        <img src="usb-projector-night-light.jpg" alt="USB Projector Night Light" loading="lazy">
-                    </div>
-                    <div class="product-card-body">
-                        <div class="product-meta">
-                            <span class="product-category">Gadgets</span>
-                            <div class="product-rating">
-                                <span class="product-stars">★★★★★</span>
-                                <span class="product-rating-val">4.9</span>
-                            </div>
-                        </div>
-                        <h3 class="product-card-title">USB Projector Night Light</h3>
-                        <p class="product-specs">12 Slides Included | Galaxy Projector Night Light | USB Powered 360 Degree Rotating Projector | Starry Sky Warm Light | Touch Controlled</p>
-                        <div class="product-action-row">
-                            <div class="price-box">
-                                <span class="price-label">Price</span>
-                                <div class="price-text">1250 Rs 🔥🔥</div>
-                            </div>
-                            <button class="btn-add-cart" onclick="handleAddToCart(this, 'USB Projector Night Light')">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <circle cx="9" cy="21" r="1"></circle>
-                                    <circle cx="20" cy="21" r="1"></circle>
-                                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-                                </svg>
-                                <span>Add to Cart</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 3 -->
-                <div class="product-card" data-cat="toys">
-                    <div class="product-card-img-wrap">
-                        <span class="product-badge">Party &amp; Cosplay</span>
-                        <img src="bubble-cigarette.jpg" alt="Bubble Cigarette" loading="lazy">
-                    </div>
-                    <div class="product-card-body">
-                        <div class="product-meta">
-                            <span class="product-category">Gadgets</span>
-                            <div class="product-rating">
-                                <span class="product-stars">★★★★★</span>
-                                <span class="product-rating-val">4.9</span>
-                            </div>
-                        </div>
-                        <h3 class="product-card-title">Bubble Cigarette</h3>
-                        <p class="product-specs">Marlboro Themed Bubble Cigarette Toy Kit | Fake Bubble Puff Cigarettes for Party &amp; Cosplay &amp; Gift, Smoke Soap Bubbles | Bubble Blower Stick</p>
-                        <div class="product-action-row">
-                            <div class="price-box">
-                                <span class="price-label">Price</span>
-                                <div class="price-text">250 Rs 🔥🔥</div>
-                            </div>
-                            <button class="btn-add-cart" onclick="handleAddToCart(this, 'Bubble Cigarette')">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <circle cx="9" cy="21" r="1"></circle>
-                                    <circle cx="20" cy="21" r="1"></circle>
-                                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-                                </svg>
-                                <span>Add to Cart</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 4 -->
-                <div class="product-card" data-cat="gadgets">
-                    <div class="product-card-img-wrap">
-                        <span class="product-badge">Touch Control</span>
-                        <img src="cordless-table-lamp.jpg" alt="Cordless Table Lamp" loading="lazy">
-                    </div>
-                    <div class="product-card-body">
-                        <div class="product-meta">
-                            <span class="product-category">Gadgets</span>
-                            <div class="product-rating">
-                                <span class="product-stars">★★★★★</span>
-                                <span class="product-rating-val">4.9</span>
-                            </div>
-                        </div>
-                        <h3 class="product-card-title">Cordless Table Lamp</h3>
-                        <p class="product-specs">LED Desk Lamp | Waterproof Rechargeable Battery Desk Lamp | 3 Color Stepless Dimming Up | Touch Control LED Desk Lamp | USB Rechargeable</p>
-                        <div class="product-action-row">
-                            <div class="price-box">
-                                <span class="price-label">Price</span>
-                                <div class="price-text">450 Rs 🔥🔥</div>
-                            </div>
-                            <button class="btn-add-cart" onclick="handleAddToCart(this, 'Cordless Table Lamp')">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <circle cx="9" cy="21" r="1"></circle>
-                                    <circle cx="20" cy="21" r="1"></circle>
-                                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-                                </svg>
-                                <span>Add to Cart</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 5 -->
-                <div class="product-card" data-cat="toys">
-                    <div class="product-card-img-wrap">
-                        <span class="product-badge">Touch Sensor</span>
-                        <img src="banana-piano-toy.jpg" alt="Banana Piano Toy" loading="lazy">
-                    </div>
-                    <div class="product-card-body">
-                        <div class="product-meta">
-                            <span class="product-category">Gadgets</span>
-                            <div class="product-rating">
-                                <span class="product-stars">★★★★★</span>
-                                <span class="product-rating-val">4.9</span>
-                            </div>
-                        </div>
-                        <h3 class="product-card-title">Banana Piano Toy</h3>
-                        <p class="product-specs">Funny Talking Banana Plush Toy | Metal Disc Hands Interactive Fruit Stuffed Toy | Hand Play Music Beat Stuffed Toy | Touch Sensor Musical Toy</p>
-                        <div class="product-action-row">
-                            <div class="price-box">
-                                <span class="price-label">Price</span>
-                                <div class="price-text">470 Rs 🔥🔥</div>
-                            </div>
-                            <button class="btn-add-cart" onclick="handleAddToCart(this, 'Banana Piano Toy')">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <circle cx="9" cy="21" r="1"></circle>
-                                    <circle cx="20" cy="21" r="1"></circle>
-                                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-                                </svg>
-                                <span>Add to Cart</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 6 -->
-                <div class="product-card" data-cat="gadgets">
-                    <div class="product-card-img-wrap">
-                        <span class="product-badge">Solar Powered</span>
-                        <img src="devils-eyes-car-light.jpg" alt="Devils Eyes LED Car Light" loading="lazy">
-                    </div>
-                    <div class="product-card-body">
-                        <div class="product-meta">
-                            <span class="product-category">Gadgets</span>
-                            <div class="product-rating">
-                                <span class="product-stars">★★★★★</span>
-                                <span class="product-rating-val">4.9</span>
-                            </div>
-                        </div>
-                        <h3 class="product-card-title">Devils Eyes LED Car Light</h3>
-                        <p class="product-specs">LED Eyes for Cars &amp; Bikes | Windshield Ambient Lamp | Wireless Triangle Window Light | Energy Efficient Solar Devil Eye Light | Rapid Ambient Lamp</p>
-                        <div class="product-action-row">
-                            <div class="price-box">
-                                <span class="price-label">Price</span>
-                                <div class="price-text">299 Rs 🔥🔥</div>
-                            </div>
-                            <button class="btn-add-cart" onclick="handleAddToCart(this, 'Devils Eyes LED Car Light')">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <circle cx="9" cy="21" r="1"></circle>
-                                    <circle cx="20" cy="21" r="1"></circle>
-                                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-                                </svg>
-                                <span>Add to Cart</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 7 -->
-                <div class="product-card" data-cat="gadgets">
-                    <div class="product-card-img-wrap">
-                        <span class="product-badge">Smart App &amp; Remote</span>
-                        <img src="corner-floor-lamp.jpg" alt="Corner Floor Lamp" loading="lazy">
-                    </div>
-                    <div class="product-card-body">
-                        <div class="product-meta">
-                            <span class="product-category">Gadgets</span>
-                            <div class="product-rating">
-                                <span class="product-stars">★★★★★</span>
-                                <span class="product-rating-val">4.9</span>
-                            </div>
-                        </div>
-                        <h3 class="product-card-title">Corner Floor Lamp</h3>
-                        <p class="product-specs">Smart RGB LED Corner Lamp with App and Remote Control | Color Changing Floor Lamp | 16 Million Colors &amp; 68+ Scene Modes, Music Sync &amp; Timer</p>
-                        <div class="product-action-row">
-                            <div class="price-box">
-                                <span class="price-label">Price</span>
-                                <div class="price-text">1200 Rs 🔥🔥</div>
-                            </div>
-                            <button class="btn-add-cart" onclick="handleAddToCart(this, 'Corner Floor Lamp')">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <circle cx="9" cy="21" r="1"></circle>
-                                    <circle cx="20" cy="21" r="1"></circle>
-                                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-                                </svg>
-                                <span>Add to Cart</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 8 -->
-                <div class="product-card" data-cat="gadgets">
-                    <div class="product-card-img-wrap">
-                        <span class="product-badge">48Vf High Power</span>
-                        <img src="high-voltage-violent-blower.jpg" alt="High Voltage Blower" loading="lazy">
-                    </div>
-                    <div class="product-card-body">
-                        <div class="product-meta">
-                            <span class="product-category">Gadgets</span>
-                            <div class="product-rating">
-                                <span class="product-stars">★★★★★</span>
-                                <span class="product-rating-val">4.9</span>
-                            </div>
-                        </div>
-                        <h3 class="product-card-title">High Voltage Blower</h3>
-                        <p class="product-specs">Violent Fan Turbo Jet Blower | 48Vf High Power Cordless Air Duster | 35000PA Powerful Suction &amp; Blower | Rechargeable Handheld Jet Fan</p>
-                        <div class="product-action-row">
-                            <div class="price-box">
-                                <span class="price-label">Price</span>
-                                <div class="price-text">850 Rs 🔥🔥</div>
-                            </div>
-                            <button class="btn-add-cart" onclick="handleAddToCart(this, 'High Voltage Blower')">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <circle cx="9" cy="21" r="1"></circle>
-                                    <circle cx="20" cy="21" r="1"></circle>
-                                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-                                </svg>
-                                <span>Add to Cart</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 9 -->
-                <div class="product-card" data-cat="toys">
-                    <div class="product-card-img-wrap">
-                        <span class="product-badge">USB Rechargeable</span>
-                        <img src="remote-watch-car.jpg" alt="Remote Watch Car" loading="lazy">
-                    </div>
-                    <div class="product-card-body">
-                        <div class="product-meta">
-                            <span class="product-category">Gadgets</span>
-                            <div class="product-rating">
-                                <span class="product-stars">★★★★★</span>
-                                <span class="product-rating-val">4.9</span>
-                            </div>
-                        </div>
-                        <h3 class="product-card-title">Remote Watch Car</h3>
-                        <p class="product-specs">2.4 GHz Cartoon Mini Watch Car | Mini Watch Car Toy for Kids | USB Rechargeable Remote Control Wrist Racing Car Watch with LED Light</p>
-                        <div class="product-action-row">
-                            <div class="price-box">
-                                <span class="price-label">Price</span>
-                                <div class="price-text">350 Rs 🔥🔥</div>
-                            </div>
-                            <button class="btn-add-cart" onclick="handleAddToCart(this, 'Remote Watch Car')">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <circle cx="9" cy="21" r="1"></circle>
-                                    <circle cx="20" cy="21" r="1"></circle>
-                                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-                                </svg>
-                                <span>Add to Cart</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 10 -->
-                <div class="product-card" data-cat="gadgets">
-                    <div class="product-card-img-wrap">
-                        <span class="product-badge">Aufex Exclusive</span>
-                        <img src="electric-pasta-maker.jpg" alt="Electric Pasta Maker" loading="lazy">
-                    </div>
-                    <div class="product-card-body">
-                        <div class="product-meta">
-                            <span class="product-category">Kitchen Gadgets</span>
-                            <div class="product-rating">
-                                <span class="product-stars">★★★★★</span>
-                                <span class="product-rating-val">5.0</span>
-                            </div>
-                        </div>
-                        <h3 class="product-card-title">Electric Pasta Maker</h3>
-                        <p class="product-specs">Make Fresh Pasta &amp; Noodles Easily at Home | Cordless Rechargeable Battery | 40W High Performance Motor | 6 Interchangeable Moulds (RY-188)</p>
-                        <div class="product-action-row">
-                            <div class="price-box">
-                                <span class="price-label">Price</span>
-                                <div class="price-text">1499 Rs 🔥🔥</div>
-                            </div>
-                            <button class="btn-add-cart" onclick="handleAddToCart(this, 'Electric Pasta Maker')">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <circle cx="9" cy="21" r="1"></circle>
-                                    <circle cx="20" cy="21" r="1"></circle>
-                                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-                                </svg>
-                                <span>Add to Cart</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 11 -->
-                <div class="product-card" data-cat="toys">
-                    <div class="product-card-img-wrap">
-                        <span class="product-badge">100% Non-Toxic</span>
-                        <img src="inkless-baby-footprint.jpg" alt="Inkless Foot Print" loading="lazy">
-                    </div>
-                    <div class="product-card-body">
-                        <div class="product-meta">
-                            <span class="product-category">Baby &amp; Keepsakes</span>
-                            <div class="product-rating">
-                                <span class="product-stars">★★★★★</span>
-                                <span class="product-rating-val">5.0</span>
-                            </div>
-                        </div>
-                        <h3 class="product-card-title">Inkless Foot Print</h3>
-                        <p class="product-specs">Baby Hand and Footprint Kit | Inkless Baby Handprint &amp; Footprint Ink Pad With Imprint Cards 100% Non-Toxic &amp; Mess Free Safe For Newborn</p>
-                        <div class="product-action-row">
-                            <div class="price-box">
-                                <span class="price-label">Price</span>
-                                <div class="price-text">189 Rs 🔥🔥</div>
-                            </div>
-                            <button class="btn-add-cart" onclick="handleAddToCart(this, 'Inkless Foot Print')">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <circle cx="9" cy="21" r="1"></circle>
-                                    <circle cx="20" cy="21" r="1"></circle>
-                                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-                                </svg>
-                                <span>Add to Cart</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 12 -->
-                <div class="product-card" data-cat="toys">
-                    <div class="product-card-img-wrap">
-                        <span class="product-badge">Pack Of 5</span>
-                        <img src="baby-finger-projector.jpg" alt="Baby Finger Projector" loading="lazy">
-                    </div>
-                    <div class="product-card-body">
-                        <div class="product-meta">
-                            <span class="product-category">Kids Toys</span>
-                            <div class="product-rating">
-                                <span class="product-stars">★★★★★</span>
-                                <span class="product-rating-val">4.9</span>
-                            </div>
-                        </div>
-                        <h3 class="product-card-title">Baby Finger Projector</h3>
-                        <p class="product-specs">LED Finger Lights for Kids (Pack of 5) | Multicolor Light Up Finger Projector Toys | Cute Animal Projector Light | Cartoon Slide Torch</p>
-                        <div class="product-action-row">
-                            <div class="price-box">
-                                <span class="price-label">Price</span>
-                                <div class="price-text">200 Rs 🔥🔥</div>
-                            </div>
-                            <button class="btn-add-cart" onclick="handleAddToCart(this, 'Baby Finger Projector')">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <circle cx="9" cy="21" r="1"></circle>
-                                    <circle cx="20" cy="21" r="1"></circle>
-                                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-                                </svg>
-                                <span>Add to Cart</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- About Section -->
     <section class="about-section" id="about">
         <div class="container">
@@ -1921,7 +1121,7 @@
     <section class="contact-section" id="contact">
         <div class="container">
             <div class="cta-banner">
-                <h2>Ready to Scale Your Enterprise?</h2>
+                <h2>Connect with Aufex Today</h2>
                 <p>
                     Connect with our strategic operations team today to evaluate supply chain efficiency or explore retail
                     partnership opportunities.
@@ -1964,9 +1164,10 @@
                     <h4 class="footer-heading">Solutions</h4>
                     <ul class="footer-links">
                         <li><a href="#solutions">Global Sourcing</a></li>
+                        <li><a href="products.html">Product Catalog</a></li>
                         <li><a href="#solutions">Retail &amp; Kiosks</a></li>
                         <li><a href="#solutions">Strategic Consulting</a></li>
-                        <li><a href="#products">Direct Products</a></li>
+                        <li><a href="#solutions">Supply Chain Audits</a></li>
                     </ul>
                 </div>
 
@@ -2008,11 +1209,8 @@
         <span class="toast-text" id="toastText"></span>
     </div>
 
-    <!-- Interactive Scripts -->
+    <!-- Interactive Client Script -->
     <script>
-        let cartCount = 0;
-        const cartBadge = document.getElementById('cartCount');
-
         function showToast(message) {
             const toast = document.getElementById('toast');
             const toastText = document.getElementById('toastText');
@@ -2022,69 +1220,7 @@
             clearTimeout(toast.timeoutId);
             toast.timeoutId = setTimeout(() => {
                 toast.classList.remove('show');
-            }, 3000);
-        }
-
-        // "Our Products" Switch Logic
-        function toggleProductsView(forceScroll = false) {
-            const switchBtn = document.getElementById('btnOurProductsSwitch');
-            const productsSec = document.getElementById('products');
-            
-            const isSwitchedOn = switchBtn.classList.toggle('active-switch');
-
-            if (isSwitchedOn || forceScroll) {
-                switchBtn.classList.add('active-switch');
-                productsSec.scrollIntoView({ behavior: 'smooth' });
-                showToast("Displaying Full Product Catalog (12 Items)");
-            } else {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            }
-        }
-
-        function filterCategory(category) {
-            const cards = document.querySelectorAll('.product-card');
-            const buttons = document.querySelectorAll('.switch-toggle-btn');
-            
-            buttons.forEach(btn => btn.classList.remove('active'));
-            
-            if (category === 'all') {
-                document.getElementById('btnAllProducts').classList.add('active');
-            } else if (category === 'gadgets') {
-                document.getElementById('btnGadgets').classList.add('active');
-            } else if (category === 'toys') {
-                document.getElementById('btnToys').classList.add('active');
-            }
-
-            cards.forEach(card => {
-                if (category === 'all' || card.getAttribute('data-cat') === category) {
-                    card.style.display = 'flex';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        }
-
-        function handleAddToCart(btn, productName) {
-            cartCount++;
-            cartBadge.textContent = cartCount;
-            cartBadge.classList.add('bounce');
-            setTimeout(() => cartBadge.classList.remove('bounce'), 300);
-
-            const originalHTML = btn.innerHTML;
-            btn.innerHTML = `
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                    <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-                <span>Added!</span>
-            `;
-            btn.classList.add('btn-added');
-
-            showToast(productName + ' added to cart');
-
-            setTimeout(() => {
-                btn.innerHTML = originalHTML;
-                btn.classList.remove('btn-added');
-            }, 1600);
+            }, 3200);
         }
 
         function handleFormSubmit(event) {
@@ -2099,7 +1235,7 @@
         }
 
         function handleSelectSolution(solutionName) {
-            showToast(`Selected: ${solutionName}. Please submit your email below.`);
+            showToast(`Selected inquiry: ${solutionName}. Please submit your email below.`);
             const emailInput = document.getElementById('clientEmail');
             if (emailInput) {
                 setTimeout(() => emailInput.focus(), 400);
