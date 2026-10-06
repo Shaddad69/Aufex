@@ -1,117 +1,258 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aufex | Premium IT Hardware & Dropshipping</title>
+    <title>Aufex Enterprise | Elevate Your Operations</title>
+    <meta name="description"
+        content="Aufex Enterprise delivers global sourcing, retail kiosk operations, and strategic consulting to scale modern enterprises.">
+
+    <!-- Google Fonts: Plus Jakarta Sans & Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet">
+
     <style>
-        /* CSS Reset and Variables */
+        /* Design Tokens & CSS Variables */
         :root {
-            --primary: #7c3aed;
-            --primary-hover: #6d28d9;
-            --primary-light: #a78bfa;
-            --primary-glow: rgba(124, 58, 237, 0.35);
-            --bg-dark: #0f0f13;
-            --bg-card: #1c1c22;
-            --bg-card-hover: #22222a;
-            --bg-header: rgba(15, 15, 19, 0.92);
-            --text-light: #f8fafc;
-            --text-gray: #94a3b8;
-            --border-subtle: rgba(255, 255, 255, 0.08);
-            --border-glow: rgba(139, 92, 246, 0.45);
-        }
-        
-        * { 
-            margin: 0; 
-            padding: 0; 
-            box-sizing: border-box; 
-            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
-        }
-        
-        body { 
-            background-color: var(--bg-dark); 
-            color: var(--text-light); 
-            line-height: 1.6; 
-            overflow-x: hidden;
+            --primary-navy: #090e1a;
+            --secondary-navy: #0f172a;
+            --surface-card: #15203b;
+            --surface-card-hover: #1c2a4d;
+            --surface-card-border: rgba(148, 163, 184, 0.12);
+            --surface-card-border-hover: rgba(56, 189, 248, 0.4);
+
+            --accent-blue: #2563eb;
+            --accent-cyan: #38bdf8;
+            --accent-gradient: linear-gradient(135deg, #2563eb 0%, #0284c7 50%, #38bdf8 100%);
+            --accent-glow: rgba(37, 99, 235, 0.35);
+
+            --text-heading: #f8fafc;
+            --text-body: #cbd5e1;
+            --text-muted: #94a3b8;
+            --text-white: #ffffff;
+
+            --nav-bg: rgba(9, 14, 26, 0.88);
+            --transition-smooth: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
 
-        /* Header Navigation */
-        header { 
-            background: var(--bg-header); 
-            padding: 1.1rem 5%; 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4); 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--primary-navy);
+            color: var(--text-body);
+            line-height: 1.65;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Ambient Glow Backgrounds */
+        .ambient-glow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            background:
+                radial-gradient(circle at 15% 15%, rgba(37, 99, 235, 0.12) 0%, transparent 40%),
+                radial-gradient(circle at 85% 60%, rgba(56, 189, 248, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 50% 90%, rgba(30, 41, 59, 0.4) 0%, transparent 60%);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Navigation Bar */
+        header.navbar {
             position: sticky;
             top: 0;
+            width: 100%;
+            background: var(--nav-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
             z-index: 100;
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            transition: var(--transition-smooth);
         }
-        .logo-container { 
-            display: flex; 
-            flex-direction: column; 
-            align-items: flex-start; 
-            line-height: 1; 
-            text-decoration: none; 
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
         }
-        .logo { 
-            font-size: 2rem; 
-            font-weight: 800; 
-            color: #f8fafc; 
-            letter-spacing: 2px; 
-            display: flex; 
-            align-items: center; 
-        }
-        .logo span { color: var(--primary-light); }
-        .logo-sub { 
-            font-size: 0.68rem; 
-            font-weight: 700; 
-            letter-spacing: 5px; 
-            color: var(--text-gray); 
-            margin-top: 4px; 
-            padding-left: 2px; 
-        }
-        
-        nav {
+
+        .logo-wrap {
             display: flex;
             align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
         }
-        nav a { 
-            margin-left: 1.75rem; 
-            text-decoration: none; 
-            color: var(--text-light); 
-            font-weight: 500; 
-            font-size: 0.95rem;
-            transition: color 0.2s ease; 
-        }
-        nav a:hover { color: var(--primary-light); }
 
-        .nav-cart {
+        .logo-symbol {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: var(--accent-gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 14px var(--accent-glow);
+        }
+
+        .logo-symbol svg {
+            color: #ffffff;
+        }
+
+        .logo-text-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-title {
+            font-size: 1.35rem;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            color: var(--text-heading);
+            line-height: 1.1;
+        }
+
+        .logo-title span {
+            color: var(--accent-cyan);
+        }
+
+        .logo-badge {
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 1.75rem;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: var(--transition-smooth);
+            position: relative;
+            padding: 0.35rem 0;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        .nav-link:hover {
+            color: var(--text-heading);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-cyan);
+            transition: width 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .nav-link.active {
+            color: var(--accent-cyan);
+        }
+
+        /* "Our Products" Switch Link in Nav */
+        .nav-link-products {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            padding: 0.35rem 0.85rem;
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid rgba(56, 189, 248, 0.25);
+            border-radius: 9999px;
+            color: var(--accent-cyan) !important;
+            font-weight: 700;
+        }
+
+        .nav-link-products:hover {
+            background: rgba(56, 189, 248, 0.2);
+            border-color: var(--accent-cyan);
+        }
+
+        .nav-product-count {
+            background: var(--accent-blue);
+            color: #ffffff;
+            font-size: 0.7rem;
+            padding: 1px 6px;
+            border-radius: 9999px;
+            font-weight: 800;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+        }
+
+        /* Cart Icon with Live Counter */
+        .nav-cart-btn {
             position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-left: 1.75rem;
-            color: var(--text-light);
+            color: var(--text-heading);
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 0.55rem;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: var(--transition-smooth);
             text-decoration: none;
-            padding: 0.45rem;
-            border-radius: 8px;
-            transition: color 0.2s ease, transform 0.2s ease;
         }
-        .nav-cart:hover {
-            color: var(--primary-light);
+
+        .nav-cart-btn:hover {
+            color: var(--accent-cyan);
+            border-color: var(--accent-cyan);
             transform: scale(1.05);
         }
+
         .cart-badge {
             position: absolute;
-            top: -5px;
+            top: -6px;
             right: -8px;
-            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+            background: linear-gradient(135deg, #0284c7, #2563eb);
             color: #ffffff;
             font-size: 0.68rem;
             font-weight: 800;
@@ -122,154 +263,510 @@
             align-items: center;
             justify-content: center;
             padding: 0 4px;
-            border: 2px solid var(--bg-dark);
+            border: 2px solid var(--primary-navy);
             transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
+
         .cart-badge.bounce {
             transform: scale(1.4);
         }
 
-        /* Hero Section */
-        .hero { 
-            background: radial-gradient(circle at 50% 20%, rgba(124, 58, 237, 0.15) 0%, transparent 60%),
-                        linear-gradient(to bottom, #161622, var(--bg-dark)); 
-            color: #fff; 
-            padding: 6.5rem 5% 5rem; 
-            text-align: center; 
+        .btn-nav {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.65rem 1.4rem;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--text-white);
+            background: var(--accent-gradient);
+            border-radius: 8px;
+            text-decoration: none;
+            transition: var(--transition-smooth);
+            box-shadow: 0 4px 14px var(--accent-glow);
+            border: 1px solid rgba(255, 255, 255, 0.15);
         }
-        .hero h1 { 
-            font-size: 3.5rem; 
-            margin-bottom: 1.25rem; 
-            font-weight: 800; 
-            letter-spacing: -1.5px; 
-            line-height: 1.15;
-            background: linear-gradient(180deg, #ffffff 40%, #cbd5e1 100%);
+
+        .btn-nav:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.5);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 6.5rem 0 5rem;
+            position: relative;
+            text-align: center;
+        }
+
+        .hero-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.4rem 1.1rem;
+            background: rgba(37, 99, 235, 0.12);
+            border: 1px solid rgba(56, 189, 248, 0.25);
+            border-radius: 9999px;
+            color: var(--accent-cyan);
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-pill-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--accent-cyan);
+            box-shadow: 0 0 8px var(--accent-cyan);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(0.85); }
+        }
+
+        .hero-title {
+            font-size: clamp(2.6rem, 5.5vw, 4.2rem);
+            font-weight: 800;
+            color: var(--text-heading);
+            line-height: 1.12;
+            letter-spacing: -0.03em;
+            max-width: 900px;
+            margin: 0 auto 1.5rem;
+        }
+
+        .hero-title .gradient-text {
+            background: linear-gradient(135deg, #ffffff 30%, #93c5fd 75%, #38bdf8 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        .hero p { 
-            color: var(--text-gray); 
-            margin-bottom: 2.25rem; 
-            max-width: 620px; 
-            margin-left: auto; 
-            margin-right: auto; 
-            font-size: 1.15rem; 
+
+        .hero-subtitle {
+            font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+            color: var(--text-muted);
+            max-width: 680px;
+            margin: 0 auto 2.75rem;
             line-height: 1.7;
         }
-        .btn-hero { 
-            background: linear-gradient(135deg, #7c3aed, #6d28d9); 
-            color: #fff; 
-            padding: 0.85rem 2.2rem; 
-            text-decoration: none; 
-            border-radius: 10px; 
-            font-weight: 700; 
-            display: inline-block;
-            transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            cursor: pointer;
-            letter-spacing: 0.5px;
-            font-size: 0.95rem;
-            box-shadow: 0 4px 18px rgba(124, 58, 237, 0.4);
-        }
-        .btn-hero:hover { 
-            background: linear-gradient(135deg, #8b5cf6, #7c3aed); 
-            transform: translateY(-2px); 
-            box-shadow: 0 8px 25px rgba(124, 58, 237, 0.55); 
-        }
 
-        /* Products Section */
-        .products { 
-            padding: 5.5rem 5% 6rem; 
-            max-width: 1360px;
-            margin: 0 auto;
-        }
-        .section-header {
-            text-align: center;
+        /* Action Buttons */
+        .hero-cta-group {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.25rem;
+            flex-wrap: wrap;
             margin-bottom: 3.5rem;
         }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.65rem;
+            padding: 0.95rem 2rem;
+            font-size: 1rem;
+            font-weight: 700;
+            color: #ffffff;
+            background: var(--accent-gradient);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: var(--transition-smooth);
+            box-shadow: 0 8px 24px var(--accent-glow);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 32px rgba(37, 99, 235, 0.6);
+        }
+
+        /* "Our Products" Interactive Switch Button */
+        .btn-switch-products {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.85rem 1.85rem;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--accent-cyan);
+            background: rgba(15, 23, 42, 0.85);
+            border: 1.5px solid rgba(56, 189, 248, 0.4);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+        }
+
+        .btn-switch-products:hover {
+            background: rgba(56, 189, 248, 0.12);
+            border-color: var(--accent-cyan);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(56, 189, 248, 0.35);
+        }
+
+        /* Toggle Slider Graphic Inside Switch Button */
+        .toggle-switch-ui {
+            width: 38px;
+            height: 22px;
+            background: rgba(255, 255, 255, 0.12);
+            border-radius: 9999px;
+            position: relative;
+            transition: background 0.3s ease;
+            display: inline-block;
+        }
+
+        .toggle-switch-ui::before {
+            content: '';
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            width: 16px;
+            height: 16px;
+            background: #ffffff;
+            border-radius: 50%;
+            transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+        }
+
+        .btn-switch-products.active-switch .toggle-switch-ui {
+            background: var(--accent-cyan);
+        }
+
+        .btn-switch-products.active-switch .toggle-switch-ui::before {
+            transform: translateX(16px);
+            background: #090e1a;
+        }
+
+        /* Stats Bar */
+        .stats-bar {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            background: rgba(15, 23, 42, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 2.2rem 2rem;
+            box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
+        }
+
+        .stat-item {
+            text-align: center;
+            position: relative;
+        }
+
+        .stat-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            right: -0.75rem;
+            top: 20%;
+            height: 60%;
+            width: 1px;
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .stat-value {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--text-heading);
+            line-height: 1.1;
+            margin-bottom: 0.35rem;
+            letter-spacing: -0.02em;
+        }
+
+        .stat-value span {
+            color: var(--accent-cyan);
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Section Headers */
+        .section-header {
+            text-align: center;
+            max-width: 720px;
+            margin: 0 auto 3.5rem;
+        }
+
         .section-tag {
             display: inline-block;
-            font-size: 0.78rem;
+            font-size: 0.8rem;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 2px;
-            color: var(--primary-light);
-            background: rgba(124, 58, 237, 0.12);
-            padding: 0.35rem 0.95rem;
+            color: var(--accent-cyan);
+            background: rgba(37, 99, 235, 0.12);
+            padding: 0.35rem 1rem;
             border-radius: 9999px;
-            border: 1px solid rgba(124, 58, 237, 0.3);
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 3.8vw, 2.75rem);
+            font-weight: 800;
+            color: var(--text-heading);
+            letter-spacing: -0.02em;
             margin-bottom: 0.85rem;
         }
-        .section-title { 
-            font-size: 2.5rem; 
-            font-weight: 800; 
-            color: #ffffff; 
-            letter-spacing: -0.02em;
-            margin-bottom: 0.75rem;
-        }
-        .section-subtitle {
-            color: var(--text-gray);
+
+        .section-desc {
             font-size: 1.05rem;
-            max-width: 560px;
-            margin: 0 auto;
-            line-height: 1.6;
+            color: var(--text-muted);
+            line-height: 1.7;
         }
 
-        /* Responsive Grid */
-        .grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
-            gap: 2rem; 
+        /* Core Solutions Section */
+        .solutions-section {
+            padding: 5.5rem 0 6.5rem;
+            position: relative;
         }
 
-        /* Stylish Product Card with Solid Dark Grey Background & Purple Hover Glow */
-        .card { 
-            background: var(--bg-card); /* Solid dark grey */
-            border-radius: 16px; 
-            border: 1px solid var(--border-subtle);
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.45); 
+        .solutions-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .solution-card {
+            background: var(--surface-card);
+            border: 1px solid var(--surface-card-border);
+            border-radius: 18px;
+            padding: 2.5rem 2.2rem;
+            display: flex;
+            flex-direction: column;
+            transition: var(--transition-smooth);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+        }
+
+        .solution-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--accent-gradient);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .solution-card:hover {
+            transform: translateY(-8px);
+            background: var(--surface-card-hover);
+            border-color: var(--surface-card-border-hover);
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.6), 0 0 28px rgba(37, 99, 235, 0.2);
+        }
+
+        .solution-card:hover::before {
+            opacity: 1;
+        }
+
+        .card-icon-wrap {
+            width: 58px;
+            height: 58px;
+            border-radius: 14px;
+            background: rgba(37, 99, 235, 0.15);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.75rem;
+            color: var(--accent-cyan);
+            transition: var(--transition-smooth);
+        }
+
+        .solution-card:hover .card-icon-wrap {
+            background: var(--accent-gradient);
+            color: #ffffff;
+            box-shadow: 0 4px 16px var(--accent-glow);
+            transform: scale(1.05);
+        }
+
+        .card-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text-heading);
+            margin-bottom: 0.85rem;
+            letter-spacing: -0.01em;
+        }
+
+        .card-desc {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.65;
+            margin-bottom: 1.75rem;
+            flex-grow: 1;
+        }
+
+        .card-features {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.7rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            padding-top: 1.25rem;
+        }
+
+        .card-feature-item {
+            display: flex;
+            align-items: center;
+            gap: 0.65rem;
+            font-size: 0.88rem;
+            color: var(--text-body);
+            font-weight: 500;
+        }
+
+        .card-feature-item svg {
+            color: var(--accent-cyan);
+            flex-shrink: 0;
+        }
+
+        .card-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.92rem;
+            font-weight: 700;
+            color: var(--accent-cyan);
+            text-decoration: none;
+            transition: var(--transition-smooth);
+            margin-top: auto;
+        }
+
+        .card-link svg {
+            transition: transform 0.25s ease;
+        }
+
+        .card-link:hover {
+            color: #ffffff;
+        }
+
+        .card-link:hover svg {
+            transform: translateX(4px);
+        }
+
+        /* ========================================================
+           "OUR PRODUCTS" SECTION (Full Catalog Toggle & Display)
+           ======================================================== */
+        .products-section {
+            padding: 6rem 0 7rem;
+            background: rgba(15, 23, 42, 0.45);
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            position: relative;
+        }
+
+        /* Floating Switch Controller Bar */
+        .catalog-switch-bar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3.5rem;
+            flex-wrap: wrap;
+        }
+
+        .switch-toggle-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1.6rem;
+            border-radius: 9999px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            background: rgba(21, 32, 59, 0.8);
+            color: var(--text-muted);
+        }
+
+        .switch-toggle-btn:hover {
+            color: #ffffff;
+            border-color: rgba(56, 189, 248, 0.4);
+        }
+
+        .switch-toggle-btn.active {
+            background: var(--accent-gradient);
+            color: #ffffff;
+            border-color: transparent;
+            box-shadow: 0 4px 18px var(--accent-glow);
+        }
+
+        /* Product Grid */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(285px, 1fr));
+            gap: 2rem;
+            transition: var(--transition-smooth);
+        }
+
+        /* Product Card */
+        .product-card {
+            background: var(--surface-card);
+            border-radius: 16px;
+            border: 1px solid var(--surface-card-border);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.45);
             display: flex;
             flex-direction: column;
             overflow: hidden;
             position: relative;
-            transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), 
-                        box-shadow 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), 
+            transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
+                        box-shadow 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
                         border-color 0.3s ease;
         }
-        .card:hover { 
-            transform: translateY(-8px); 
-            border-color: var(--border-glow); 
-            /* Subtle purple glow effect */
-            box-shadow: 0 20px 35px -8px rgba(0, 0, 0, 0.7), 
-                        0 0 28px var(--primary-glow); 
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--surface-card-border-hover);
+            box-shadow: 0 20px 35px -8px rgba(0, 0, 0, 0.7),
+                        0 0 24px rgba(37, 99, 235, 0.3);
         }
 
-        /* Card Image Container */
-        .card-img-wrap {
+        .product-card-img-wrap {
             position: relative;
             width: 100%;
-            height: 215px;
+            height: 220px;
             overflow: hidden;
-            background: #141419;
+            background: #0f172a;
         }
-        .card-img-wrap img { 
-            width: 100%; 
-            height: 100%; 
-            object-fit: cover; 
+
+        .product-card-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
             display: block;
-            transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1); 
+            transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
-        .card:hover .card-img-wrap img { 
-            transform: scale(1.06); 
+
+        .product-card:hover .product-card-img-wrap img {
+            transform: scale(1.08);
         }
-        .card-badge {
+
+        .product-badge {
             position: absolute;
             top: 14px;
             left: 14px;
-            background: rgba(18, 18, 24, 0.85);
+            background: rgba(9, 14, 26, 0.88);
             backdrop-filter: blur(8px);
-            color: #c4b5fd;
-            border: 1px solid rgba(139, 92, 246, 0.35);
+            color: var(--accent-cyan);
+            border: 1px solid rgba(56, 189, 248, 0.35);
             font-size: 0.72rem;
             font-weight: 700;
             padding: 0.28rem 0.75rem;
@@ -279,60 +776,64 @@
             z-index: 2;
         }
 
-        /* Card Body & Typography */
-        .card-body {
+        .product-card-body {
             padding: 1.5rem;
             display: flex;
             flex-direction: column;
             flex-grow: 1;
         }
-        .card-meta {
+
+        .product-meta {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 0.6rem;
         }
-        .card-category {
+
+        .product-category {
             font-size: 0.75rem;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1.2px;
-            color: var(--primary-light);
+            color: var(--accent-cyan);
         }
-        .rating {
+
+        .product-rating {
             display: flex;
             align-items: center;
             gap: 0.3rem;
         }
-        .stars {
+
+        .product-stars {
             color: #fbbf24;
             font-size: 0.82rem;
             letter-spacing: 1px;
         }
-        .rating-val {
-            color: var(--text-gray);
+
+        .product-rating-val {
+            color: var(--text-muted);
             font-weight: 600;
             font-size: 0.8rem;
         }
 
-        .product-title { 
-            color: #ffffff; 
-            font-size: 1.25rem; 
-            font-weight: 700; 
+        .product-card-title {
+            color: #ffffff;
+            font-size: 1.25rem;
+            font-weight: 700;
             line-height: 1.35;
-            margin-bottom: 0.45rem; 
+            margin-bottom: 0.45rem;
             letter-spacing: -0.01em;
         }
+
         .product-specs {
-            color: var(--text-gray);
+            color: var(--text-muted);
             font-size: 0.86rem;
             line-height: 1.45;
             margin-bottom: 1.5rem;
             flex-grow: 1;
         }
 
-        /* Card Action Row: Price & Add to Cart Button */
-        .card-action {
+        .product-action-row {
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -342,10 +843,12 @@
             gap: 0.75rem;
             flex-wrap: wrap;
         }
+
         .price-box {
             display: flex;
             flex-direction: column;
         }
+
         .price-label {
             font-size: 0.68rem;
             text-transform: uppercase;
@@ -354,378 +857,1212 @@
             font-weight: 600;
             margin-bottom: 1px;
         }
-        .price { 
-            font-size: 1.55rem; 
-            font-weight: 800; 
-            color: #c4b5fd; 
+
+        .price-text {
+            font-size: 1.45rem;
+            font-weight: 800;
+            color: #93c5fd;
             line-height: 1.1;
             letter-spacing: -0.02em;
         }
 
-        /* Fixed Purple "Add to Cart" Button: Sized properly, nicely padded, rounded edges */
-        .btn-cart { 
+        .btn-add-cart {
             display: inline-flex;
             align-items: center;
             justify-content: center;
             gap: 0.5rem;
-            width: auto; /* Not stretched across the screen */
-            padding: 0.68rem 1.25rem; 
-            background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
-            color: #ffffff; 
-            border-radius: 10px; 
-            font-weight: 600; 
-            font-size: 0.88rem;
-            border: 1px solid rgba(255, 255, 255, 0.15); 
+            padding: 0.65rem 1.2rem;
+            background: var(--accent-gradient);
+            color: #ffffff;
+            border-radius: 9px;
+            font-weight: 600;
+            font-size: 0.86rem;
+            border: 1px solid rgba(255, 255, 255, 0.15);
             cursor: pointer;
             text-decoration: none;
             white-space: nowrap;
             letter-spacing: 0.3px;
             transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
-            box-shadow: 0 4px 14px rgba(124, 58, 237, 0.35);
-        }
-        .btn-cart:hover { 
-            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%); 
-            transform: translateY(-2px); 
-            box-shadow: 0 6px 20px rgba(124, 58, 237, 0.55); 
-            border-color: rgba(255, 255, 255, 0.3);
-        }
-        .btn-cart:active { 
-            transform: translateY(0); 
-            box-shadow: 0 2px 8px rgba(124, 58, 237, 0.35); 
-        }
-        .btn-cart svg {
-            transition: transform 0.2s ease;
-        }
-        .btn-cart:hover svg {
-            transform: scale(1.12);
-        }
-        .btn-cart.btn-added {
-            background: linear-gradient(135deg, #10b981 0%, #059669 100%) !important;
-            box-shadow: 0 4px 14px rgba(16, 185, 129, 0.4) !important;
-            border-color: rgba(16, 185, 129, 0.4) !important;
+            box-shadow: 0 4px 14px var(--accent-glow);
         }
 
-        /* Floating Toast Notification */
+        .btn-add-cart:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.55);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-add-cart.btn-added {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%) !important;
+            box-shadow: 0 4px 14px rgba(16, 185, 129, 0.4) !important;
+        }
+
+        /* Why Partner Section (Enterprise Overview) */
+        .about-section {
+            padding: 6.5rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--text-heading);
+            line-height: 1.25;
+            letter-spacing: -0.02em;
+            margin-bottom: 1.25rem;
+        }
+
+        .about-text p {
+            color: var(--text-muted);
+            font-size: 1.02rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .pillar-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .pillar-card {
+            background: var(--surface-card);
+            border: 1px solid var(--surface-card-border);
+            padding: 1.5rem;
+            border-radius: 12px;
+            transition: var(--transition-smooth);
+        }
+
+        .pillar-card:hover {
+            border-color: var(--surface-card-border-hover);
+            transform: translateY(-3px);
+        }
+
+        .pillar-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text-heading);
+            margin-bottom: 0.35rem;
+        }
+
+        .pillar-desc {
+            font-size: 0.86rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* Contact & CTA Section */
+        .contact-section {
+            padding: 7rem 0 8rem;
+            text-align: center;
+        }
+
+        .cta-banner {
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.15) 0%, rgba(15, 23, 42, 0.9) 100%);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            border-radius: 24px;
+            padding: 4.5rem 3rem;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            max-width: 980px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-banner h2 {
+            font-size: clamp(2rem, 3.5vw, 2.8rem);
+            font-weight: 800;
+            color: var(--text-heading);
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .cta-banner p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 620px;
+            margin: 0 auto 2.5rem;
+        }
+
+        .cta-form {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            max-width: 520px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+
+        .cta-input {
+            flex: 1 1 260px;
+            padding: 0.95rem 1.25rem;
+            border-radius: 10px;
+            background: rgba(9, 14, 26, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #ffffff;
+            font-size: 0.95rem;
+            outline: none;
+            transition: var(--transition-smooth);
+        }
+
+        .cta-input:focus {
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.3);
+        }
+
+        .cta-input::placeholder {
+            color: #64748b;
+        }
+
+        /* Footer */
+        footer.footer {
+            background: #060911;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            padding: 4.5rem 0 2.5rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3.5rem;
+        }
+
+        .footer-brand p {
+            margin-top: 1rem;
+            max-width: 320px;
+            line-height: 1.7;
+        }
+
+        .footer-heading {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--text-heading);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1.25rem;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: var(--transition-smooth);
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-cyan);
+        }
+
+        .footer-bottom {
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            color: #64748b;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        /* Toast Notification */
         .toast {
             position: fixed;
             bottom: 2rem;
             right: 2rem;
-            background: #1c1c24;
+            background: #111c35;
             color: #f8fafc;
-            padding: 0.9rem 1.4rem;
+            padding: 0.9rem 1.5rem;
             border-radius: 12px;
-            border: 1px solid rgba(139, 92, 246, 0.4);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.55), 0 0 20px rgba(124, 58, 237, 0.25);
-            font-size: 0.9rem;
+            border: 1px solid var(--accent-cyan);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(56, 189, 248, 0.25);
+            font-size: 0.92rem;
             font-weight: 600;
             display: flex;
             align-items: center;
-            gap: 0.65rem;
+            gap: 0.75rem;
             opacity: 0;
             transform: translateY(20px);
             transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
             z-index: 1000;
             pointer-events: none;
         }
+
         .toast.show {
             opacity: 1;
             transform: translateY(0);
         }
+
         .toast-icon {
-            color: #10b981;
+            color: #38bdf8;
             display: flex;
             align-items: center;
         }
 
-        /* Footer & Partnership Info */
-        footer { 
-            background: #09090c; 
-            color: #fff; 
-            text-align: center; 
-            padding: 4.5rem 5% 3.5rem; 
-            margin-top: 3rem; 
-            border-top: 1px solid rgba(255, 255, 255, 0.06); 
-        }
-        footer h3 { 
-            margin-bottom: 1.2rem; 
-            font-size: 1.6rem; 
-            font-weight: 800;
-            color: var(--text-light); 
-        }
-        footer p { 
-            color: var(--text-gray); 
-            max-width: 620px; 
-            margin: 0 auto; 
-            line-height: 1.8; 
-            font-size: 0.95rem;
-        }
-        .copyright { 
-            margin-top: 3rem; 
-            font-size: 0.85rem; 
-            color: #52525b; 
-            text-transform: uppercase; 
-            letter-spacing: 1px; 
+        /* Responsive Breakpoints */
+        @media (max-width: 1024px) {
+            .solutions-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
         }
 
-        /* Responsive Breakpoints */
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            .hero p { font-size: 1rem; }
-            .section-title { font-size: 2rem; }
-            .grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
-            .products { padding: 4rem 5%; }
-            nav a { margin-left: 1rem; }
-            .toast { right: 1rem; bottom: 1rem; left: 1rem; justify-content: center; }
+            .nav-menu {
+                display: none;
+            }
+
+            .stats-bar {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+
+            .stat-item:nth-child(2)::after {
+                display: none;
+            }
+
+            .solutions-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pillar-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-banner {
+                padding: 3rem 1.5rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
         }
     </style>
 </head>
+
 <body>
 
-    <header>
-        <a href="#home" class="logo-container">
-            <div class="logo"><span>A</span>UFEX</div>
-            <div class="logo-sub">PRODUCTS</div>
-        </a>
-        <nav>
-            <a href="#home">Home</a>
-            <a href="#shop">Our Products</a>
-            <a href="#about">Our Partnership</a>
-            <a href="#shop" class="nav-cart" id="navCart" title="Cart">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="9" cy="21" r="1"></circle>
-                    <circle cx="20" cy="21" r="1"></circle>
-                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-                </svg>
-                <span class="cart-badge" id="cartCount">0</span>
+    <div class="ambient-glow"></div>
+
+    <!-- Navigation Bar -->
+    <header class="navbar" id="navbar">
+        <div class="container nav-content">
+            <a href="#home" class="logo-wrap" id="logo">
+                <div class="logo-symbol">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                        <polyline points="2 17 12 22 22 17"></polyline>
+                        <polyline points="2 12 12 17 22 12"></polyline>
+                    </svg>
+                </div>
+                <div class="logo-text-group">
+                    <div class="logo-title">AUFEX <span>ENTERPRISE</span></div>
+                    <div class="logo-badge">Global Solutions</div>
+                </div>
             </a>
-        </nav>
+
+            <nav class="nav-menu" id="navMenu">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#solutions" class="nav-link">Solutions</a>
+                <!-- "Our Products" Switch Link in Nav -->
+                <button type="button" class="nav-link nav-link-products" id="navProductsBtn" onclick="toggleProductsView(true)">
+                    <span>Our Products</span>
+                    <span class="nav-product-count">12</span>
+                </button>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </nav>
+
+            <div class="nav-actions">
+                <!-- Cart Button with live counter -->
+                <a href="#products" class="nav-cart-btn" id="navCart" title="Cart" onclick="toggleProductsView(true)">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                    </svg>
+                    <span class="cart-badge" id="cartCount">0</span>
+                </a>
+
+                <a href="#contact" class="btn-nav" id="btnNavCta">
+                    <span>Contact Us</span>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                </a>
+            </div>
+        </div>
     </header>
 
+    <!-- Hero Section -->
     <section class="hero" id="home">
-        <h1>Next-Gen IT Gear, Delivered.</h1>
-        <p>Aufex brings you top-tier tech hardware and professional accessories directly from global suppliers. Upgrade your workspace today.</p>
-        <a href="#shop" class="btn-hero">Browse Products</a>
-    </section>
-
-    <!-- Products Section -->
-    <section class="products" id="shop">
-        <div class="section-header">
-            <span class="section-tag">Curated Collection</span>
-            <h2 class="section-title">Our Products</h2>
-            <p class="section-subtitle">Discover our handpicked collection of trending tech, viral gadgets, and everyday essentials delivered straight to your door.</p>
-        </div>
-        
-        <div class="grid">
-            <!-- Product 1 -->
-            <div class="card">
-                <div class="card-img-wrap">
-                    <span class="card-badge">Bestseller</span>
-                    <img src="smoke-bubble-gun.jpg" alt="Smoke Bubble Gun" loading="lazy">
-                </div>
-                <div class="card-body">
-                    <div class="card-meta">
-                        <span class="card-category">Gadgets</span>
-                        <div class="rating">
-                            <span class="stars">★★★★★</span>
-                            <span class="rating-val">4.9</span>
-                        </div>
-                    </div>
-                    <h3 class="product-title">Smoke Bubble Gun</h3>
-                    <p class="product-specs">Magic Smoke Bubble Maker Machine Toy | Rechargeable Automatic Electric Bubble Fog Wand with Colorful Lights & Music</p>
-                    <div class="card-action">
-                        <div class="price-box">
-                            <span class="price-label">Price</span>
-                            <div class="price">800 Rs 🔥🔥</div>
-                        </div>
-                        <button class="btn-cart" onclick="handleAddToCart(this, 'Smoke Bubble Gun')">
-                            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="9" cy="21" r="1"></circle>
-                                <circle cx="20" cy="21" r="1"></circle>
-                                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-                            </svg>
-                            <span>Add to Cart</span>
-                        </button>
-                    </div>
-                </div>
+        <div class="container">
+            <div class="hero-pill">
+                <span class="hero-pill-dot"></span>
+                <span>Next-Gen Enterprise Partnership &amp; Sourcing</span>
             </div>
 
-            <!-- Product 2 -->
-            <div class="card">
-                <div class="card-img-wrap">
-                    <span class="card-badge">12 Slides Included</span>
-                    <img src="usb-projector-night-light.jpg" alt="USB Projector Night Light" loading="lazy">
-                </div>
-                <div class="card-body">
-                    <div class="card-meta">
-                        <span class="card-category">Gadgets</span>
-                        <div class="rating">
-                            <span class="stars">★★★★★</span>
-                            <span class="rating-val">4.9</span>
-                        </div>
-                    </div>
-                    <h3 class="product-title">USB Projector Night Light</h3>
-                    <p class="product-specs">12 Slides Included | Galaxy Projector Night Light | USB Powered 360 Degree Rotating Projector | Starry Sky Warm Light | Adjustable Brightness | Explosive Small Desk Lamp | Bedroom Bedside Night Light | USB Plug And Play | Touch Controled USB Projector | Romantic Atmosphere Night Light | Indoor Night Light | Car USB Starry Sky Ceiling Light | Car Interior Ambient Light with Patterns | Flexible Interior Light For Bedroom</p>
-                    <div class="card-action">
-                        <div class="price-box">
-                            <span class="price-label">Price</span>
-                            <div class="price">1250 Rs 🔥🔥</div>
-                        </div>
-                        <button class="btn-cart" onclick="handleAddToCart(this, 'USB Projector Night Light')">
-                            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="9" cy="21" r="1"></circle>
-                                <circle cx="20" cy="21" r="1"></circle>
-                                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-                            </svg>
-                            <span>Add to Cart</span>
-                        </button>
-                    </div>
-                </div>
+            <h1 class="hero-title">
+                Elevate Your <span class="gradient-text">Enterprise Operations</span>
+            </h1>
+
+            <p class="hero-subtitle">
+                Strategic partnerships, resilient global supply chains, and premium retail management solutions
+                engineered to accelerate corporate growth with precision.
+            </p>
+
+            <div class="hero-cta-group">
+                <a href="#contact" class="btn-primary" id="btnHeroGetStarted">
+                    <span>Get Started Today</span>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                </a>
+
+                <!-- "Our Products" Interactive Switch Button Requested by User -->
+                <button type="button" class="btn-switch-products" id="btnOurProductsSwitch" onclick="toggleProductsView()">
+                    <span class="toggle-switch-ui" id="switchGraphic"></span>
+                    <span>Our Products</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </button>
             </div>
 
-            <!-- Product 3 -->
-            <div class="card">
-                <div class="card-img-wrap">
-                    <span class="card-badge">Party &amp; Cosplay</span>
-                    <img src="bubble-cigarette.jpg" alt="Bubble Cigarette" loading="lazy">
+            <!-- Stats Bar -->
+            <div class="stats-bar" id="statsBar">
+                <div class="stat-item">
+                    <div class="stat-value"><span>$</span>250M+</div>
+                    <div class="stat-label">Volume Managed</div>
                 </div>
-                <div class="card-body">
-                    <div class="card-meta">
-                        <span class="card-category">Gadgets</span>
-                        <div class="rating">
-                            <span class="stars">★★★★★</span>
-                            <span class="rating-val">4.9</span>
-                        </div>
-                    </div>
-                    <h3 class="product-title">Bubble Cigarette</h3>
-                    <p class="product-specs">Marlboro Themed Bubble Cigarette Toy Kit | Fake Bubble Puff Cigarettes for Party &amp; Cosplay &amp; Gift, Smoke Soap Bubbles | Cigarettes Bubble Machines | Funny Mini Bubble Blower Stick Toy | Box Bubble Toy | Bubble Blowing Cigarette | Cigarette Box Bubble Toy | Fake Cigarette | Fake Cigarette Bubble Blower | Bubble Cigarette Pack Blower | Fun Party Gift Toy Ideas | Bubble Maker Cigarette</p>
-                    <div class="card-action">
-                        <div class="price-box">
-                            <span class="price-label">Price</span>
-                            <div class="price">250 Rs 🔥🔥</div>
-                        </div>
-                        <button class="btn-cart" onclick="handleAddToCart(this, 'Bubble Cigarette')">
-                            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="9" cy="21" r="1"></circle>
-                                <circle cx="20" cy="21" r="1"></circle>
-                                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-                            </svg>
-                            <span>Add to Cart</span>
-                        </button>
-                    </div>
+                <div class="stat-item">
+                    <div class="stat-value">99.4<span>%</span></div>
+                    <div class="stat-label">On-Time Fulfillment</div>
                 </div>
-            </div>
-
-            <!-- Product 4 -->
-            <div class="card">
-                <div class="card-img-wrap">
-                    <span class="card-badge">Touch Control</span>
-                    <img src="cordless-table-lamp.jpg" alt="Cordless Table Lamp" loading="lazy">
+                <div class="stat-item">
+                    <div class="stat-value">45<span>+</span></div>
+                    <div class="stat-label">Global Markets</div>
                 </div>
-                <div class="card-body">
-                    <div class="card-meta">
-                        <span class="card-category">Gadgets</span>
-                        <div class="rating">
-                            <span class="stars">★★★★★</span>
-                            <span class="rating-val">4.9</span>
-                        </div>
-                    </div>
-                    <h3 class="product-title">Cordless Table Lamp</h3>
-                    <p class="product-specs">LED Desk Lamp | Waterproof Rechargeable Battery Desk Lamp | 3 Color Stepless Dimming Up, Battery Operated Lamp | Wireless Bottle Lamp | 3 Colors Dimmable Wine Bottle Light | Touch Control LED Desk Lamp | USB Rechargeable Table Light</p>
-                    <div class="card-action">
-                        <div class="price-box">
-                            <span class="price-label">Price</span>
-                            <div class="price">450 Rs 🔥🔥</div>
-                        </div>
-                        <button class="btn-cart" onclick="handleAddToCart(this, 'Cordless Table Lamp')">
-                            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="9" cy="21" r="1"></circle>
-                                <circle cx="20" cy="21" r="1"></circle>
-                                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-                            </svg>
-                            <span>Add to Cart</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Product 5 -->
-            <div class="card">
-                <div class="card-img-wrap">
-                    <span class="card-badge">Touch Sensor</span>
-                    <img src="banana-piano-toy.jpg" alt="Banana Piano Toy" loading="lazy">
-                </div>
-                <div class="card-body">
-                    <div class="card-meta">
-                        <span class="card-category">Gadgets</span>
-                        <div class="rating">
-                            <span class="stars">★★★★★</span>
-                            <span class="rating-val">4.9</span>
-                        </div>
-                    </div>
-                    <h3 class="product-title">Banana Piano Toy</h3>
-                    <p class="product-specs">Funny Talking Banana Plush Toy | Metal Disc Hands Interactive Fruit Stuffed Toy | Hand Play Music Beat Stuffed Toy | Banana Stuffed Toy | Touch Sensor Funny Talking Banana Plush Toy | Musical Banana Toy | Soft Banana Toy for Kids | Electronic Plush Toy | Soft Musical Toy | Sensor Touch Funny Banana Toy</p>
-                    <div class="card-action">
-                        <div class="price-box">
-                            <span class="price-label">Price</span>
-                            <div class="price">470 Rs 🔥🔥</div>
-                        </div>
-                        <button class="btn-cart" onclick="handleAddToCart(this, 'Banana Piano Toy')">
-                            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="9" cy="21" r="1"></circle>
-                                <circle cx="20" cy="21" r="1"></circle>
-                                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-                            </svg>
-                            <span>Add to Cart</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Product 6 -->
-            <div class="card">
-                <div class="card-img-wrap">
-                    <span class="card-badge">Solar Powered</span>
-                    <img src="devils-eyes-car-light.jpg" alt="Devils Eyes LED Car Light" loading="lazy">
-                </div>
-                <div class="card-body">
-                    <div class="card-meta">
-                        <span class="card-category">Gadgets</span>
-                        <div class="rating">
-                            <span class="stars">★★★★★</span>
-                            <span class="rating-val">4.9</span>
-                        </div>
-                    </div>
-                    <h3 class="product-title">Devils Eyes LED Car Light</h3>
-                    <p class="product-specs">LED Eyes for Cars | Devil Eyes Light | Windshield Ambient Lamp | Wireless Triangle Window Light Energy Efficient Solar Devil Eye Light | Y3 Solar Devil Eye Motors | Devil Eyes Lights Rapid Windshield Ambient Lamp | Car LED Ambient Light | Romantic Car Light | Car &amp; Bike LED Interior Lights | Car Decoration Light | Bike LED Lights | Devils Eyes LED Bike Light | LED Eyes for Bikes | Car Evil Light | Car Devil Light | Car Evil Eye Light | Car Devil Eye Light</p>
-                    <div class="card-action">
-                        <div class="price-box">
-                            <span class="price-label">Price</span>
-                            <div class="price">299 Rs 🔥🔥</div>
-                        </div>
-                        <button class="btn-cart" onclick="handleAddToCart(this, 'Devils Eyes LED Car Light')">
-                            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="9" cy="21" r="1"></circle>
-                                <circle cx="20" cy="21" r="1"></circle>
-                                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-                            </svg>
-                            <span>Add to Cart</span>
-                        </button>
-                    </div>
+                <div class="stat-item">
+                    <div class="stat-value">24<span>/7</span></div>
+                    <div class="stat-label">Dedicated Ops</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer id="about">
-        <h3>About Aufex</h3>
-        <p>Aufex is a strategic partnership dedicated to sourcing high-performance IT equipment. By leveraging a streamlined dropshipping model, we cut out the middleman to deliver premium tech directly to professionals and enthusiasts worldwide.</p>
-        <div class="copyright">&copy; 2026 Aufex IT Partnership. All rights reserved.</div>
+    <!-- Core Solutions Section -->
+    <section class="solutions-section" id="solutions">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Capabilities</span>
+                <h2 class="section-title">Our Core Solutions</h2>
+                <p class="section-desc">
+                    Comprehensive operational capabilities tailored to enterprise clients seeking scale, efficiency,
+                    and borderless execution.
+                </p>
+            </div>
+
+            <div class="solutions-grid">
+                <!-- Card 1: Global Sourcing -->
+                <div class="solution-card" id="cardGlobalSourcing">
+                    <div class="card-icon-wrap">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="2" y1="12" x2="22" y2="12"></line>
+                            <path
+                                d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 class="card-title">Global Sourcing</h3>
+                    <p class="card-desc">
+                        End-to-end multi-region procurement networks, factory quality audits, and freight routing with
+                        zero single-point dependencies.
+                    </p>
+                    <ul class="card-features">
+                        <li class="card-feature-item">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <span>Direct Tier-1 Manufacturing Access</span>
+                        </li>
+                        <li class="card-feature-item">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <span>Real-Time Logistics Telemetry</span>
+                        </li>
+                        <li class="card-feature-item">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <span>Tariff &amp; Compliance Optimization</span>
+                        </li>
+                    </ul>
+                    <a href="#contact" class="card-link" onclick="handleSelectSolution('Global Sourcing')">
+                        <span>Learn More</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- Card 2: Retail Operations -->
+                <div class="solution-card" id="cardRetailOperations">
+                    <div class="card-icon-wrap">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                            <line x1="3" y1="6" x2="21" y2="6"></line>
+                            <path d="M16 10a4 4 0 0 1-8 0"></path>
+                        </svg>
+                    </div>
+                    <h3 class="card-title">Retail &amp; Kiosk Operations</h3>
+                    <p class="card-desc">
+                        Turnkey physical retail buildouts, high-footfall kiosk placement, autonomous inventory replenishment,
+                        and staff governance.
+                    </p>
+                    <ul class="card-features">
+                        <li class="card-feature-item">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <span>Modular Turnkey Kiosk Setups</span>
+                        </li>
+                        <li class="card-feature-item">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <span>Automated POS &amp; Stock Sync</span>
+                        </li>
+                        <li class="card-feature-item">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <span>Multi-Location Oversight Dashboard</span>
+                        </li>
+                    </ul>
+                    <a href="#contact" class="card-link" onclick="handleSelectSolution('Retail Operations')">
+                        <span>Learn More</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- Card 3: Strategic Consulting -->
+                <div class="solution-card" id="cardStrategicConsulting">
+                    <div class="card-icon-wrap">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="18" y1="20" x2="18" y2="10"></line>
+                            <line x1="12" y1="20" x2="12" y2="4"></line>
+                            <line x1="6" y1="20" x2="6" y2="14"></line>
+                        </svg>
+                    </div>
+                    <h3 class="card-title">Strategic Consulting</h3>
+                    <p class="card-desc">
+                        Rigorous unit economics modeling, expansion feasibility studies, partner joint-ventures, and
+                        cross-border compliance architectures.
+                    </p>
+                    <ul class="card-features">
+                        <li class="card-feature-item">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <span>Market Viability &amp; Location Scouting</span>
+                        </li>
+                        <li class="card-feature-item">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <span>Joint Venture Structuring</span>
+                        </li>
+                        <li class="card-feature-item">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <span>Capital Efficiency Advisory</span>
+                        </li>
+                    </ul>
+                    <a href="#contact" class="card-link" onclick="handleSelectSolution('Strategic Consulting')">
+                        <span>Learn More</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================================
+         OUR PRODUCTS SECTION (Full 12-Product Catalog)
+         ======================================================== -->
+    <section class="products-section" id="products">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Direct Catalog</span>
+                <h2 class="section-title">Our Products</h2>
+                <p class="section-desc">
+                    Browse our full live inventory of viral tech gadgets, trending novelties, and lifestyle accessories
+                    sourced directly through our enterprise supply chain.
+                </p>
+            </div>
+
+            <div class="catalog-switch-bar">
+                <button type="button" class="switch-toggle-btn active" id="btnAllProducts" onclick="filterCategory('all')">
+                    All Products (12)
+                </button>
+                <button type="button" class="switch-toggle-btn" id="btnGadgets" onclick="filterCategory('gadgets')">
+                    Gadgets &amp; Lights
+                </button>
+                <button type="button" class="switch-toggle-btn" id="btnToys" onclick="filterCategory('toys')">
+                    Toys &amp; Novelties
+                </button>
+            </div>
+
+            <div class="product-grid" id="productGrid">
+                <!-- Product 1 -->
+                <div class="product-card" data-cat="gadgets">
+                    <div class="product-card-img-wrap">
+                        <span class="product-badge">Bestseller</span>
+                        <img src="smoke-bubble-gun.jpg" alt="Smoke Bubble Gun" loading="lazy">
+                    </div>
+                    <div class="product-card-body">
+                        <div class="product-meta">
+                            <span class="product-category">Gadgets</span>
+                            <div class="product-rating">
+                                <span class="product-stars">★★★★★</span>
+                                <span class="product-rating-val">4.9</span>
+                            </div>
+                        </div>
+                        <h3 class="product-card-title">Smoke Bubble Gun</h3>
+                        <p class="product-specs">Magic Smoke Bubble Maker Machine Toy | Rechargeable Automatic Electric Bubble Fog Wand with Colorful Lights &amp; Music</p>
+                        <div class="product-action-row">
+                            <div class="price-box">
+                                <span class="price-label">Price</span>
+                                <div class="price-text">800 Rs 🔥🔥</div>
+                            </div>
+                            <button class="btn-add-cart" onclick="handleAddToCart(this, 'Smoke Bubble Gun')">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="9" cy="21" r="1"></circle>
+                                    <circle cx="20" cy="21" r="1"></circle>
+                                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                                </svg>
+                                <span>Add to Cart</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="product-card" data-cat="gadgets">
+                    <div class="product-card-img-wrap">
+                        <span class="product-badge">12 Slides Included</span>
+                        <img src="usb-projector-night-light.jpg" alt="USB Projector Night Light" loading="lazy">
+                    </div>
+                    <div class="product-card-body">
+                        <div class="product-meta">
+                            <span class="product-category">Gadgets</span>
+                            <div class="product-rating">
+                                <span class="product-stars">★★★★★</span>
+                                <span class="product-rating-val">4.9</span>
+                            </div>
+                        </div>
+                        <h3 class="product-card-title">USB Projector Night Light</h3>
+                        <p class="product-specs">12 Slides Included | Galaxy Projector Night Light | USB Powered 360 Degree Rotating Projector | Starry Sky Warm Light | Touch Controlled</p>
+                        <div class="product-action-row">
+                            <div class="price-box">
+                                <span class="price-label">Price</span>
+                                <div class="price-text">1250 Rs 🔥🔥</div>
+                            </div>
+                            <button class="btn-add-cart" onclick="handleAddToCart(this, 'USB Projector Night Light')">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="9" cy="21" r="1"></circle>
+                                    <circle cx="20" cy="21" r="1"></circle>
+                                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                                </svg>
+                                <span>Add to Cart</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="product-card" data-cat="toys">
+                    <div class="product-card-img-wrap">
+                        <span class="product-badge">Party &amp; Cosplay</span>
+                        <img src="bubble-cigarette.jpg" alt="Bubble Cigarette" loading="lazy">
+                    </div>
+                    <div class="product-card-body">
+                        <div class="product-meta">
+                            <span class="product-category">Gadgets</span>
+                            <div class="product-rating">
+                                <span class="product-stars">★★★★★</span>
+                                <span class="product-rating-val">4.9</span>
+                            </div>
+                        </div>
+                        <h3 class="product-card-title">Bubble Cigarette</h3>
+                        <p class="product-specs">Marlboro Themed Bubble Cigarette Toy Kit | Fake Bubble Puff Cigarettes for Party &amp; Cosplay &amp; Gift, Smoke Soap Bubbles | Bubble Blower Stick</p>
+                        <div class="product-action-row">
+                            <div class="price-box">
+                                <span class="price-label">Price</span>
+                                <div class="price-text">250 Rs 🔥🔥</div>
+                            </div>
+                            <button class="btn-add-cart" onclick="handleAddToCart(this, 'Bubble Cigarette')">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="9" cy="21" r="1"></circle>
+                                    <circle cx="20" cy="21" r="1"></circle>
+                                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                                </svg>
+                                <span>Add to Cart</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="product-card" data-cat="gadgets">
+                    <div class="product-card-img-wrap">
+                        <span class="product-badge">Touch Control</span>
+                        <img src="cordless-table-lamp.jpg" alt="Cordless Table Lamp" loading="lazy">
+                    </div>
+                    <div class="product-card-body">
+                        <div class="product-meta">
+                            <span class="product-category">Gadgets</span>
+                            <div class="product-rating">
+                                <span class="product-stars">★★★★★</span>
+                                <span class="product-rating-val">4.9</span>
+                            </div>
+                        </div>
+                        <h3 class="product-card-title">Cordless Table Lamp</h3>
+                        <p class="product-specs">LED Desk Lamp | Waterproof Rechargeable Battery Desk Lamp | 3 Color Stepless Dimming Up | Touch Control LED Desk Lamp | USB Rechargeable</p>
+                        <div class="product-action-row">
+                            <div class="price-box">
+                                <span class="price-label">Price</span>
+                                <div class="price-text">450 Rs 🔥🔥</div>
+                            </div>
+                            <button class="btn-add-cart" onclick="handleAddToCart(this, 'Cordless Table Lamp')">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="9" cy="21" r="1"></circle>
+                                    <circle cx="20" cy="21" r="1"></circle>
+                                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                                </svg>
+                                <span>Add to Cart</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 5 -->
+                <div class="product-card" data-cat="toys">
+                    <div class="product-card-img-wrap">
+                        <span class="product-badge">Touch Sensor</span>
+                        <img src="banana-piano-toy.jpg" alt="Banana Piano Toy" loading="lazy">
+                    </div>
+                    <div class="product-card-body">
+                        <div class="product-meta">
+                            <span class="product-category">Gadgets</span>
+                            <div class="product-rating">
+                                <span class="product-stars">★★★★★</span>
+                                <span class="product-rating-val">4.9</span>
+                            </div>
+                        </div>
+                        <h3 class="product-card-title">Banana Piano Toy</h3>
+                        <p class="product-specs">Funny Talking Banana Plush Toy | Metal Disc Hands Interactive Fruit Stuffed Toy | Hand Play Music Beat Stuffed Toy | Touch Sensor Musical Toy</p>
+                        <div class="product-action-row">
+                            <div class="price-box">
+                                <span class="price-label">Price</span>
+                                <div class="price-text">470 Rs 🔥🔥</div>
+                            </div>
+                            <button class="btn-add-cart" onclick="handleAddToCart(this, 'Banana Piano Toy')">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="9" cy="21" r="1"></circle>
+                                    <circle cx="20" cy="21" r="1"></circle>
+                                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                                </svg>
+                                <span>Add to Cart</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 6 -->
+                <div class="product-card" data-cat="gadgets">
+                    <div class="product-card-img-wrap">
+                        <span class="product-badge">Solar Powered</span>
+                        <img src="devils-eyes-car-light.jpg" alt="Devils Eyes LED Car Light" loading="lazy">
+                    </div>
+                    <div class="product-card-body">
+                        <div class="product-meta">
+                            <span class="product-category">Gadgets</span>
+                            <div class="product-rating">
+                                <span class="product-stars">★★★★★</span>
+                                <span class="product-rating-val">4.9</span>
+                            </div>
+                        </div>
+                        <h3 class="product-card-title">Devils Eyes LED Car Light</h3>
+                        <p class="product-specs">LED Eyes for Cars &amp; Bikes | Windshield Ambient Lamp | Wireless Triangle Window Light | Energy Efficient Solar Devil Eye Light | Rapid Ambient Lamp</p>
+                        <div class="product-action-row">
+                            <div class="price-box">
+                                <span class="price-label">Price</span>
+                                <div class="price-text">299 Rs 🔥🔥</div>
+                            </div>
+                            <button class="btn-add-cart" onclick="handleAddToCart(this, 'Devils Eyes LED Car Light')">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="9" cy="21" r="1"></circle>
+                                    <circle cx="20" cy="21" r="1"></circle>
+                                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                                </svg>
+                                <span>Add to Cart</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 7 -->
+                <div class="product-card" data-cat="gadgets">
+                    <div class="product-card-img-wrap">
+                        <span class="product-badge">Smart App &amp; Remote</span>
+                        <img src="corner-floor-lamp.jpg" alt="Corner Floor Lamp" loading="lazy">
+                    </div>
+                    <div class="product-card-body">
+                        <div class="product-meta">
+                            <span class="product-category">Gadgets</span>
+                            <div class="product-rating">
+                                <span class="product-stars">★★★★★</span>
+                                <span class="product-rating-val">4.9</span>
+                            </div>
+                        </div>
+                        <h3 class="product-card-title">Corner Floor Lamp</h3>
+                        <p class="product-specs">Smart RGB LED Corner Lamp with App and Remote Control | Color Changing Floor Lamp | 16 Million Colors &amp; 68+ Scene Modes, Music Sync &amp; Timer</p>
+                        <div class="product-action-row">
+                            <div class="price-box">
+                                <span class="price-label">Price</span>
+                                <div class="price-text">1200 Rs 🔥🔥</div>
+                            </div>
+                            <button class="btn-add-cart" onclick="handleAddToCart(this, 'Corner Floor Lamp')">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="9" cy="21" r="1"></circle>
+                                    <circle cx="20" cy="21" r="1"></circle>
+                                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                                </svg>
+                                <span>Add to Cart</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 8 -->
+                <div class="product-card" data-cat="gadgets">
+                    <div class="product-card-img-wrap">
+                        <span class="product-badge">48Vf High Power</span>
+                        <img src="high-voltage-violent-blower.jpg" alt="High Voltage Blower" loading="lazy">
+                    </div>
+                    <div class="product-card-body">
+                        <div class="product-meta">
+                            <span class="product-category">Gadgets</span>
+                            <div class="product-rating">
+                                <span class="product-stars">★★★★★</span>
+                                <span class="product-rating-val">4.9</span>
+                            </div>
+                        </div>
+                        <h3 class="product-card-title">High Voltage Blower</h3>
+                        <p class="product-specs">Violent Fan Turbo Jet Blower | 48Vf High Power Cordless Air Duster | 35000PA Powerful Suction &amp; Blower | Rechargeable Handheld Jet Fan</p>
+                        <div class="product-action-row">
+                            <div class="price-box">
+                                <span class="price-label">Price</span>
+                                <div class="price-text">850 Rs 🔥🔥</div>
+                            </div>
+                            <button class="btn-add-cart" onclick="handleAddToCart(this, 'High Voltage Blower')">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="9" cy="21" r="1"></circle>
+                                    <circle cx="20" cy="21" r="1"></circle>
+                                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                                </svg>
+                                <span>Add to Cart</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 9 -->
+                <div class="product-card" data-cat="toys">
+                    <div class="product-card-img-wrap">
+                        <span class="product-badge">USB Rechargeable</span>
+                        <img src="remote-watch-car.jpg" alt="Remote Watch Car" loading="lazy">
+                    </div>
+                    <div class="product-card-body">
+                        <div class="product-meta">
+                            <span class="product-category">Gadgets</span>
+                            <div class="product-rating">
+                                <span class="product-stars">★★★★★</span>
+                                <span class="product-rating-val">4.9</span>
+                            </div>
+                        </div>
+                        <h3 class="product-card-title">Remote Watch Car</h3>
+                        <p class="product-specs">2.4 GHz Cartoon Mini Watch Car | Mini Watch Car Toy for Kids | USB Rechargeable Remote Control Wrist Racing Car Watch with LED Light</p>
+                        <div class="product-action-row">
+                            <div class="price-box">
+                                <span class="price-label">Price</span>
+                                <div class="price-text">350 Rs 🔥🔥</div>
+                            </div>
+                            <button class="btn-add-cart" onclick="handleAddToCart(this, 'Remote Watch Car')">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="9" cy="21" r="1"></circle>
+                                    <circle cx="20" cy="21" r="1"></circle>
+                                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                                </svg>
+                                <span>Add to Cart</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 10 -->
+                <div class="product-card" data-cat="gadgets">
+                    <div class="product-card-img-wrap">
+                        <span class="product-badge">Aufex Exclusive</span>
+                        <img src="electric-pasta-maker.jpg" alt="Electric Pasta Maker" loading="lazy">
+                    </div>
+                    <div class="product-card-body">
+                        <div class="product-meta">
+                            <span class="product-category">Kitchen Gadgets</span>
+                            <div class="product-rating">
+                                <span class="product-stars">★★★★★</span>
+                                <span class="product-rating-val">5.0</span>
+                            </div>
+                        </div>
+                        <h3 class="product-card-title">Electric Pasta Maker</h3>
+                        <p class="product-specs">Make Fresh Pasta &amp; Noodles Easily at Home | Cordless Rechargeable Battery | 40W High Performance Motor | 6 Interchangeable Moulds (RY-188)</p>
+                        <div class="product-action-row">
+                            <div class="price-box">
+                                <span class="price-label">Price</span>
+                                <div class="price-text">1499 Rs 🔥🔥</div>
+                            </div>
+                            <button class="btn-add-cart" onclick="handleAddToCart(this, 'Electric Pasta Maker')">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="9" cy="21" r="1"></circle>
+                                    <circle cx="20" cy="21" r="1"></circle>
+                                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                                </svg>
+                                <span>Add to Cart</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 11 -->
+                <div class="product-card" data-cat="toys">
+                    <div class="product-card-img-wrap">
+                        <span class="product-badge">100% Non-Toxic</span>
+                        <img src="inkless-baby-footprint.jpg" alt="Inkless Foot Print" loading="lazy">
+                    </div>
+                    <div class="product-card-body">
+                        <div class="product-meta">
+                            <span class="product-category">Baby &amp; Keepsakes</span>
+                            <div class="product-rating">
+                                <span class="product-stars">★★★★★</span>
+                                <span class="product-rating-val">5.0</span>
+                            </div>
+                        </div>
+                        <h3 class="product-card-title">Inkless Foot Print</h3>
+                        <p class="product-specs">Baby Hand and Footprint Kit | Inkless Baby Handprint &amp; Footprint Ink Pad With Imprint Cards 100% Non-Toxic &amp; Mess Free Safe For Newborn</p>
+                        <div class="product-action-row">
+                            <div class="price-box">
+                                <span class="price-label">Price</span>
+                                <div class="price-text">189 Rs 🔥🔥</div>
+                            </div>
+                            <button class="btn-add-cart" onclick="handleAddToCart(this, 'Inkless Foot Print')">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="9" cy="21" r="1"></circle>
+                                    <circle cx="20" cy="21" r="1"></circle>
+                                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                                </svg>
+                                <span>Add to Cart</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 12 -->
+                <div class="product-card" data-cat="toys">
+                    <div class="product-card-img-wrap">
+                        <span class="product-badge">Pack Of 5</span>
+                        <img src="baby-finger-projector.jpg" alt="Baby Finger Projector" loading="lazy">
+                    </div>
+                    <div class="product-card-body">
+                        <div class="product-meta">
+                            <span class="product-category">Kids Toys</span>
+                            <div class="product-rating">
+                                <span class="product-stars">★★★★★</span>
+                                <span class="product-rating-val">4.9</span>
+                            </div>
+                        </div>
+                        <h3 class="product-card-title">Baby Finger Projector</h3>
+                        <p class="product-specs">LED Finger Lights for Kids (Pack of 5) | Multicolor Light Up Finger Projector Toys | Cute Animal Projector Light | Cartoon Slide Torch</p>
+                        <div class="product-action-row">
+                            <div class="price-box">
+                                <span class="price-label">Price</span>
+                                <div class="price-text">200 Rs 🔥🔥</div>
+                            </div>
+                            <button class="btn-add-cart" onclick="handleAddToCart(this, 'Baby Finger Projector')">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="9" cy="21" r="1"></circle>
+                                    <circle cx="20" cy="21" r="1"></circle>
+                                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                                </svg>
+                                <span>Add to Cart</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-text">
+                    <span class="section-tag">About Aufex</span>
+                    <h3>Architecting Resilient Enterprise Growth</h3>
+                    <p>
+                        Aufex Enterprise acts as an execution engine for organizations navigating complex cross-border
+                        commerce. By eliminating operational intermediaries, we ensure maximum cost efficiency,
+                        transparent tracking, and unmatched speed-to-market.
+                    </p>
+                    <a href="#contact" class="btn-primary" id="btnAboutContact">
+                        <span>Start A Conversation</span>
+                    </a>
+                </div>
+
+                <div class="pillar-grid">
+                    <div class="pillar-card">
+                        <div class="pillar-title">Direct Procurement</div>
+                        <div class="pillar-desc">Unrestricted factory-floor pricing without broker surcharges.</div>
+                    </div>
+                    <div class="pillar-card">
+                        <div class="pillar-title">Turnkey Execution</div>
+                        <div class="pillar-desc">From initial site scouting to day-one POS checkout ready.</div>
+                    </div>
+                    <div class="pillar-card">
+                        <div class="pillar-title">Data Visibility</div>
+                        <div class="pillar-desc">Comprehensive telemetry across logistics, stock, and margin.</div>
+                    </div>
+                    <div class="pillar-card">
+                        <div class="pillar-title">Risk Governance</div>
+                        <div class="pillar-desc">Multi-vendor redundancies that shield your bottom line.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Consultation Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="cta-banner">
+                <h2>Ready to Scale Your Enterprise?</h2>
+                <p>
+                    Connect with our strategic operations team today to evaluate supply chain efficiency or explore retail
+                    partnership opportunities.
+                </p>
+
+                <form class="cta-form" id="consultationForm" onsubmit="handleFormSubmit(event)">
+                    <input type="email" class="cta-input" id="clientEmail" placeholder="Enter your corporate email"
+                        required>
+                    <button type="submit" class="btn-primary" id="btnSubmitConsultation">
+                        <span>Request Consultation</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo-wrap">
+                        <div class="logo-symbol">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                                <polyline points="2 17 12 22 22 17"></polyline>
+                                <polyline points="2 12 12 17 22 12"></polyline>
+                            </svg>
+                        </div>
+                        <div class="logo-title">AUFEX <span>ENTERPRISE</span></div>
+                    </div>
+                    <p>
+                        Empowering mid-market and enterprise organizations with end-to-end supply chain mastery and
+                        retail operational excellence.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="footer-heading">Solutions</h4>
+                    <ul class="footer-links">
+                        <li><a href="#solutions">Global Sourcing</a></li>
+                        <li><a href="#solutions">Retail &amp; Kiosks</a></li>
+                        <li><a href="#solutions">Strategic Consulting</a></li>
+                        <li><a href="#products">Direct Products</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="footer-heading">Enterprise</h4>
+                    <ul class="footer-links">
+                        <li><a href="#about">About Our Firm</a></li>
+                        <li><a href="#about">Executive Leadership</a></li>
+                        <li><a href="#about">Governance &amp; Trust</a></li>
+                        <li><a href="#contact">Contact Support</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="footer-heading">Direct Connect</h4>
+                    <ul class="footer-links">
+                        <li><a href="https://wa.me/917034815356" target="_blank">WhatsApp Business</a></li>
+                        <li><a href="mailto:contact@aufex.com">contact@aufex.com</a></li>
+                        <li><a href="#contact">Schedule Meeting</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div>&copy; 2026 Aufex Enterprise Partnership. All rights reserved.</div>
+                <div>Terms of Service &bull; Privacy Governance &bull; Enterprise Compliance</div>
+            </div>
+        </div>
     </footer>
 
-    <!-- Interactive Cart Toast Script -->
+    <!-- Floating Interactive Toast -->
+    <div id="toast" class="toast">
+        <span class="toast-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+        </span>
+        <span class="toast-text" id="toastText"></span>
+    </div>
+
+    <!-- Interactive Scripts -->
     <script>
         let cartCount = 0;
         const cartBadge = document.getElementById('cartCount');
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastText = document.getElementById('toastText');
+            toastText.textContent = message;
+            toast.classList.add('show');
+
+            clearTimeout(toast.timeoutId);
+            toast.timeoutId = setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        // "Our Products" Switch Logic
+        function toggleProductsView(forceScroll = false) {
+            const switchBtn = document.getElementById('btnOurProductsSwitch');
+            const productsSec = document.getElementById('products');
+            
+            const isSwitchedOn = switchBtn.classList.toggle('active-switch');
+
+            if (isSwitchedOn || forceScroll) {
+                switchBtn.classList.add('active-switch');
+                productsSec.scrollIntoView({ behavior: 'smooth' });
+                showToast("Displaying Full Product Catalog (12 Items)");
+            } else {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        function filterCategory(category) {
+            const cards = document.querySelectorAll('.product-card');
+            const buttons = document.querySelectorAll('.switch-toggle-btn');
+            
+            buttons.forEach(btn => btn.classList.remove('active'));
+            
+            if (category === 'all') {
+                document.getElementById('btnAllProducts').classList.add('active');
+            } else if (category === 'gadgets') {
+                document.getElementById('btnGadgets').classList.add('active');
+            } else if (category === 'toys') {
+                document.getElementById('btnToys').classList.add('active');
+            }
+
+            cards.forEach(card => {
+                if (category === 'all' || card.getAttribute('data-cat') === category) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
 
         function handleAddToCart(btn, productName) {
             cartCount++;
@@ -735,7 +2072,7 @@
 
             const originalHTML = btn.innerHTML;
             btn.innerHTML = `
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                     <polyline points="20 6 9 17 4 12"></polyline>
                 </svg>
                 <span>Added!</span>
@@ -750,31 +2087,26 @@
             }, 1600);
         }
 
-        function showToast(message) {
-            let toast = document.getElementById('toast');
-            if (!toast) {
-                toast = document.createElement('div');
-                toast.id = 'toast';
-                toast.className = 'toast';
-                toast.innerHTML = `
-                    <span class="toast-icon">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                            <polyline points="20 6 9 17 4 12"></polyline>
-                        </svg>
-                    </span>
-                    <span class="toast-text"></span>
-                `;
-                document.body.appendChild(toast);
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            const emailInput = document.getElementById('clientEmail');
+            const email = emailInput.value.trim();
+
+            if (email) {
+                showToast(`Thank you! Consultation requested for ${email}`);
+                emailInput.value = '';
             }
-            toast.querySelector('.toast-text').textContent = message;
-            toast.classList.add('show');
-            
-            clearTimeout(toast.timeoutId);
-            toast.timeoutId = setTimeout(() => {
-                toast.classList.remove('show');
-            }, 2500);
+        }
+
+        function handleSelectSolution(solutionName) {
+            showToast(`Selected: ${solutionName}. Please submit your email below.`);
+            const emailInput = document.getElementById('clientEmail');
+            if (emailInput) {
+                setTimeout(() => emailInput.focus(), 400);
+            }
         }
     </script>
 
 </body>
+
 </html>
