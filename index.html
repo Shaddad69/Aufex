@@ -15,6 +15,13 @@
         href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap"
         rel="stylesheet">
 
+    <!-- Favicon & Profile Icon -->
+    <link rel="icon" type="image/jpeg" href="aufex-logo.jpg">
+    <link rel="apple-touch-icon" href="aufex-logo.jpg">
+
+    <!-- Shopping Cart Stylesheet -->
+    <link rel="stylesheet" href="cart.css">
+
     <style>
         /* Design Tokens & CSS Variables */
         :root {
@@ -110,18 +117,31 @@
         }
 
         .logo-symbol {
-            width: 40px;
-            height: 40px;
-            border-radius: 10px;
-            background: var(--accent-gradient);
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 4px 14px var(--accent-glow);
+            box-shadow: 0 0 16px rgba(168, 85, 247, 0.4), 0 2px 8px rgba(0, 0, 0, 0.4);
+            border: 2px solid rgba(192, 132, 252, 0.6);
+            background: #090e1a;
+            flex-shrink: 0;
+            transition: var(--transition-smooth);
         }
 
-        .logo-symbol svg {
-            color: #ffffff;
+        .logo-symbol:hover {
+            box-shadow: 0 0 24px rgba(168, 85, 247, 0.7);
+            transform: scale(1.05);
+        }
+
+        .nav-logo-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            display: block;
         }
 
         .logo-text-group {
@@ -325,6 +345,237 @@
             background: rgba(255, 255, 255, 0.08);
             border-color: rgba(255, 255, 255, 0.25);
             transform: translateY(-2px);
+        }
+
+        /* Hero Brand Profile Avatar */
+        .hero-brand-profile {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 1.75rem;
+        }
+
+        .hero-profile-avatar {
+            width: 96px;
+            height: 96px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 0 30px rgba(168, 85, 247, 0.55), 0 0 60px rgba(37, 99, 235, 0.35);
+            border: 3px solid rgba(192, 132, 252, 0.7);
+            padding: 3px;
+            background: #090e1a;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            animation: avatarFloat 4s ease-in-out infinite;
+        }
+
+        .hero-profile-avatar:hover {
+            transform: scale(1.08) rotate(3deg);
+            box-shadow: 0 0 45px rgba(168, 85, 247, 0.8), 0 0 80px rgba(56, 189, 248, 0.5);
+        }
+
+        @keyframes avatarFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-7px); }
+        }
+
+        /* Special "On top of that (our products)" Button - Special Color & Glow */
+        .hero-top-product-cta {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 1.35rem;
+        }
+
+        .btn-special-products {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.85rem;
+            padding: 1.15rem 2.6rem;
+            font-size: 1.08rem;
+            font-weight: 800;
+            color: #ffffff;
+            /* Special High-Energy Sunset Flame, Amber Gold & Magenta Gradient */
+            background: linear-gradient(135deg, #ff7e40 0%, #f43f5e 48%, #a855f7 100%);
+            border: 2px solid rgba(254, 215, 170, 0.75);
+            border-radius: 9999px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+            box-shadow: 0 10px 32px rgba(244, 63, 94, 0.45), 0 0 25px rgba(255, 126, 64, 0.4);
+            position: relative;
+            overflow: hidden;
+            letter-spacing: 0.3px;
+        }
+
+        .btn-special-products::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(60deg, transparent 35%, rgba(255, 255, 255, 0.45) 50%, transparent 65%);
+            transform: rotate(25deg);
+            animation: specialShine 3.5s infinite;
+        }
+
+        @keyframes specialShine {
+            0% { transform: translateX(-120%) rotate(25deg); }
+            30%, 100% { transform: translateX(120%) rotate(25deg); }
+        }
+
+        .btn-special-products:hover {
+            transform: translateY(-4px) scale(1.03);
+            box-shadow: 0 16px 45px rgba(244, 63, 94, 0.7), 0 0 35px rgba(255, 126, 64, 0.65);
+            border-color: #ffffff;
+            color: #ffffff;
+        }
+
+        .btn-special-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.22);
+            color: #fef08a;
+            flex-shrink: 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-special-text {
+            font-size: 1.08rem;
+            font-weight: 800;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+        }
+
+        .nav-special-link {
+            color: #fb923c !important;
+            font-weight: 700 !important;
+            position: relative;
+        }
+
+        .nav-special-link::after {
+            background: linear-gradient(90deg, #fb923c, #f43f5e) !important;
+        }
+
+        /* Join Our Group CTA Button */
+        .btn-group {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.65rem;
+            padding: 1rem 2.25rem;
+            font-size: 1.02rem;
+            font-weight: 700;
+            color: #ffffff;
+            background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 50%, #2563eb 100%);
+            border: 1px solid rgba(192, 132, 252, 0.5);
+            border-radius: 10px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: var(--transition-smooth);
+            box-shadow: 0 8px 24px rgba(139, 92, 246, 0.4);
+        }
+
+        .btn-group:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 32px rgba(139, 92, 246, 0.65);
+            border-color: rgba(192, 132, 252, 0.9);
+            color: #ffffff;
+        }
+
+        /* Community VIP Banner Column */
+        .community-banner {
+            margin-top: 2.5rem;
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.16) 0%, rgba(37, 99, 235, 0.12) 50%, rgba(15, 23, 42, 0.85) 100%);
+            border: 1px solid rgba(168, 85, 247, 0.35);
+            border-radius: 18px;
+            padding: 1.75rem 2.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(139, 92, 246, 0.15);
+            backdrop-filter: blur(12px);
+            text-align: left;
+        }
+
+        .community-content {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .community-avatar {
+            width: 68px;
+            height: 68px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid rgba(192, 132, 252, 0.7);
+            box-shadow: 0 0 20px rgba(168, 85, 247, 0.5);
+            flex-shrink: 0;
+            background: #090e1a;
+        }
+
+        .community-tag {
+            font-size: 0.75rem;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            color: #c084fc;
+            text-transform: uppercase;
+            margin-bottom: 0.25rem;
+        }
+
+        .community-title {
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: #f8fafc;
+            margin-bottom: 0.35rem;
+            letter-spacing: -0.01em;
+        }
+
+        .community-desc {
+            font-size: 0.92rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+            max-width: 580px;
+        }
+
+        .btn-join-community {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.65rem;
+            padding: 0.9rem 1.8rem;
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #ffffff;
+            background: #25d366;
+            border-radius: 10px;
+            text-decoration: none;
+            transition: var(--transition-smooth);
+            box-shadow: 0 4px 18px rgba(37, 211, 102, 0.35);
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .btn-join-community:hover {
+            background: #1eb956;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(37, 211, 102, 0.55);
+            color: #ffffff;
+        }
+
+        @media (max-width: 860px) {
+            .community-banner {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 1.5rem;
+            }
+            .community-content {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
         }
 
         /* Stats Bar */
@@ -643,33 +894,270 @@
 
         .cta-form {
             display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 1rem;
-            max-width: 520px;
+            flex-direction: column;
+            gap: 1.15rem;
+            max-width: 580px;
             margin: 0 auto;
-            flex-wrap: wrap;
+            text-align: left;
+        }
+
+        .cta-form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        @media (max-width: 600px) {
+            .cta-form-row {
+                grid-template-columns: 1fr;
+            }
         }
 
         .cta-input {
-            flex: 1 1 260px;
+            width: 100%;
             padding: 0.95rem 1.25rem;
             border-radius: 10px;
-            background: rgba(9, 14, 26, 0.8);
+            background: rgba(9, 14, 26, 0.85);
             border: 1px solid rgba(255, 255, 255, 0.15);
             color: #ffffff;
             font-size: 0.95rem;
             outline: none;
             transition: var(--transition-smooth);
+            font-family: inherit;
+        }
+
+        .cta-textarea {
+            resize: vertical;
+            min-height: 90px;
         }
 
         .cta-input:focus {
             border-color: var(--accent-cyan);
             box-shadow: 0 0 15px rgba(56, 189, 248, 0.3);
+            background: rgba(15, 23, 42, 1);
         }
 
         .cta-input::placeholder {
             color: #64748b;
+        }
+
+        /* Consultation Popup Modal Styles */
+        .consultation-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(4, 8, 16, 0.78);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 2000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .consultation-modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .consultation-modal {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.92);
+            width: 92%;
+            max-width: 520px;
+            background: #0d1527;
+            border: 1px solid rgba(56, 189, 248, 0.35);
+            border-radius: 20px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 35px rgba(37, 99, 235, 0.25);
+            z-index: 2001;
+            padding: 2.2rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .consultation-modal.active {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .consultation-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .consultation-badge {
+            display: inline-block;
+            font-size: 0.72rem;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            color: var(--accent-cyan);
+            background: rgba(56, 189, 248, 0.12);
+            padding: 0.2rem 0.6rem;
+            border-radius: 6px;
+            margin-bottom: 0.4rem;
+            border: 1px solid rgba(56, 189, 248, 0.25);
+        }
+
+        .consultation-modal-header h3 {
+            font-size: 1.45rem;
+            font-weight: 800;
+            color: var(--text-heading);
+            letter-spacing: -0.01em;
+        }
+
+        .consultation-modal-header p {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            margin-top: 0.2rem;
+        }
+
+        .btn-close-modal {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-muted);
+            cursor: pointer;
+            width: 34px;
+            height: 34px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            line-height: 1;
+            transition: all 0.2s ease;
+            flex-shrink: 0;
+        }
+
+        .btn-close-modal:hover {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.12);
+            border-color: rgba(255, 255, 255, 0.25);
+        }
+
+        .consultation-form-modal {
+            display: flex;
+            flex-direction: column;
+            gap: 1.15rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.45rem;
+        }
+
+        .form-group label {
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: var(--text-heading);
+            letter-spacing: 0.3px;
+        }
+
+        .input-wrap {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .input-wrap svg {
+            position: absolute;
+            left: 1rem;
+            color: var(--text-muted);
+            pointer-events: none;
+            transition: color 0.25s;
+        }
+
+        .input-wrap input,
+        .input-wrap textarea {
+            width: 100%;
+            padding: 0.85rem 1rem 0.85rem 2.85rem;
+            background: rgba(15, 23, 42, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 10px;
+            color: #f8fafc;
+            font-size: 0.92rem;
+            transition: var(--transition-smooth);
+            font-family: inherit;
+        }
+
+        .input-wrap-textarea {
+            align-items: flex-start;
+        }
+
+        .input-wrap-textarea svg {
+            top: 1rem;
+        }
+
+        .input-wrap textarea {
+            resize: vertical;
+            min-height: 90px;
+        }
+
+        .input-wrap input:focus,
+        .input-wrap textarea:focus {
+            outline: none;
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 16px rgba(56, 189, 248, 0.35);
+            background: rgba(15, 23, 42, 1);
+        }
+
+        .input-wrap:focus-within svg {
+            color: var(--accent-cyan);
+        }
+
+        .btn-modal-submit {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.65rem;
+            padding: 1rem;
+            background: var(--accent-gradient);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 10px;
+            color: #ffffff;
+            font-size: 0.98rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            box-shadow: 0 8px 24px var(--accent-glow);
+            margin-top: 0.4rem;
+        }
+
+        .btn-modal-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(37, 99, 235, 0.6);
+        }
+
+        .btn-whatsapp-consult {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            padding: 0.85rem;
+            background: rgba(37, 211, 102, 0.12);
+            border: 1px solid rgba(37, 211, 102, 0.3);
+            border-radius: 10px;
+            color: #25d366;
+            font-size: 0.9rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .btn-whatsapp-consult:hover {
+            background: #25d366;
+            color: #ffffff;
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+            transform: translateY(-1px);
         }
 
         /* Footer */
@@ -826,15 +1314,10 @@
         <div class="container nav-content">
             <a href="#home" class="logo-wrap" id="logo">
                 <div class="logo-symbol">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
-                        <polyline points="2 17 12 22 22 17"></polyline>
-                        <polyline points="2 12 12 17 22 12"></polyline>
-                    </svg>
+                    <img src="aufex-logo.jpg" alt="Aufex Online Shop Logo" class="nav-logo-img">
                 </div>
                 <div class="logo-text-group">
-                    <div class="logo-title">AUFEX <span>ENTERPRISE</span></div>
+                    <div class="logo-title">AUFEX <span>ONLINE SHOP</span></div>
                     <div class="logo-badge">Global Solutions</div>
                 </div>
             </a>
@@ -842,13 +1325,24 @@
             <nav class="nav-menu" id="navMenu">
                 <a href="#home" class="nav-link">Home</a>
                 <a href="#solutions" class="nav-link">Solutions</a>
-                <a href="products.html" class="nav-link">Our Products</a>
+                <a href="products.html" class="nav-link nav-special-link">Our Products</a>
+                <a href="https://wa.me/917034815356?text=Hi%20Aufex,%20I%20would%20like%20to%20join%20your%20community%20group" target="_blank" class="nav-link">Join Our Group</a>
                 <a href="#about" class="nav-link">About</a>
                 <a href="#contact" class="nav-link">Contact</a>
             </nav>
 
             <div class="nav-actions">
-                <a href="#contact" class="btn-nav" id="btnNavCta">
+                <button class="cart-trigger" onclick="toggleCartDrawer(true)" id="btnCart" aria-label="View Shopping Cart">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                    </svg>
+                    <span>Cart</span>
+                    <span class="cart-count" id="cartCount">0</span>
+                </button>
+                <a href="javascript:void(0)" onclick="toggleConsultationModal(true)" class="btn-nav" id="btnNavCta">
                     <span>Contact Us</span>
                     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                         stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -863,6 +1357,11 @@
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="container">
+            <!-- Brand Profile Logo Avatar -->
+            <div class="hero-brand-profile">
+                <img src="aufex-logo.jpg" alt="Aufex Online Shop Profile" class="hero-profile-avatar">
+            </div>
+
             <div class="hero-pill">
                 <span class="hero-pill-dot"></span>
                 <span>Next-Gen Enterprise Partnership &amp; Sourcing</span>
@@ -878,19 +1377,32 @@
                 engineered to accelerate corporate growth with precision.
             </p>
 
-            <div class="hero-cta-group">
-                <!-- Requested Consultation Button -->
-                <a href="#contact" class="btn-primary" id="btnHeroConsultation">
-                    <span>Request Consultation</span>
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <!-- Our Products - Prominently positioned on top with Special Color -->
+            <div class="hero-top-product-cta">
+                <a href="products.html" class="btn-special-products" id="btnHeroProductsSpecial">
+                    <span class="btn-special-icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                        </svg>
+                    </span>
+                    <span class="btn-special-text">Our Products</span>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                         <line x1="5" y1="12" x2="19" y2="12"></line>
                         <polyline points="12 5 19 12 12 19"></polyline>
                     </svg>
                 </a>
+            </div>
 
-                <a href="products.html" class="btn-secondary" id="btnHeroProducts">
-                    <span>Our Products</span>
+            <div class="hero-cta-group">
+                <!-- Requested Join Our Group Column Button -->
+                <a href="https://wa.me/917034815356?text=Hi%20Aufex,%20I%20would%20like%20to%20join%20your%20community%20group" target="_blank" class="btn-group" id="btnHeroJoinGroup">
+                    <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="9" cy="7" r="4"></circle>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                    </svg>
+                    <span>Join Our Group</span>
                 </a>
             </div>
 
@@ -912,6 +1424,24 @@
                     <div class="stat-value">24<span>/7</span></div>
                     <div class="stat-label">Dedicated Ops</div>
                 </div>
+            </div>
+
+            <!-- Dedicated Join Our Group Column Banner -->
+            <div class="community-banner" id="communityBanner">
+                <div class="community-content">
+                    <img src="aufex-logo.jpg" alt="Aufex Group Profile" class="community-avatar">
+                    <div class="community-text">
+                        <div class="community-tag">OFFICIAL WHATSAPP VIP COMMUNITY</div>
+                        <h3 class="community-title">Join Our Exclusive VIP Group</h3>
+                        <p class="community-desc">Connect directly with Aufex. Get real-time stock drops, new product releases, wholesale pricing &amp; priority enterprise support.</p>
+                    </div>
+                </div>
+                <a href="https://wa.me/917034815356?text=Hi%20Aufex,%20I%20would%20like%20to%20join%20your%20community%20group" target="_blank" class="btn-join-community">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+                    </svg>
+                    <span>Join WhatsApp Group</span>
+                </a>
             </div>
         </div>
     </section>
@@ -1128,9 +1658,21 @@
                 </p>
 
                 <form class="cta-form" id="consultationForm" onsubmit="handleFormSubmit(event)">
-                    <input type="email" class="cta-input" id="clientEmail" placeholder="Enter your corporate email"
-                        required>
-                    <button type="submit" class="btn-primary" id="btnSubmitConsultation">
+                    <div class="cta-form-row">
+                        <div class="form-group">
+                            <label for="clientName">1. Name :</label>
+                            <input type="text" class="cta-input" id="clientName" placeholder="Enter your full name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="clientEmail">2. Email :</label>
+                            <input type="email" class="cta-input" id="clientEmail" placeholder="corporate@email.com" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="clientMessage">3. Message :</label>
+                        <textarea class="cta-input cta-textarea" id="clientMessage" rows="3" placeholder="Enter your message or inquiry..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary" id="btnSubmitConsultation" style="align-self: center; width: 100%;">
                         <span>Request Consultation</span>
                     </button>
                 </form>
@@ -1145,14 +1687,9 @@
                 <div class="footer-brand">
                     <div class="logo-wrap">
                         <div class="logo-symbol">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                                <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
-                                <polyline points="2 17 12 22 22 17"></polyline>
-                                <polyline points="2 12 12 17 22 12"></polyline>
-                            </svg>
+                            <img src="aufex-logo.jpg" alt="Aufex Online Shop Logo" class="nav-logo-img">
                         </div>
-                        <div class="logo-title">AUFEX <span>ENTERPRISE</span></div>
+                        <div class="logo-title">AUFEX <span>ONLINE SHOP</span></div>
                     </div>
                     <p>
                         Empowering mid-market and enterprise organizations with end-to-end supply chain mastery and
@@ -1198,6 +1735,101 @@
         </div>
     </footer>
 
+    <!-- Slide-out Cart Drawer -->
+    <div class="cart-drawer-overlay" id="cartOverlay" onclick="toggleCartDrawer(false)"></div>
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-header">
+            <div class="cart-header-title-group">
+                <h3>Your Order Cart</h3>
+                <span class="cart-header-badge" id="cartHeaderCount">0 items</span>
+            </div>
+            <div class="cart-header-actions">
+                <button class="btn-clear-cart" onclick="clearCart()" title="Clear entire cart">Clear</button>
+                <button class="btn-close-cart" onclick="toggleCartDrawer(false)" title="Close">&times;</button>
+            </div>
+        </div>
+        <div class="cart-items" id="cartItemsList">
+            <div class="cart-empty" id="cartEmptyMsg">Your cart is currently empty.</div>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-summary-box">
+                <div class="cart-summary-row">
+                    <span>Total Quantity:</span>
+                    <span id="cartTotalItems">0</span>
+                </div>
+                <div class="cart-total-row">
+                    <span>Grand Total:</span>
+                    <span class="cart-total-price" id="cartTotalPrice">0 Rs</span>
+                </div>
+            </div>
+            <a href="javascript:void(0)" class="btn-checkout-whatsapp" id="btnCheckoutWhatsApp"
+                onclick="checkoutViaWhatsApp()">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" />
+                </svg>
+                <span>Order via WhatsApp</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Request Consultation Popup Modal with 3 Typing Options -->
+    <div class="consultation-modal-overlay" id="consultationModalOverlay" onclick="toggleConsultationModal(false)"></div>
+    <div class="consultation-modal" id="consultationModal" role="dialog" aria-modal="true" aria-labelledby="consultModalTitle">
+        <div class="consultation-modal-header">
+            <div class="consultation-header-info">
+                <span class="consultation-badge">AUFEX ENTERPRISE</span>
+                <h3 id="consultModalTitle">Request Consultation</h3>
+                <p>Please enter your details below. Our corporate team will reach out promptly.</p>
+            </div>
+            <button type="button" class="btn-close-modal" onclick="toggleConsultationModal(false)" aria-label="Close modal">&times;</button>
+        </div>
+        <form class="consultation-form-modal" id="modalConsultationForm" onsubmit="handleModalConsultationSubmit(event)">
+            <div class="form-group">
+                <label for="consultModalName">1. Name :</label>
+                <div class="input-wrap">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                    <input type="text" id="consultModalName" placeholder="Enter your full name" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="consultModalEmail">2. Email :</label>
+                <div class="input-wrap">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                        <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
+                    <input type="email" id="consultModalEmail" placeholder="Enter your corporate email" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="consultModalMessage">3. Message :</label>
+                <div class="input-wrap input-wrap-textarea">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                    </svg>
+                    <textarea id="consultModalMessage" rows="4" placeholder="Enter your message, product inquiries, or questions..." required></textarea>
+                </div>
+            </div>
+            <button type="submit" class="btn-modal-submit" id="btnSubmitModal">
+                <span>Submit Consultation Request</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+            </button>
+            <button type="button" class="btn-whatsapp-consult" onclick="submitConsultationWhatsApp()">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+                </svg>
+                <span>Or Send Directly via WhatsApp</span>
+            </button>
+        </form>
+    </div>
+
     <!-- Floating Interactive Toast -->
     <div id="toast" class="toast">
         <span class="toast-icon">
@@ -1211,37 +1843,72 @@
 
     <!-- Interactive Client Script -->
     <script>
-        function showToast(message) {
-            const toast = document.getElementById('toast');
-            const toastText = document.getElementById('toastText');
-            toastText.textContent = message;
-            toast.classList.add('show');
+        function toggleConsultationModal(open) {
+            const modal = document.getElementById('consultationModal');
+            const overlay = document.getElementById('consultationModalOverlay');
+            if (!modal || !overlay) return;
 
-            clearTimeout(toast.timeoutId);
-            toast.timeoutId = setTimeout(() => {
-                toast.classList.remove('show');
-            }, 3200);
+            if (open) {
+                modal.classList.add('active');
+                overlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                const nameInput = document.getElementById('consultModalName');
+                if (nameInput) setTimeout(() => nameInput.focus(), 150);
+            } else {
+                modal.classList.remove('active');
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+
+        function handleModalConsultationSubmit(event) {
+            event.preventDefault();
+            const name = document.getElementById('consultModalName').value.trim();
+            const email = document.getElementById('consultModalEmail').value.trim();
+            const message = document.getElementById('consultModalMessage').value.trim();
+
+            showToast(`Thank you, ${name}! Your consultation request has been submitted.`);
+            toggleConsultationModal(false);
+            event.target.reset();
+        }
+
+        function submitConsultationWhatsApp() {
+            const name = document.getElementById('consultModalName').value.trim() || 'Client';
+            const email = document.getElementById('consultModalEmail').value.trim() || 'Not specified';
+            const message = document.getElementById('consultModalMessage').value.trim() || 'I would like to request a consultation with Aufex Enterprise.';
+
+            let text = `Hi Aufex Enterprise! 📋\nI would like to request a consultation:\n\n1. Name: ${name}\n2. Email: ${email}\n3. Message: ${message}`;
+            const encoded = encodeURIComponent(text);
+            window.open(`https://wa.me/917034815356?text=${encoded}`, '_blank');
         }
 
         function handleFormSubmit(event) {
             event.preventDefault();
-            const emailInput = document.getElementById('clientEmail');
-            const email = emailInput.value.trim();
+            const name = (document.getElementById('clientName') ? document.getElementById('clientName').value.trim() : '');
+            const email = (document.getElementById('clientEmail') ? document.getElementById('clientEmail').value.trim() : '');
+            const message = (document.getElementById('clientMessage') ? document.getElementById('clientMessage').value.trim() : '');
 
-            if (email) {
-                showToast(`Thank you! Consultation requested for ${email}`);
-                emailInput.value = '';
-            }
+            showToast(`Thank you${name ? ', ' + name : ''}! Consultation requested.`);
+            event.target.reset();
         }
 
         function handleSelectSolution(solutionName) {
-            showToast(`Selected inquiry: ${solutionName}. Please submit your email below.`);
-            const emailInput = document.getElementById('clientEmail');
-            if (emailInput) {
-                setTimeout(() => emailInput.focus(), 400);
+            toggleConsultationModal(true);
+            const msgInput = document.getElementById('consultModalMessage');
+            if (msgInput) {
+                msgInput.value = `Inquiry regarding: ${solutionName}. `;
             }
         }
+
+        // Close consultation modal on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                toggleConsultationModal(false);
+            }
+        });
     </script>
+    <!-- Shopping Cart Engine -->
+    <script src="cart.js"></script>
 
 </body>
 

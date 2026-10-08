@@ -15,6 +15,13 @@
         href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap"
         rel="stylesheet">
 
+    <!-- Favicon & Profile Icon -->
+    <link rel="icon" type="image/jpeg" href="aufex-logo.jpg">
+    <link rel="apple-touch-icon" href="aufex-logo.jpg">
+
+    <!-- Shopping Cart Stylesheet -->
+    <link rel="stylesheet" href="cart.css">
+
     <style>
         :root {
             --primary-navy: #090e1a;
@@ -111,18 +118,31 @@
         }
 
         .logo-symbol {
-            width: 40px;
-            height: 40px;
-            border-radius: 10px;
-            background: var(--accent-gradient);
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 4px 14px var(--accent-glow);
+            box-shadow: 0 0 16px rgba(168, 85, 247, 0.4), 0 2px 8px rgba(0, 0, 0, 0.4);
+            border: 2px solid rgba(192, 132, 252, 0.6);
+            background: #090e1a;
+            flex-shrink: 0;
+            transition: var(--transition-smooth);
         }
 
-        .logo-symbol svg {
-            color: #ffffff;
+        .logo-symbol:hover {
+            box-shadow: 0 0 24px rgba(168, 85, 247, 0.7);
+            transform: scale(1.05);
+        }
+
+        .nav-logo-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            display: block;
         }
 
         .logo-title {
@@ -178,44 +198,25 @@
             border-radius: 2px;
         }
 
+        .nav-special-link {
+            color: #fb923c !important;
+            font-weight: 700 !important;
+            position: relative;
+        }
+
+        .nav-special-link::after {
+            background: linear-gradient(90deg, #fb923c, #f43f5e) !important;
+        }
+
+
         .nav-actions {
             display: flex;
             align-items: center;
             gap: 1rem;
         }
 
-        .cart-trigger {
-            position: relative;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.65rem 1.1rem;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            border-radius: 10px;
-            color: var(--text-heading);
-            font-weight: 600;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: var(--transition-smooth);
-        }
+        /* .cart-trigger and .cart-count are styled in cart.css */
 
-        .cart-trigger:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: var(--accent-cyan);
-            color: #ffffff;
-        }
-
-        .cart-count {
-            background: var(--accent-gradient);
-            color: #ffffff;
-            font-size: 0.75rem;
-            font-weight: 800;
-            border-radius: 9999px;
-            padding: 0.15rem 0.55rem;
-            min-width: 20px;
-            text-align: center;
-        }
 
         /* Hero Header */
         .page-header {
@@ -384,6 +385,35 @@
             transform: scale(1.08);
         }
 
+        .card-thumbnails {
+            display: flex;
+            gap: 6px;
+            padding: 8px 12px;
+            background: rgba(11, 17, 32, 0.7);
+            border-bottom: 1px solid var(--surface-card-border);
+            overflow-x: auto;
+        }
+
+        .card-thumb {
+            width: 42px;
+            height: 42px;
+            border-radius: 8px;
+            object-fit: cover;
+            cursor: pointer;
+            border: 2px solid transparent;
+            opacity: 0.65;
+            transition: all 0.25s ease;
+            flex-shrink: 0;
+        }
+
+        .card-thumb:hover,
+        .card-thumb.active {
+            opacity: 1;
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 8px rgba(56, 189, 248, 0.5);
+            transform: scale(1.05);
+        }
+
         .card-badge {
             position: absolute;
             top: 14px;
@@ -505,174 +535,8 @@
             box-shadow: 0 6px 20px rgba(37, 99, 235, 0.55);
         }
 
-        /* Cart Drawer */
-        .cart-drawer-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(4px);
-            z-index: 1000;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s ease;
-        }
+        /* Cart styles are managed in cart.css */
 
-        .cart-drawer-overlay.active {
-            opacity: 1;
-            pointer-events: auto;
-        }
-
-        .cart-drawer {
-            position: fixed;
-            top: 0;
-            right: 0;
-            width: 100%;
-            max-width: 420px;
-            height: 100%;
-            background: #0d1527;
-            border-left: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: -10px 0 40px rgba(0, 0, 0, 0.7);
-            z-index: 1001;
-            display: flex;
-            flex-direction: column;
-            transform: translateX(100%);
-            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .cart-drawer.active {
-            transform: translateX(0);
-        }
-
-        .cart-header {
-            padding: 1.5rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .cart-header h3 {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--text-heading);
-        }
-
-        .btn-close-cart {
-            background: transparent;
-            border: none;
-            color: var(--text-muted);
-            cursor: pointer;
-            font-size: 1.5rem;
-            line-height: 1;
-            padding: 0.25rem;
-            transition: color 0.2s;
-        }
-
-        .btn-close-cart:hover {
-            color: #ffffff;
-        }
-
-        .cart-items {
-            flex-grow: 1;
-            overflow-y: auto;
-            padding: 1.5rem;
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .cart-empty {
-            text-align: center;
-            padding: 3rem 1rem;
-            color: var(--text-muted);
-        }
-
-        .cart-item {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            background: rgba(15, 23, 42, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            padding: 0.85rem;
-            border-radius: 12px;
-        }
-
-        .cart-item-img {
-            width: 55px;
-            height: 55px;
-            border-radius: 8px;
-            object-fit: cover;
-            background: #090e1a;
-        }
-
-        .cart-item-info {
-            flex-grow: 1;
-        }
-
-        .cart-item-title {
-            font-size: 0.9rem;
-            font-weight: 700;
-            color: var(--text-heading);
-            margin-bottom: 0.2rem;
-        }
-
-        .cart-item-price {
-            font-size: 0.85rem;
-            font-weight: 700;
-            color: var(--accent-cyan);
-        }
-
-        .cart-item-remove {
-            background: transparent;
-            border: none;
-            color: #ef4444;
-            cursor: pointer;
-            padding: 0.4rem;
-        }
-
-        .cart-footer {
-            padding: 1.5rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
-            background: #090e1a;
-        }
-
-        .cart-total-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1.25rem;
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--text-heading);
-        }
-
-        .btn-checkout-whatsapp {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 0.65rem;
-            width: 100%;
-            padding: 1rem;
-            background: #25d366;
-            color: #ffffff;
-            font-weight: 700;
-            font-size: 1rem;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            text-decoration: none;
-            transition: var(--transition-smooth);
-            box-shadow: 0 4px 18px rgba(37, 211, 102, 0.35);
-        }
-
-        .btn-checkout-whatsapp:hover {
-            background: #1eb956;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 24px rgba(37, 211, 102, 0.5);
-        }
 
         /* Toast */
         .toast {
@@ -799,15 +663,10 @@
         <div class="container nav-content">
             <a href="index.html" class="logo-wrap">
                 <div class="logo-symbol">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
-                        <polyline points="2 17 12 22 22 17"></polyline>
-                        <polyline points="2 12 12 17 22 12"></polyline>
-                    </svg>
+                    <img src="aufex-logo.jpg" alt="Aufex Online Shop Logo" class="nav-logo-img">
                 </div>
                 <div class="logo-text-group">
-                    <div class="logo-title">AUFEX <span>ENTERPRISE</span></div>
+                    <div class="logo-title">AUFEX <span>ONLINE SHOP</span></div>
                     <div class="logo-badge">Products &amp; Sourcing</div>
                 </div>
             </a>
@@ -815,7 +674,8 @@
             <nav class="nav-menu">
                 <a href="index.html" class="nav-link">Home</a>
                 <a href="index.html#solutions" class="nav-link">Solutions</a>
-                <a href="products.html" class="nav-link active">Our Products</a>
+                <a href="products.html" class="nav-link active nav-special-link">Our Products</a>
+                <a href="https://wa.me/917034815356?text=Hi%20Aufex,%20I%20would%20like%20to%20join%20your%20community%20group" target="_blank" class="nav-link">Join Our Group</a>
                 <a href="index.html#about" class="nav-link">About</a>
                 <a href="index.html#contact" class="nav-link">Contact</a>
             </nav>
@@ -862,8 +722,7 @@
                         Lights</button>
                     <button class="filter-btn" data-category="home" onclick="filterCategory('home', this)">Home &amp;
                         Kitchen</button>
-                    <button class="filter-btn" data-category="tech" onclick="filterCategory('tech', this)">Tech
-                        Hardware</button>
+                    <button class="filter-btn" data-category="watches" onclick="filterCategory('watches', this)">Watches</button>
                 </div>
 
                 <div class="search-box">
@@ -878,6 +737,138 @@
 
             <!-- Product Grid -->
             <div class="products-grid" id="productsGrid">
+
+                <!-- 0. NEW ARRIVAL: G SHOCK GA 2100 -->
+                <div class="product-card" data-category="gadgets watches" data-title="g shock ga 2100 casioak good quality 699 free shipping 2-5 days delivery sports tough watch">
+                    <div class="card-img-wrap">
+                        <span class="card-badge" style="background: linear-gradient(135deg, rgba(16, 185, 129, 0.95), rgba(6, 182, 212, 0.95)); color: #fff; border: 1px solid rgba(255,255,255,0.4); box-shadow: 0 0 15px rgba(16, 185, 129, 0.5);">GOOD QUALITY 🤩❤️</span>
+                        <img src="gshock-ga2100.jpg" id="gshockMainImg" alt="G SHOCK GA 2100🫨❤️" loading="lazy">
+                    </div>
+                    <div class="card-thumbnails">
+                        <img src="gshock-ga2100.jpg" alt="Angle 1" class="card-thumb active" onclick="switchCardImage(this, 'gshockMainImg', 'gshock-ga2100.jpg')">
+                        <img src="gshock-ga2100-2.jpg" alt="Angle 2" class="card-thumb" onclick="switchCardImage(this, 'gshockMainImg', 'gshock-ga2100-2.jpg')">
+                        <img src="gshock-ga2100-3.jpg" alt="Angle 3" class="card-thumb" onclick="switchCardImage(this, 'gshockMainImg', 'gshock-ga2100-3.jpg')">
+                        <img src="gshock-ga2100-4.jpg" alt="Angle 4" class="card-thumb" onclick="switchCardImage(this, 'gshockMainImg', 'gshock-ga2100-4.jpg')">
+                        <img src="gshock-ga2100-5.jpg" alt="Angle 5" class="card-thumb" onclick="switchCardImage(this, 'gshockMainImg', 'gshock-ga2100-5.jpg')">
+                    </div>
+                    <div class="card-body">
+                        <div class="card-meta">
+                            <span class="card-category">Tough Watches</span>
+                            <div class="card-rating"><span>★</span> 5.0</div>
+                        </div>
+                        <h3 class="product-title">G SHOCK GA 2100 🫨❤️</h3>
+                        <p class="product-specs">GOOD QUALITY 🤩❤️ • 2-5 days delivery 😍 • FREE SHIPPING 😍🚚📦 • Iconic CasiOak octagonal stealth design with dual analog-digital readout, shock resistance &amp; premium matte resin strap.</p>
+                        <div class="card-action">
+                            <div class="price-box">
+                                <span class="price-label">FREE SHIPPING 😍🚚📦</span>
+                                <div class="price-val">699 Rs</div>
+                            </div>
+                            <button class="btn-order"
+                                onclick="addToCart('G SHOCK GA 2100', '699 Rs', 'gshock-ga2100.jpg')">
+                                <span>Add to Cart</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 00. NEW ARRIVAL: BOSS WATCH -->
+                <div class="product-card" data-category="gadgets watches" data-title="boss watch all chrono working premium quality 1499 p10 2-5 days delivery luxury chronograph">
+                    <div class="card-img-wrap">
+                        <span class="card-badge" style="background: linear-gradient(135deg, rgba(245,158,11,0.95), rgba(239,68,68,0.95)); color: #fff; border: 1px solid rgba(255,255,255,0.4); box-shadow: 0 0 15px rgba(245,158,11,0.5);">PREMIUM QUALITY 🔥</span>
+                        <img src="boss-watch.jpg" id="bossMainImg" alt="BOSS WATCH⛷️ *" loading="lazy">
+                    </div>
+                    <div class="card-thumbnails">
+                        <img src="boss-watch.jpg" alt="Angle 1" class="card-thumb active" onclick="switchCardImage(this, 'bossMainImg', 'boss-watch.jpg')">
+                        <img src="boss-watch-2.jpg" alt="Angle 2" class="card-thumb" onclick="switchCardImage(this, 'bossMainImg', 'boss-watch-2.jpg')">
+                        <img src="boss-watch-3.jpg" alt="Angle 3" class="card-thumb" onclick="switchCardImage(this, 'bossMainImg', 'boss-watch-3.jpg')">
+                        <img src="boss-watch-4.jpg" alt="Angle 4" class="card-thumb" onclick="switchCardImage(this, 'bossMainImg', 'boss-watch-4.jpg')">
+                        <img src="boss-watch-5.jpg" alt="Angle 5" class="card-thumb" onclick="switchCardImage(this, 'bossMainImg', 'boss-watch-5.jpg')">
+                    </div>
+                    <div class="card-body">
+                        <div class="card-meta">
+                            <span class="card-category">Luxury Watches • #p10</span>
+                            <div class="card-rating"><span>★</span> 5.0</div>
+                        </div>
+                        <h3 class="product-title">BOSS WATCH⛷️ *</h3>
+                        <p class="product-specs">ALL CHRONO WORKING • PREMIUM QUALITY 🔥 • 2-5 days delivery 😍 • Executive Boss chronograph featuring functional multi-dial stopwatches, quick-set date window &amp; genuine textured leather strap. #p10</p>
+                        <div class="card-action">
+                            <div class="price-box">
+                                <span class="price-label">ONLY 1499/-❤️</span>
+                                <div class="price-val">1,499 Rs</div>
+                            </div>
+                            <button class="btn-order"
+                                onclick="addToCart('BOSS WATCH', '1,499 Rs', 'boss-watch.jpg')">
+                                <span>Add to Cart</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 00. NEW ARRIVAL: CASIO LEATHER STRAP -->
+                <div class="product-card" data-category="gadgets watches" data-title="casio leather strap watch new arrival 799 nfs 2-5 days delivery free shipping vintage classic">
+                    <div class="card-img-wrap">
+                        <span class="card-badge" style="background: linear-gradient(135deg, rgba(236,72,153,0.95), rgba(168,85,247,0.95)); color: #fff; border: 1px solid rgba(255,255,255,0.4); box-shadow: 0 0 15px rgba(236,72,153,0.5);">NEW ARRIVAL 🫨❤️</span>
+                        <img src="casio-leather-strap.jpg" id="casioMainImg" alt="CASIO LEATHER STRAP" loading="lazy">
+                    </div>
+                    <div class="card-thumbnails">
+                        <img src="casio-leather-strap.jpg" alt="Angle 1" class="card-thumb active" onclick="switchCardImage(this, 'casioMainImg', 'casio-leather-strap.jpg')">
+                        <img src="casio-leather-strap-2.jpg" alt="Angle 2" class="card-thumb" onclick="switchCardImage(this, 'casioMainImg', 'casio-leather-strap-2.jpg')">
+                        <img src="casio-leather-strap-3.jpg" alt="Angle 3" class="card-thumb" onclick="switchCardImage(this, 'casioMainImg', 'casio-leather-strap-3.jpg')">
+                        <img src="casio-leather-strap-4.jpg" alt="All Colors" class="card-thumb" onclick="switchCardImage(this, 'casioMainImg', 'casio-leather-strap-4.jpg')">
+                        <img src="casio-leather-strap-5.jpg" alt="Angle 5" class="card-thumb" onclick="switchCardImage(this, 'casioMainImg', 'casio-leather-strap-5.jpg')">
+                    </div>
+                    <div class="card-body">
+                        <div class="card-meta">
+                            <span class="card-category">Luxury Watches</span>
+                            <div class="card-rating"><span>★</span> 5.0</div>
+                        </div>
+                        <h3 class="product-title">CASIO LEATHER STRAP</h3>
+                        <p class="product-specs">FREE SHIPPING 😻🚚📦 • 2-5 days delivery NFS🫨❤️ • Vintage classic square dial with Japanese quartz precision movement, water resistance &amp; genuine leather wristband.</p>
+                        <div class="card-action">
+                            <div class="price-box">
+                                <span class="price-label">Only 799/-🫨❤️</span>
+                                <div class="price-val">799 Rs</div>
+                            </div>
+                            <button class="btn-order"
+                                onclick="addToCart('CASIO LEATHER STRAP', '799 Rs', 'casio-leather-strap.jpg')">
+                                <span>Add to Cart</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 000. NEW ARRIVAL: Hublot Premium Watch -->
+                <div class="product-card" data-category="gadgets watches" data-title="hublot premium luxury watch new arrival 1699 nfs compass 2-5 days free shipping">
+                    <div class="card-img-wrap">
+                        <span class="card-badge" style="background: linear-gradient(135deg, rgba(236,72,153,0.95), rgba(168,85,247,0.95)); color: #fff; border: 1px solid rgba(255,255,255,0.4); box-shadow: 0 0 15px rgba(236,72,153,0.5);">NEW ARRIVAL 🫨❤️</span>
+                        <img src="hublot-premium-watch.jpg" id="hublotMainImg" alt="HUBLOT PREMIUM" loading="lazy">
+                    </div>
+                    <div class="card-thumbnails">
+                        <img src="hublot-premium-watch.jpg" alt="Angle 1" class="card-thumb active" onclick="switchCardImage(this, 'hublotMainImg', 'hublot-premium-watch.jpg')">
+                        <img src="hublot-premium-watch-2.jpg" alt="Angle 2" class="card-thumb" onclick="switchCardImage(this, 'hublotMainImg', 'hublot-premium-watch-2.jpg')">
+                        <img src="hublot-premium-watch-3.jpg" alt="Angle 3" class="card-thumb" onclick="switchCardImage(this, 'hublotMainImg', 'hublot-premium-watch-3.jpg')">
+                        <img src="hublot-premium-watch-4.jpg" alt="Angle 4" class="card-thumb" onclick="switchCardImage(this, 'hublotMainImg', 'hublot-premium-watch-4.jpg')">
+                        <img src="hublot-premium-watch-5.jpg" alt="Angle 5" class="card-thumb" onclick="switchCardImage(this, 'hublotMainImg', 'hublot-premium-watch-5.jpg')">
+                    </div>
+                    <div class="card-body">
+                        <div class="card-meta">
+                            <span class="card-category">Luxury Watches</span>
+                            <div class="card-rating"><span>★</span> 5.0</div>
+                        </div>
+                        <h3 class="product-title">HUBLOT PREMIUM ⛷️</h3>
+                        <p class="product-specs">FREE SHIPPING 😻🚚📦 • 2-5 days delivery NFS 🫨❤️ • Futuristic sporty design with integrated compass strap, rugged styling &amp; luxury digital display.</p>
+                        <div class="card-action">
+                            <div class="price-box">
+                                <span class="price-label">Only 1699/- 🫨❤️</span>
+                                <div class="price-val">1,699 Rs</div>
+                            </div>
+                            <button class="btn-order"
+                                onclick="addToCart('HUBLOT PREMIUM', '1,699 Rs', 'hublot-premium-watch.jpg')">
+                                <span>Add to Cart</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
 
                 <!-- 1. Smoke Bubble Gun -->
                 <div class="product-card" data-category="gadgets toys" data-title="smoke bubble gun">
@@ -896,7 +887,7 @@
                         <div class="card-action">
                             <div class="price-box">
                                 <span class="price-label">Price</span>
-                                <div class="price-val">800 Rs 🔥🔥</div>
+                                <div class="price-val">800 Rs</div>
                             </div>
                             <button class="btn-order"
                                 onclick="addToCart('Smoke Bubble Gun', '800 Rs', 'smoke-bubble-gun.jpg')">
@@ -924,7 +915,7 @@
                         <div class="card-action">
                             <div class="price-box">
                                 <span class="price-label">Price</span>
-                                <div class="price-val">399 Rs 🔥🔥</div>
+                                <div class="price-val">399 Rs</div>
                             </div>
                             <button class="btn-order"
                                 onclick="addToCart('Remote Watch Car', '399 Rs', 'remote-watch-car.jpg')">
@@ -952,7 +943,7 @@
                         <div class="card-action">
                             <div class="price-box">
                                 <span class="price-label">Price</span>
-                                <div class="price-val">200 Rs 🔥🔥</div>
+                                <div class="price-val">200 Rs</div>
                             </div>
                             <button class="btn-order"
                                 onclick="addToCart('Baby Finger Projector (Pack of 5)', '200 Rs', 'baby-finger-projector.jpg')">
@@ -980,7 +971,7 @@
                         <div class="card-action">
                             <div class="price-box">
                                 <span class="price-label">Price</span>
-                                <div class="price-val">189 Rs 🔥🔥</div>
+                                <div class="price-val">189 Rs</div>
                             </div>
                             <button class="btn-order"
                                 onclick="addToCart('Inkless Foot Print', '189 Rs', 'inkless-baby-footprint.jpg')">
@@ -1008,7 +999,7 @@
                         <div class="card-action">
                             <div class="price-box">
                                 <span class="price-label">Price</span>
-                                <div class="price-val">250 Rs 🔥🔥</div>
+                                <div class="price-val">250 Rs</div>
                             </div>
                             <button class="btn-order"
                                 onclick="addToCart('Bubble Cigarette Kit', '250 Rs', 'bubble-cigarette.jpg')">
@@ -1036,7 +1027,7 @@
                         <div class="card-action">
                             <div class="price-box">
                                 <span class="price-label">Price</span>
-                                <div class="price-val">470 Rs 🔥🔥</div>
+                                <div class="price-val">470 Rs</div>
                             </div>
                             <button class="btn-order"
                                 onclick="addToCart('Banana Piano Toy', '470 Rs', 'banana-piano-toy.jpg')">
@@ -1063,7 +1054,7 @@
                         <div class="card-action">
                             <div class="price-box">
                                 <span class="price-label">Price</span>
-                                <div class="price-val">199 Rs 🔥🔥</div>
+                                <div class="price-val">199 Rs</div>
                             </div>
                             <button class="btn-order"
                                 onclick="addToCart('USB Projector Night Light', '199 Rs', 'usb-projector-night-light.jpg')">
@@ -1091,7 +1082,7 @@
                         <div class="card-action">
                             <div class="price-box">
                                 <span class="price-label">Price</span>
-                                <div class="price-val">450 Rs 🔥🔥</div>
+                                <div class="price-val">450 Rs</div>
                             </div>
                             <button class="btn-order"
                                 onclick="addToCart('Cordless Table Lamp', '450 Rs', 'cordless-table-lamp.jpg')">
@@ -1119,7 +1110,7 @@
                         <div class="card-action">
                             <div class="price-box">
                                 <span class="price-label">Price</span>
-                                <div class="price-val">999 Rs 🔥🔥</div>
+                                <div class="price-val">999 Rs</div>
                             </div>
                             <button class="btn-order"
                                 onclick="addToCart('Corner Floor Lamp RGB', '999 Rs', 'corner-floor-lamp.jpg')">
@@ -1147,7 +1138,7 @@
                         <div class="card-action">
                             <div class="price-box">
                                 <span class="price-label">Price</span>
-                                <div class="price-val">350 Rs 🔥🔥</div>
+                                <div class="price-val">350 Rs</div>
                             </div>
                             <button class="btn-order"
                                 onclick="addToCart('Devils Eyes LED Car Light', '350 Rs', 'devils-eyes-car-light.jpg')">
@@ -1175,7 +1166,7 @@
                         <div class="card-action">
                             <div class="price-box">
                                 <span class="price-label">Price</span>
-                                <div class="price-val">850 Rs 🔥🔥</div>
+                                <div class="price-val">850 Rs</div>
                             </div>
                             <button class="btn-order"
                                 onclick="addToCart('High Voltage Blower', '850 Rs', 'high-voltage-violent-blower.jpg')">
@@ -1203,7 +1194,7 @@
                         <div class="card-action">
                             <div class="price-box">
                                 <span class="price-label">Price</span>
-                                <div class="price-val">1,499 Rs 🔥🔥</div>
+                                <div class="price-val">1,499 Rs</div>
                             </div>
                             <button class="btn-order"
                                 onclick="addToCart('Electric Pasta Maker', '1,499 Rs', 'electric-pasta-maker.jpg')">
@@ -1212,91 +1203,6 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- 13. Tactile Mechanical Keyboard -->
-                <div class="product-card" data-category="tech" data-title="tactile mechanical keyboard rgb aluminum chassis">
-                    <div class="card-img-wrap">
-                        <span class="card-badge">Top Rated</span>
-                        <img src="https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=600&q=80"
-                            alt="Tactile Mechanical Keyboard" loading="lazy">
-                    </div>
-                    <div class="card-body">
-                        <div class="card-meta">
-                            <span class="card-category">Tech Hardware</span>
-                            <div class="card-rating"><span>★</span> 4.8</div>
-                        </div>
-                        <h3 class="product-title">Tactile Mechanical Keyboard</h3>
-                        <p class="product-specs">Hot-swappable tactile switches • Per-key programmable RGB • CNC
-                            anodized aluminum chassis • Type-C braided cable detachable.</p>
-                        <div class="card-action">
-                            <div class="price-box">
-                                <span class="price-label">Price</span>
-                                <div class="price-val">2,899 Rs 🔥🔥</div>
-                            </div>
-                            <button class="btn-order"
-                                onclick="addToCart('Tactile Mechanical Keyboard', '2,899 Rs', 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=600&q=80')">
-                                <span>Add to Cart</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 14. Ultrawide 4K Display -->
-                <div class="product-card" data-category="tech" data-title="ultrawide 4k display curved ips monitor">
-                    <div class="card-img-wrap">
-                        <span class="card-badge">Enterprise Grade</span>
-                        <img src="https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=600&q=80"
-                            alt="Ultrawide 4K Display" loading="lazy">
-                    </div>
-                    <div class="card-body">
-                        <div class="card-meta">
-                            <span class="card-category">Displays</span>
-                            <div class="card-rating"><span>★</span> 5.0</div>
-                        </div>
-                        <h3 class="product-title">Ultrawide 4K Display</h3>
-                        <p class="product-specs">34" Curved IPS panel • 144Hz refresh rate • HDR400 certified • 90W
-                            USB-C Power Delivery and built-in KVM switch.</p>
-                        <div class="card-action">
-                            <div class="price-box">
-                                <span class="price-label">Price</span>
-                                <div class="price-val">28,500 Rs 🔥🔥</div>
-                            </div>
-                            <button class="btn-order"
-                                onclick="addToCart('Ultrawide 4K Display', '28,500 Rs', 'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=600&q=80')">
-                                <span>Add to Cart</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 15. Ergonomic Wireless Mouse -->
-                <div class="product-card" data-category="tech" data-title="ergonomic wireless mouse bluetooth multi device">
-                    <div class="card-img-wrap">
-                        <span class="card-badge">Popular</span>
-                        <img src="https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?auto=format&fit=crop&w=600&q=80"
-                            alt="Ergonomic Wireless Mouse" loading="lazy">
-                    </div>
-                    <div class="card-body">
-                        <div class="card-meta">
-                            <span class="card-category">Peripherals</span>
-                            <div class="card-rating"><span>★</span> 4.7</div>
-                        </div>
-                        <h3 class="product-title">Ergonomic Wireless Mouse</h3>
-                        <p class="product-specs">Natural hand posture design • Multi-device Bluetooth &amp; 2.4G •
-                            70-day rechargeable battery • Silent click switches.</p>
-                        <div class="card-action">
-                            <div class="price-box">
-                                <span class="price-label">Price</span>
-                                <div class="price-val">1,250 Rs 🔥🔥</div>
-                            </div>
-                            <button class="btn-order"
-                                onclick="addToCart('Ergonomic Wireless Mouse', '1,250 Rs', 'https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?auto=format&fit=crop&w=600&q=80')">
-                                <span>Add to Cart</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </div>
     </section>
@@ -1305,16 +1211,28 @@
     <div class="cart-drawer-overlay" id="cartOverlay" onclick="toggleCartDrawer(false)"></div>
     <div class="cart-drawer" id="cartDrawer">
         <div class="cart-header">
-            <h3>Your Order Cart</h3>
-            <button class="btn-close-cart" onclick="toggleCartDrawer(false)">&times;</button>
+            <div class="cart-header-title-group">
+                <h3>Your Order Cart</h3>
+                <span class="cart-header-badge" id="cartHeaderCount">0 items</span>
+            </div>
+            <div class="cart-header-actions">
+                <button class="btn-clear-cart" onclick="clearCart()" title="Clear entire cart">Clear</button>
+                <button class="btn-close-cart" onclick="toggleCartDrawer(false)" title="Close">&times;</button>
+            </div>
         </div>
         <div class="cart-items" id="cartItemsList">
             <div class="cart-empty" id="cartEmptyMsg">Your cart is currently empty.</div>
         </div>
         <div class="cart-footer">
-            <div class="cart-total-row">
-                <span>Items Selected:</span>
-                <span id="cartTotalItems">0</span>
+            <div class="cart-summary-box">
+                <div class="cart-summary-row">
+                    <span>Total Quantity:</span>
+                    <span id="cartTotalItems">0</span>
+                </div>
+                <div class="cart-total-row">
+                    <span>Grand Total:</span>
+                    <span class="cart-total-price" id="cartTotalPrice">0 Rs</span>
+                </div>
             </div>
             <a href="javascript:void(0)" class="btn-checkout-whatsapp" id="btnCheckoutWhatsApp"
                 onclick="checkoutViaWhatsApp()">
@@ -1322,7 +1240,7 @@
                     <path
                         d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" />
                 </svg>
-                <span>Order Selected via WhatsApp</span>
+                <span>Order via WhatsApp</span>
             </a>
         </div>
     </div>
@@ -1343,14 +1261,9 @@
                 <div class="footer-brand">
                     <div class="logo-wrap">
                         <div class="logo-symbol">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                                <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
-                                <polyline points="2 17 12 22 22 17"></polyline>
-                                <polyline points="2 12 12 17 22 12"></polyline>
-                            </svg>
+                            <img src="aufex-logo.jpg" alt="Aufex Online Shop Logo" class="nav-logo-img">
                         </div>
-                        <div class="logo-title">AUFEX <span>ENTERPRISE</span></div>
+                        <div class="logo-title">AUFEX <span>ONLINE SHOP</span></div>
                     </div>
                     <p>
                         Empowering mid-market and enterprise organizations with direct product procurement,
@@ -1375,6 +1288,7 @@
                         <li><a href="javascript:void(0)" onclick="filterCategory('toys')">Kids &amp; Novelty Toys</a></li>
                         <li><a href="javascript:void(0)" onclick="filterCategory('lights')">Smart Ambient Lights</a></li>
                         <li><a href="javascript:void(0)" onclick="filterCategory('home')">Home &amp; Kitchen</a></li>
+                        <li><a href="javascript:void(0)" onclick="filterCategory('watches')">Luxury Watches</a></li>
                     </ul>
                 </div>
 
@@ -1395,21 +1309,11 @@
         </div>
     </footer>
 
-    <!-- Interactive Script -->
+    <!-- Shopping Cart Engine -->
+    <script src="cart.js"></script>
+
+    <!-- Catalog Page Specific Filter & Gallery Scripts -->
     <script>
-        let cart = [];
-
-        function showToast(message) {
-            const toast = document.getElementById('toast');
-            const toastText = document.getElementById('toastText');
-            toastText.textContent = message;
-            toast.classList.add('show');
-            clearTimeout(toast.timeoutId);
-            toast.timeoutId = setTimeout(() => {
-                toast.classList.remove('show');
-            }, 3000);
-        }
-
         function filterCategory(category, btnElement) {
             if (btnElement) {
                 document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
@@ -1441,73 +1345,15 @@
             });
         }
 
-        function toggleCartDrawer(open) {
-            const drawer = document.getElementById('cartDrawer');
-            const overlay = document.getElementById('cartOverlay');
-            if (open) {
-                drawer.classList.add('active');
-                overlay.classList.add('active');
-            } else {
-                drawer.classList.remove('active');
-                overlay.classList.remove('active');
+        function switchCardImage(thumb, targetImgId, newSrc) {
+            const target = document.getElementById(targetImgId);
+            if (target) {
+                target.src = newSrc;
             }
-        }
-
-        function addToCart(title, price, image) {
-            cart.push({ title, price, image });
-            updateCartUI();
-            showToast(`Added "${title}" to cart!`);
-        }
-
-        function removeFromCart(index) {
-            cart.splice(index, 1);
-            updateCartUI();
-        }
-
-        function updateCartUI() {
-            const cartCount = document.getElementById('cartCount');
-            const cartTotalItems = document.getElementById('cartTotalItems');
-            const cartItemsList = document.getElementById('cartItemsList');
-
-            cartCount.textContent = cart.length;
-            cartTotalItems.textContent = cart.length;
-
-            if (cart.length === 0) {
-                cartItemsList.innerHTML = '<div class="cart-empty">Your cart is currently empty.</div>';
-                return;
+            if (thumb && thumb.parentElement) {
+                thumb.parentElement.querySelectorAll('.card-thumb').forEach(t => t.classList.remove('active'));
+                thumb.classList.add('active');
             }
-
-            let html = '';
-            cart.forEach((item, idx) => {
-                html += `
-                    <div class="cart-item">
-                        <img src="${item.image}" alt="${item.title}" class="cart-item-img">
-                        <div class="cart-item-info">
-                            <div class="cart-item-title">${item.title}</div>
-                            <div class="cart-item-price">${item.price}</div>
-                        </div>
-                        <button class="cart-item-remove" onclick="removeFromCart(${idx})" title="Remove">✕</button>
-                    </div>
-                `;
-            });
-            cartItemsList.innerHTML = html;
-        }
-
-        function checkoutViaWhatsApp() {
-            if (cart.length === 0) {
-                showToast("Please add items to your cart first!");
-                return;
-            }
-
-            let message = "Hi Aufex, I would like to place an order for the following items:\n\n";
-            cart.forEach((item, index) => {
-                message += `${index + 1}. ${item.title} (${item.price})\n`;
-            });
-            message += `\nTotal Items: ${cart.length}\nPlease confirm availability and payment details.`;
-
-            const encoded = encodeURIComponent(message);
-            const waUrl = `https://wa.me/917034815356?text=${encoded}`;
-            window.open(waUrl, '_blank');
         }
     </script>
 
